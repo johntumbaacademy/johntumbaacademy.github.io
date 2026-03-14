@@ -1,158 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Top Student Academy</title>
+
+<title>Top Student Academy | Hybrid Intelligence Institute</title>
 
 <style>
+
 body{
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-  background:#0b1220;
-  margin:0;
-  color:white;
-  display:flex;
-  justify-content:center;
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+background:#0b1220;
+color:white;
+display:flex;
+justify-content:center;
 }
 
 .container{
-  max-width:820px;
-  padding:30px;
-  text-align:center;
+max-width:950px;
+padding:30px;
+text-align:center;
 }
 
-/* HERO + AUTHORITY */
-.hero{
-  margin-bottom:40px;
+/* NAVIGATION */
+
+.nav{
+margin-bottom:25px;
+font-size:14px;
+color:#aab3e0;
 }
+
+.nav a{
+color:#7ea4ff;
+text-decoration:none;
+margin:0 10px;
+font-weight:600;
+}
+
+/* HERO */
+
 .hero h1{
-  font-size:44px;
-  margin-bottom:8px;
+font-size:44px;
+margin-bottom:8px;
 }
+
 .hero p{
-  color:#a6b0d9;
-  font-size:18px;
+font-size:18px;
+color:#aab3e0;
 }
+
+/* PROFILE */
 
 .profile img{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:4px solid #2f3a63;
-  object-fit:cover;
-  margin-bottom:12px;
-}
-.profile-name{
-  font-size:22px;
-  font-weight:600;
-}
-.profile-role{
-  color:#a6b0d9;
-  font-size:14px;
-  margin-bottom:32px;
+width:140px;
+height:140px;
+border-radius:50%;
+border:4px solid #2f3a63;
+object-fit:cover;
+margin-top:25px;
 }
 
-/* CARDS */
-.card{
-  background:#141c34;
-  padding:28px;
-  border-radius:16px;
-  margin-bottom:22px;
-  box-shadow:0 12px 40px rgba(0,0,0,0.45);
+.profile-name{
+font-size:22px;
+font-weight:600;
+margin-top:10px;
+}
+
+.profile-role{
+font-size:14px;
+color:#aab3e0;
+margin-bottom:30px;
+}
+
+/* SECTION */
+
+.section{
+background:#141c34;
+padding:30px;
+border-radius:18px;
+margin-bottom:25px;
+box-shadow:0 12px 45px rgba(0,0,0,0.45);
+animation:fadeUp 1s ease;
 }
 
 .section-title{
-  font-size:23px;
-  margin-bottom:12px;
+font-size:25px;
+margin-bottom:12px;
 }
 
-.card p, .card li{
-  color:#cbd4ff;
-  line-height:1.7;
-}
-
-ul{
-  text-align:left;
-  margin-left:18px;
-}
-
-.framework-box{
-  background:#1a2342;
-  padding:20px;
-  border-radius:12px;
-  margin-top:14px;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-  text-align:left;
-}
-
-/* ANIMATION */
-.framework-box div{
-  background:#232e56;
-  padding:14px;
-  border-radius:10px;
-  transition:0.25s;
-}
-.framework-box div:hover{
-  transform:scale(1.05);
+.section p{
+color:#d3dbff;
+line-height:1.7;
 }
 
 /* BUTTONS */
+
 .button{
-  display:block;
-  text-align:center;
-  padding:18px;
-  margin-top:14px;
-  border-radius:12px;
-  font-size:17px;
-  font-weight:600;
-  text-decoration:none;
-  transition:0.25s;
-  color:white;
+display:block;
+padding:18px;
+margin:14px auto;
+border-radius:12px;
+font-size:17px;
+font-weight:600;
+text-decoration:none;
+transition:0.25s;
+color:white;
+width:85%;
 }
+
 .button:hover{
-  transform:scale(1.05);
+transform:scale(1.05);
 }
-.enroll{background:#3a7cff;}
 
-/* TRUST / FOOTER */
-.trust{
-  display:flex;
-  justify-content:space-between;
-  margin-top:12px;
-  font-size:14px;
-  color:#9aa6d3;
+.tool{background:#3a7cff;}
+.product{background:#24d37f;}
+.department{background:#ff9f43;}
+.career{background:#b76cff;}
+
+/* TRANSFORMATION */
+
+.result-box{
+background:#0f1730;
+border-radius:12px;
+padding:18px;
+margin:12px 0;
+font-size:15px;
+color:#c7d1ff;
 }
+
+/* FOOTER */
+
 .footer{
-  text-align:center;
-  font-size:14px;
-  color:#8d97b8;
-  margin-top:35px;
+margin-top:40px;
+font-size:14px;
+color:#8d97b8;
 }
 
-/* STUDENT TRANSFORMATION */
-.transformation{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:16px;
-  margin-top:14px;
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
 }
-.transformation img{
-  width:100%;
-  border-radius:12px;
+to{
+opacity:1;
+transform:translateY(0);
 }
-.transformation p{
-  margin-top:6px;
-  font-size:14px;
-  color:#cbd4ff;
 }
 
-@media (max-width:700px){
-  .transformation{
-    grid-template-columns:1fr;
-  }
-}
 </style>
 
 </head>
@@ -161,81 +160,179 @@ ul{
 
 <div class="container">
 
-<!-- HERO -->
+<div class="nav">
+
+<a href="index.html">Home</a> |
+<a href="human-alignment.html">Human Alignment System</a>
+
+</div>
+
 <div class="hero">
-  <h1>Top Student Academy</h1>
-  <p>Master skills, unlock potential, achieve excellence</p>
+
+<h1>Top Student Academy</h1>
+
+<p>Hybrid Intelligence™ Institute for Modern Students</p>
+
 </div>
 
-<!-- PROFILE -->
 <div class="profile">
-  <img src="john.jpg" alt="John Tumba">
-  <div class="profile-name">John Tumba</div>
-  <div class="profile-role">Founder & Creator of Top Student Academy</div>
+
+<img src="john.jpg">
+
+<div class="profile-name">
+John Tumba
 </div>
 
-<!-- WHY JOIN -->
-<div class="card">
-  <div class="section-title">Why Join Top Student Academy</div>
-  <p>Top Student Academy is designed to guide ambitious learners to mastery and confidence.</p>
-  <ul>
-    <li>Structured learning paths for skills & knowledge</li>
-    <li>Mentorship & clarity on growth</li>
-    <li>Overcome confusion & skill gaps</li>
-    <li>Practical actionable methods</li>
-  </ul>
+<div class="profile-role">
+Founder — Hybrid Intelligence™ Systems
 </div>
 
-<!-- FRAMEWORK -->
-<div class="card">
-  <div class="section-title">Academy Framework</div>
-  <div class="framework-box">
-    <div><strong>Foundations</strong> – Core skills and mindset</div>
-    <div><strong>Skill Development</strong> – Learn and practice efficiently</div>
-    <div><strong>Applied Mastery</strong> – Real-world application & projects</div>
-    <div><strong>Excellence Path</strong> – Personalized mentorship & next steps</div>
-  </div>
 </div>
 
-<!-- STUDENT TRANSFORMATION -->
-<div class="card">
-  <div class="section-title">Student Transformations</div>
-  <div class="transformation">
-    <div>
-      <img src="student1.jpg" alt="Before/After">
-      <p>From overwhelmed beginner → confident high performer</p>
-    </div>
-    <div>
-      <img src="student2.jpg" alt="Before/After">
-      <p>From scattered learning → structured, high-achieving results</p>
-    </div>
-  </div>
+<div class="section">
+
+<div class="section-title">
+Why Top Student Academy Exists
 </div>
 
-<!-- ENROLL BUTTON -->
-<div class="card">
-  <div class="section-title">Enroll / Book Consultation</div>
-  <a class="button enroll" href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20ENROLLMENT%0A%0AName:%0ACountry:%0A%0AInterested%20Program:%0A%0AShort%20description:">Enroll Now / Book Consultation</a>
+<p>
+Students today have access to more information than any generation in history. Artificial Intelligence tools can produce essays, generate answers and solve problems instantly.
+</p>
+
+<p>
+Yet many students still struggle academically. They study for long hours, complete assignments and attend lectures but their results do not reflect their effort.
+</p>
+
+<p>
+The problem is not intelligence. The problem is structure.
+</p>
+
+<p>
+Top Student Academy teaches students how to combine human reasoning with Artificial Intelligence using a structured framework called <b>Hybrid Intelligence™</b>.
+</p>
+
+<p>
+Hybrid Intelligence™ allows students to learn faster, think clearly and perform under academic pressure.
+</p>
+
 </div>
 
-<!-- NEXT STEPS -->
-<div class="card">
-  <div class="section-title">What happens next</div>
-  <p>1️⃣ Click Enroll / Book Consultation.</p>
-  <p>2️⃣ WhatsApp opens with a prepared message.</p>
-  <p>3️⃣ Send your information & interest.</p>
-  <p>4️⃣ Receive guidance & next steps.</p>
-  <div class="trust">
-    <span>Private</span>
-    <span>Confidential</span>
-    <span>Direct guidance</span>
-  </div>
+<div class="section">
+
+<div class="section-title">
+Student Transformation
+</div>
+
+<div class="result-box">
+Confused students → Structured thinkers
+</div>
+
+<div class="result-box">
+Slow studying → Accelerated understanding
+</div>
+
+<div class="result-box">
+AI dependence → AI mastery
+</div>
+
+<div class="result-box">
+Exam panic → Exam control
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+Start With These Free Student Tools
+</div>
+
+<a class="button tool"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20STUDENT%20REALITY%20CHECK%0A%0AName:%0ACountry:%0AField%20of%20Study:%0AYear%20of%20Study:%0A%0ABiggest%20Academic%20Challenge:%0A%0AWhy%20do%20you%20want%20to%20take%20the%20Reality%20Check?">
+Student Reality Check™
+</a>
+
+<a class="button tool"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20AI%20VERIFICATION%20COMMAND%0A%0AName:%0ACountry:%0AField%20of%20Study:%0A%0AWhat%20assignment%20are%20you%20working%20on?">
+AI Verification Command
+</a>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+Structured Student Systems
+</div>
+
+<a class="button product"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20ELITE%20PROMPT%20PACK">
+Elite Unguessable AI Prompt Pack
+</a>
+
+<a class="button product"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20ASSIGNMENT%20PROMPT%20PACK">
+Elite Assignment Prompt Pack
+</a>
+
+<a class="button product"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%2040%20HOUR%20EXAM%20DOMINATION">
+40-Hour Exam Domination Protocol™
+</a>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+Academic Departments
+</div>
+
+<a class="button department"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20CLINICAL%20REASONING%20PROGRAM">
+Clinical Reasoning Department
+</a>
+
+</div>
+
+<div class="section">
+
+<div class="section-title">
+Career Development Programs
+</div>
+
+<a class="button career"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20INTERVIEW%20PREPARATION">
+Interview Preparation
+</a>
+
+<a class="button career"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20CV%20WRITING%20SYSTEM">
+CV Writing System
+</a>
+
+<a class="button career"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20SCHOOL%20TO%20WORK%20MENTORSHIP">
+School-to-Work Mentorship
+</a>
+
+<a class="button career"
+href="https://wa.me/260779483121?text=TOP%20STUDENT%20ACADEMY%20-%20CORPORATE%20MENTORSHIP">
+Corporate World Mentorship
+</a>
+
 </div>
 
 <div class="footer">
-Top Student Academy • Structured learning and mentorship programs
+
+Top Student Academy  
+Hybrid Intelligence™ Institute  
+
+Founder — John Tumba
+
 </div>
 
 </div>
+
 </body>
   </html>
