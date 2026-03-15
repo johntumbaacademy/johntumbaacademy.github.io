@@ -1,201 +1,448 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Human Alignment Mastery</title>
-<style>
-/* ---------- GLOBAL STYLES ---------- */
-body, html {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", sans-serif;
-  color: #111;
-  background: #fff;
-  scroll-behavior: smooth;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
-section {
-  padding: 80px 20px;
-}
-.container {
-  max-width: 1080px;
-  margin: auto;
-}
-button.cta {
-  background: #ff4c4c;
-  color: #fff;
-  font-size: 18px;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 28px;
-  cursor: pointer;
-  transition: .3s ease;
-}
-button.cta:hover {
-  background: #e03b3b;
-}
 
-/* ---------- HERO ---------- */
-#hero {
-  background: linear-gradient(135deg, #1f1f1f, #0f0f0f);
-  color: #fff;
-  text-align: center;
-  padding: 140px 20px;
-}
-#hero h1 {
-  font-size: 48px;
-  line-height: 1.2;
-  margin-bottom: 24px;
-  font-weight: 700;
-}
-#hero p {
-  font-size: 22px;
-  margin-bottom: 36px;
-}
-#hero .cta {
-  font-size: 20px;
-}
-
-/* ---------- FEATURES ---------- */
-#features {
-  background: #f8f8f8;
-}
-.feature-box {
-  background: #fff;
-  box-shadow: 0 4px 28px rgba(0,0,0,0.08);
-  padding: 24px;
-  border-radius: 12px;
-  margin-bottom: 24px;
-}
-.feature-box h3 {
-  margin-top: 0;
-}
-.feature-grid {
-  display: grid;
-  grid-gap: 24px;
-}
-@media (min-width: 768px) {
-  .feature-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .feature-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ---------- SOCIAL PROOF ---------- */
-#testimonials {
-  background: #fff;
-  text-align: center;
-}
-.testimonial {
-  margin-bottom: 36px;
-  font-style: italic;
-}
-
-/* ---------- CTA BOTTOM ---------- */
-#final-cta {
-  background: #1a1a1a;
-  color: #fff;
-  text-align: center;
-}
-#final-cta h2 {
-  font-size: 32px;
-  margin-bottom: 24px;
-}
-
-/* ---------- FOOTER ---------- */
-footer {
-  text-align: center;
-  padding: 24px 0;
-  color: #777;
-  font-size: 14px;
-}
-</style>
-</head>
-<body>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="container">
-    <h1>Stop Chasing. Start Decoding. Master Every Relationship Instantly.</h1>
-    <p>Unlock the hidden psychology behind attraction, behavior, and influence with Human Alignment Mastery — proven patterns, laws, and insights that others never see.</p>
-    <button class="cta" onclick="scrollToSection('features')">Unlock Access Now</button>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section id="features">
-  <div class="container">
-    <h2 style="text-align:center; font-size:32px; margin-bottom:40px;">What You Will Learn</h2>
-    <div class="feature-grid">
-      <div class="feature-box">
-        <h3>12 Laws of Human Alignment</h3>
-        <p>Understand the universal principles that govern behavior, influence, and attraction.</p>
-      </div>
-      <div class="feature-box">
-        <h3>10 Psychological Illusions</h3>
-        <p>Decode the illusions that blind most people to reality in relationships.</p>
-      </div>
-      <div class="feature-box">
-        <h3>12 Female Archetypes</h3>
-        <p>Predict patterns and responses with tactical clarity — no guessing.</p>
-      </div>
-      <div class="feature-box">
-        <h3>15+ Red Flags Most Men Miss</h3>
-        <p>Detect subtle manipulation that ruins connection before it even begins.</p>
-      </div>
-      <div class="feature-box">
-        <h3>Behavioral Leverage Techniques</h3>
-        <p>Control the emotional and psychological direction of interactions.</p>
-      </div>
-      <div class="feature-box">
-        <h3>30-Day Mastery Protocol</h3>
-        <p>Transform your perception, influence, and attraction with a step-by-step system.</p>
-      </div>
-    </div>
-    <div style="text-align:center; margin-top:32px;">
-      <button class="cta" onclick="scrollToSection('final-cta')">I Want Total Clarity</button>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="container">
-    <h2 style="font-size:32px; margin-bottom:24px;">What People Say After Human Alignment Mastery</h2>
-    <div class="testimonial">“I used to get ghosted and confused. Now I see behavior before emotion — life-changing.”</div>
-    <div class="testimonial">“This system gave me clarity I never had — I feel unstoppable.”</div>
-    <div class="testimonial">“I finally understand what was happening underneath the surface.”</div>
-    <div class="testimonial">“Every lesson hit real — this is psychological mastery.”</div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="final-cta">
-  <div class="container">
-    <h2>Ready to Decode Human Behavior and Master Attraction?</h2>
-    <p>Don’t wait. Take control of your relationships, influence, and psychological leverage now.</p>
-    <button class="cta">Reserve Your Access Today</button>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  © 2026 John Tumba Academy. All Rights Reserved.
-</footer>
-
+<!-- GOOGLE ANALYTICS -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID"></script>
 <script>
-function scrollToSection(id) {
-  document.getElementById(id).scrollIntoView({ behavior: "smooth" });
-}
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GA_ID');
 </script>
 
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}
+(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init','PIXEL_ID');
+fbq('track','PageView');
+</script>
+
+
+<style>
+
+/* GLOBAL */
+
+body,html{
+margin:0;
+padding:0;
+font-family:Inter,sans-serif;
+background:#fff;
+color:#111;
+scroll-behavior:smooth;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+section{
+padding:80px 20px;
+}
+
+.container{
+max-width:1080px;
+margin:auto;
+}
+
+button.cta{
+background:#ff4c4c;
+color:white;
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:28px;
+cursor:pointer;
+transition:.3s;
+}
+
+button.cta:hover{
+background:#e03b3b;
+}
+
+
+/* HERO */
+
+#hero{
+background:linear-gradient(135deg,#1f1f1f,#0f0f0f);
+color:white;
+text-align:center;
+padding:140px 20px;
+}
+
+#hero h1{
+font-size:48px;
+margin-bottom:24px;
+}
+
+#hero p{
+font-size:22px;
+margin-bottom:36px;
+}
+
+
+/* FEATURES */
+
+#features{
+background:#f8f8f8;
+}
+
+.feature-grid{
+display:grid;
+grid-gap:24px;
+}
+
+.feature-box{
+background:white;
+padding:24px;
+border-radius:12px;
+box-shadow:0 4px 28px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.feature-box img{
+margin-bottom:12px;
+}
+
+@media(min-width:768px){
+.feature-grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+@media(min-width:1024px){
+.feature-grid{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+
+/* TESTIMONIALS */
+
+#testimonials{
+text-align:center;
+}
+
+.testimonial{
+margin-bottom:36px;
+font-style:italic;
+}
+
+
+/* FINAL CTA */
+
+#final-cta{
+background:#1a1a1a;
+color:white;
+text-align:center;
+}
+
+#final-cta h2{
+font-size:32px;
+margin-bottom:24px;
+}
+
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:24px;
+color:#777;
+}
+
+
+/* MODAL */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.modal-content{
+background:white;
+padding:40px;
+border-radius:12px;
+text-align:center;
+max-width:400px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- HERO -->
+
+<section id="hero">
+
+<div class="container">
+
+<h1 id="headline">Stop Chasing. Start Decoding.</h1>
+
+<p>Unlock the hidden psychology behind attraction, behavior, and influence with Human Alignment Mastery.</p>
+
+<button class="cta" onclick="scrollToSection('features')">
+Unlock Access Now
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+<div class="container">
+
+<h2 style="text-align:center;font-size:32px;margin-bottom:40px;">
+What You Will Learn
+</h2>
+
+<div class="feature-grid">
+
+
+<div class="feature-box">
+
+<img src="assets/icons/insight.svg" width="48">
+
+<h3>12 Laws of Human Alignment</h3>
+
+<p>Understand the universal principles that govern behavior, influence, and attraction.</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<img src="assets/icons/pattern.svg" width="48">
+
+<h3>10 Psychological Illusions</h3>
+
+<p>Decode the illusions that blind most people to reality in relationships.</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<img src="assets/icons/pattern.svg" width="48">
+
+<h3>12 Female Archetypes</h3>
+
+<p>Predict patterns and responses with tactical clarity.</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<img src="assets/icons/red-flag.svg" width="48">
+
+<h3>15+ Red Flags Most Men Miss</h3>
+
+<p>Detect subtle manipulation before it destroys the connection.</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<img src="assets/icons/insight.svg" width="48">
+
+<h3>Behavioral Leverage Techniques</h3>
+
+<p>Control the emotional direction of interactions.</p>
+
+</div>
+
+
+<div class="feature-box">
+
+<img src="assets/icons/insight.svg" width="48">
+
+<h3>30-Day Mastery Protocol</h3>
+
+<p>Transform your perception and influence with a step-by-step system.</p>
+
+</div>
+
+
+</div>
+
+
+<div style="text-align:center;margin-top:32px;">
+
+<button class="cta" onclick="scrollToSection('final-cta')">
+I Want Total Clarity
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- TESTIMONIALS -->
+
+<section id="testimonials">
+
+<div class="container">
+
+<h2 style="font-size:32px;margin-bottom:24px;">
+What People Say
+</h2>
+
+<div class="testimonial">
+"I used to get ghosted and confused. Now I see behavior before emotion."
+</div>
+
+<div class="testimonial">
+"This system gave me clarity I never had."
+</div>
+
+<div class="testimonial">
+"I finally understand what was happening underneath the surface."
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- FINAL CTA -->
+
+<section id="final-cta">
+
+<div class="container">
+
+<h2>Ready to Decode Human Behavior?</h2>
+
+<p>Take control of your relationships and psychological leverage.</p>
+
+<button class="cta" onclick="openModal()">
+Reserve Your Access Today
+</button>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+© 2026 John Tumba Academy
+
+</footer>
+
+
+
+<!-- PURCHASE MODAL -->
+
+<div id="purchaseModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Unlock Human Alignment Mastery</h2>
+
+<p>Get the full system instantly.</p>
+
+<a href="STRIPE_LINK">
+
+<button class="cta">
+Pay with Card
+</button>
+
+</a>
+
+
+<a href="PAYPAL_LINK">
+
+<button class="cta">
+Pay with PayPal
+</button>
+
+</a>
+
+<br><br>
+
+<button onclick="closeModal()">
+Close
+</button>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+
+function openModal(){
+document.getElementById("purchaseModal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("purchaseModal").style.display="none";
+}
+
+
+
+/* A/B HEADLINE TEST */
+
+var headlines=[
+"Stop Chasing. Start Decoding.",
+"The Psychology of Attraction Most Men Never Learn"
+];
+
+var randomHeadline=headlines[Math.floor(Math.random()*headlines.length)];
+
+document.getElementById("headline").innerText=randomHeadline;
+
+
+</script>
+
+
 </body>
-  </html>
+
+</html>
