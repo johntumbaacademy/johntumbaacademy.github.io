@@ -1,105 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Human Alignment Mastery</title>
 
-<!-- GOOGLE ANALYTICS -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'GA_ID');
-</script>
-
-<!-- META PIXEL -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}
-(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-
-fbq('init','PIXEL_ID');
-fbq('track','PageView');
-</script>
-
+<!-- PAYPAL SCRIPT -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 
 <style>
 
-/* GLOBAL */
-
-body,html{
-margin:0;
-padding:0;
-font-family:Inter,sans-serif;
-background:#fff;
-color:#111;
-scroll-behavior:smooth;
-}
-
-a{
-text-decoration:none;
-color:inherit;
-}
-
-section{
-padding:80px 20px;
-}
-
-.container{
-max-width:1080px;
-margin:auto;
-}
+body, html { margin:0; padding:0; font-family:"Inter",sans-serif; color:#111; background:#fff; scroll-behavior:smooth;}
+a { text-decoration:none; color:inherit;}
+section { padding:80px 20px; }
+.container { max-width:1080px; margin:auto;}
 
 button.cta{
 background:#ff4c4c;
 color:white;
-padding:14px 28px;
 font-size:18px;
+padding:14px 28px;
 border:none;
 border-radius:28px;
 cursor:pointer;
 transition:.3s;
 }
 
-button.cta:hover{
-background:#e03b3b;
-}
+button.cta:hover{ background:#e03b3b;}
 
-
-/* HERO */
-
-#hero{
-background:linear-gradient(135deg,#1f1f1f,#0f0f0f);
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
 color:white;
 text-align:center;
-padding:140px 20px;
 }
 
-#hero h1{
-font-size:48px;
-margin-bottom:24px;
+.hero-title{
+font-size:64px;
+font-weight:800;
+animation:fadeUp 1.5s ease;
 }
 
-#hero p{
+.hero-sub{
 font-size:22px;
-margin-bottom:36px;
+margin-top:20px;
+opacity:0.8;
 }
 
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
 
-/* FEATURES */
+#features{background:#f8f8f8;}
 
-#features{
-background:#f8f8f8;
+.feature-box{
+background:white;
+box-shadow:0 4px 28px rgba(0,0,0,0.08);
+padding:24px;
+border-radius:12px;
+margin-bottom:24px;
 }
 
 .feature-grid{
@@ -107,58 +70,31 @@ display:grid;
 grid-gap:24px;
 }
 
-.feature-box{
-background:white;
-padding:24px;
-border-radius:12px;
-box-shadow:0 4px 28px rgba(0,0,0,0.08);
-text-align:center;
-}
-
-.feature-box img{
-margin-bottom:12px;
-}
-
 @media(min-width:768px){
-.feature-grid{
-grid-template-columns:repeat(2,1fr);
-}
+.feature-grid{grid-template-columns:repeat(2,1fr);}
 }
 
 @media(min-width:1024px){
-.feature-grid{
-grid-template-columns:repeat(3,1fr);
-}
+.feature-grid{grid-template-columns:repeat(3,1fr);}
 }
 
-
-/* TESTIMONIALS */
-
-#testimonials{
-text-align:center;
-}
+#testimonials{text-align:center;}
 
 .testimonial{
 margin-bottom:36px;
 font-style:italic;
 }
 
-
-/* FINAL CTA */
-
-#final-cta{
-background:#1a1a1a;
-color:white;
-text-align:center;
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s ease;
 }
 
-#final-cta h2{
-font-size:32px;
-margin-bottom:24px;
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
-
-
-/* FOOTER */
 
 footer{
 text-align:center;
@@ -166,60 +102,56 @@ padding:24px;
 color:#777;
 }
 
-
-/* MODAL */
-
 .modal{
 display:none;
 position:fixed;
-top:0;
+z-index:1000;
 left:0;
+top:0;
 width:100%;
 height:100%;
 background:rgba(0,0,0,0.7);
-justify-content:center;
-align-items:center;
-z-index:999;
 }
 
 .modal-content{
 background:white;
-padding:40px;
+margin:15% auto;
+padding:30px;
 border-radius:12px;
+max-width:420px;
 text-align:center;
-max-width:400px;
+}
+
+.modal-content button{
+width:100%;
+margin:10px 0;
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
 <!-- HERO -->
+<section class="hero">
 
-<section id="hero">
+<div>
 
-<div class="container">
+<h1 class="hero-title">Decode Human Behavior</h1>
 
-<h1 id="headline">Stop Chasing. Start Decoding.</h1>
+<p class="hero-sub">
+The psychological operating system for relationships, attraction, and influence.
+</p>
 
-<p>Unlock the hidden psychology behind attraction, behavior, and influence with Human Alignment Mastery.</p>
-
-<button class="cta" onclick="scrollToSection('features')">
-Unlock Access Now
-</button>
+<button class="cta" onclick="openModal()">Unlock The System</button>
 
 </div>
 
 </section>
 
 
-
 <!-- FEATURES -->
-
 <section id="features">
 
 <div class="container">
@@ -230,89 +162,41 @@ What You Will Learn
 
 <div class="feature-grid">
 
-
-<div class="feature-box">
-
-<img src="assets/icons/insight.svg" width="48">
-
+<div class="feature-box fade">
 <h3>12 Laws of Human Alignment</h3>
-
 <p>Understand the universal principles that govern behavior, influence, and attraction.</p>
-
 </div>
 
-
-<div class="feature-box">
-
-<img src="assets/icons/pattern.svg" width="48">
-
+<div class="feature-box fade">
 <h3>10 Psychological Illusions</h3>
-
 <p>Decode the illusions that blind most people to reality in relationships.</p>
-
 </div>
 
-
-<div class="feature-box">
-
-<img src="assets/icons/pattern.svg" width="48">
-
+<div class="feature-box fade">
 <h3>12 Female Archetypes</h3>
-
-<p>Predict patterns and responses with tactical clarity.</p>
-
+<p>Predict patterns and responses with tactical clarity — no guessing.</p>
 </div>
 
-
-<div class="feature-box">
-
-<img src="assets/icons/red-flag.svg" width="48">
-
+<div class="feature-box fade">
 <h3>15+ Red Flags Most Men Miss</h3>
-
-<p>Detect subtle manipulation before it destroys the connection.</p>
-
+<p>Detect subtle manipulation that ruins connection before it even begins.</p>
 </div>
 
-
-<div class="feature-box">
-
-<img src="assets/icons/insight.svg" width="48">
-
+<div class="feature-box fade">
 <h3>Behavioral Leverage Techniques</h3>
-
 <p>Control the emotional direction of interactions.</p>
-
 </div>
 
-
-<div class="feature-box">
-
-<img src="assets/icons/insight.svg" width="48">
-
+<div class="feature-box fade">
 <h3>30-Day Mastery Protocol</h3>
-
-<p>Transform your perception and influence with a step-by-step system.</p>
-
+<p>Transform perception, influence, and attraction with a step-by-step system.</p>
 </div>
 
-
 </div>
-
-
-<div style="text-align:center;margin-top:32px;">
-
-<button class="cta" onclick="scrollToSection('final-cta')">
-I Want Total Clarity
-</button>
-
-</div>
-
 
 </div>
 
 </section>
-
 
 
 <!-- TESTIMONIALS -->
@@ -325,15 +209,15 @@ I Want Total Clarity
 What People Say
 </h2>
 
-<div class="testimonial">
+<div class="testimonial fade">
 "I used to get ghosted and confused. Now I see behavior before emotion."
 </div>
 
-<div class="testimonial">
+<div class="testimonial fade">
 "This system gave me clarity I never had."
 </div>
 
-<div class="testimonial">
+<div class="testimonial fade">
 "I finally understand what was happening underneath the surface."
 </div>
 
@@ -342,16 +226,13 @@ What People Say
 </section>
 
 
-
 <!-- FINAL CTA -->
 
-<section id="final-cta">
+<section style="background:#1a1a1a;color:white;text-align:center;">
 
 <div class="container">
 
 <h2>Ready to Decode Human Behavior?</h2>
-
-<p>Take control of your relationships and psychological leverage.</p>
 
 <button class="cta" onclick="openModal()">
 Reserve Your Access Today
@@ -362,13 +243,9 @@ Reserve Your Access Today
 </section>
 
 
-
 <footer>
-
 © 2026 John Tumba Academy
-
 </footer>
-
 
 
 <!-- PURCHASE MODAL -->
@@ -379,70 +256,61 @@ Reserve Your Access Today
 
 <h2>Unlock Human Alignment Mastery</h2>
 
-<p>Get the full system instantly.</p>
+<p>Choose your payment method</p>
 
-<a href="STRIPE_LINK">
+<!-- PAYPAL BUTTON -->
+
+<div id="paypal-container-DFFBB2RC3UXWW"></div>
+
+<script>
+paypal.HostedButtons({
+hostedButtonId:"DFFBB2RC3UXWW"
+}).render("#paypal-container-DFFBB2RC3UXWW")
+</script>
+
+
+<!-- WHATSAPP MOBILE MONEY -->
+
+<a href="https://wa.me/260779483121?text=Hello%20John%2C%20I%20want%20to%20purchase%20the%20Human%20Alignment%20Mastery%20course%20via%20Mobile%20Money.%20Please%20guide%20me%20on%20how%20to%20complete%20the%20payment.">
 
 <button class="cta">
-Pay with Card
+
+Pay via Mobile Money (WhatsApp)
+
 </button>
 
 </a>
 
-
-<a href="PAYPAL_LINK">
-
-<button class="cta">
-Pay with PayPal
-</button>
-
-</a>
-
-<br><br>
-
-<button onclick="closeModal()">
-Close
-</button>
+<button class="cta" onclick="closeModal()">Close</button>
 
 </div>
 
 </div>
-
 
 
 <script>
 
+const elements=document.querySelectorAll(".fade");
 
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
 }
+});
+});
 
+elements.forEach(el=>observer.observe(el));
 
 function openModal(){
-document.getElementById("purchaseModal").style.display="flex";
+document.getElementById("purchaseModal").style.display="block";
 }
 
 function closeModal(){
 document.getElementById("purchaseModal").style.display="none";
 }
 
-
-
-/* A/B HEADLINE TEST */
-
-var headlines=[
-"Stop Chasing. Start Decoding.",
-"The Psychology of Attraction Most Men Never Learn"
-];
-
-var randomHeadline=headlines[Math.floor(Math.random()*headlines.length)];
-
-document.getElementById("headline").innerText=randomHeadline;
-
-
 </script>
 
-
 </body>
-
 </html>
