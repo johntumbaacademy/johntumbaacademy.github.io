@@ -1,430 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Human Alignment Mastery</title>
+<title>Human Alignment Mastery</title><style>
+body, html { margin:0; padding:0; font-family:"Inter",sans-serif; color:#111; background:#fff; scroll-behavior:smooth;}
+a { text-decoration:none; color:inherit;}
+section { padding:80px 20px; }
+.container { max-width:1080px; margin:auto;}
+button.cta { background:#ff4c4c; color:#fff; font-size:18px; padding:14px 28px; border:none; border-radius:28px; cursor:pointer; transition:.3s ease;}
+button.cta:hover { background:#e03b3b;}
 
-<!-- PAYPAL SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+/* HERO */
+.hero {height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#0f0f0f,#1c1c1c); color:white; text-align:center;}
+.hero-title{font-size:64px;font-weight:800;animation:fadeUp 1.5s ease;}
+.hero-sub{font-size:22px;margin-top:20px;opacity:0.8;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
 
-<style>
+/* FEATURES */
+#features { background:#f8f8f8;}
+.feature-box { background:#fff; box-shadow:0 4px 28px rgba(0,0,0,0.08); padding:24px; border-radius:12px; margin-bottom:24px;}
+.feature-box h3 { margin-top:0;}
+.feature-grid { display:grid; grid-gap:24px;}
+@media (min-width:768px){ .feature-grid { grid-template-columns:repeat(2,1fr);} }
+@media (min-width:1024px){ .feature-grid { grid-template-columns:repeat(3,1fr);} }
 
-body, html{
-margin:0;
-padding:0;
-font-family:"Inter",sans-serif;
-color:#111;
-background:#fff;
-scroll-behavior:smooth;
-}
+/* DIAGRAM */
+.diagram { text-align:center; font-size:24px; margin:40px 0;}
+.node { background:#111; color:white; padding:20px; margin:20px auto; width:200px; border-radius:12px; animation:pulse 2s infinite;}
+.arrow { font-size:28px; margin:10px 0;}
+@keyframes pulse { 0%{transform:scale(1)} 50%{transform:scale(1.05)} 100%{transform:scale(1)} }
 
-section{
-padding:80px 20px;
-}
+/* TESTIMONIALS */
+#testimonials { background:#fff; text-align:center;}
+.testimonial { margin-bottom:36px; font-style:italic; }
 
-.container{
-max-width:1080px;
-margin:auto;
-}
+/* EMAIL CAPTURE */
+#email-capture { background:#f0f0f0; text-align:center; padding:60px 20px;}
+#email-capture input[type=email] { padding:14px 20px; font-size:16px; width:60%; max-width:400px; border-radius:28px; border:1px solid #ccc; margin-right:10px; }
+#email-capture button.cta { margin-top:10px; }
 
-button.cta{
-background:#ff4c4c;
-color:#fff;
-font-size:18px;
-padding:14px 28px;
-border:none;
-border-radius:28px;
-cursor:pointer;
-transition:.3s;
-}
+/* FINAL CTA */
+#final-cta { background:#1a1a1a; color:#fff; text-align:center;}
+#final-cta h2 { font-size:32px; margin-bottom:24px; }
 
-button.cta:hover{
-background:#e03b3b;
-}
+/* FOOTER */
+footer { text-align:center; padding:24px 0; color:#777; font-size:14px; }
 
-.hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
-color:white;
-text-align:center;
-}
+/* ANIMATIONS */
+.fade { opacity:0; transform:translateY(40px); transition:all 0.8s ease; }
+.fade.show { opacity:1; transform:translateY(0); }
 
-.hero-title{
-font-size:64px;
-font-weight:800;
-}
+/* MODAL */
+.modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.7);}
+.modal-content { background:#fff; margin:10% auto; padding:30px; border-radius:12px; max-width:400px; text-align:center;}
+.modal-content button.cta { width:100%; margin:10px 0; }
 
-.hero-sub{
-font-size:22px;
-margin-top:20px;
-opacity:0.8;
-}
-
-#features{
-background:#f8f8f8;
-}
-
-.feature-grid{
-display:grid;
-grid-gap:24px;
-}
-
-.feature-box{
-background:#fff;
-box-shadow:0 4px 28px rgba(0,0,0,0.08);
-padding:24px;
-border-radius:12px;
-}
-
-.diagram{
-text-align:center;
-font-size:24px;
-}
-
-.node{
-background:#111;
-color:white;
-padding:20px;
-margin:20px auto;
-width:200px;
-border-radius:12px;
-}
-
-.arrow{
-font-size:28px;
-}
-
-#lessons iframe{
-width:100%;
-height:315px;
-border-radius:8px;
-}
-
-#testimonials{
-text-align:center;
-}
-
-.testimonial{
-margin-bottom:36px;
-font-style:italic;
-}
-
-#email-capture{
-background:#f0f0f0;
-text-align:center;
-}
-
-#email-capture input{
-padding:14px 20px;
-font-size:16px;
-width:60%;
-max-width:400px;
-border-radius:28px;
-border:1px solid #ccc;
-}
-
-#final-cta{
-background:#1a1a1a;
-color:#fff;
-text-align:center;
-}
-
-footer{
-text-align:center;
-padding:24px;
-color:#777;
-}
-
+/* LIBRARY SECTION (ADDED) */
 .library{
 text-align:center;
 padding:100px 20px;
 background:#f3f3f3;
 }
-
-/* MODAL */
-
-.modal{
-display:none;
-position:fixed;
-z-index:1000;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-}
-
-.modal-content{
-background:#fff;
-margin:10% auto;
-padding:30px;
-border-radius:12px;
-max-width:400px;
-text-align:center;
-}
-
-.modal-content button{
-width:100%;
-margin:10px 0;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div>
-
+</style><!-- PAYPAL SDK --><script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script></head><body><section class="hero">
+<div class="hero-content">
 <h1 class="hero-title">Decode Human Behavior</h1>
-
-<p class="hero-sub">
-The psychological operating system for relationships, attraction, and influence.
-</p>
-
-<button class="cta" onclick="openModal()">
-Unlock The System
-</button>
-
+<p class="hero-sub">The psychological operating system for relationships, attraction, and influence.</p>
+<button class="cta" onclick="openModal()">Unlock The System</button>
 </div>
-
-</section>
-
-<!-- FEATURES -->
-
-<section id="features">
-
+</section><section id="features">
 <div class="container">
-
-<h2 style="text-align:center;">What You Will Learn</h2>
-
-<div class="feature-grid">
-
-<div class="feature-box">
-<h3>12 Laws of Human Alignment</h3>
-<p>Understand the principles governing behavior and attraction.</p>
-</div>
-
-<div class="feature-box">
-<h3>10 Psychological Illusions</h3>
-<p>Decode illusions that distort perception in relationships.</p>
-</div>
-
-<div class="feature-box">
-<h3>12 Female Archetypes</h3>
-<p>Predict behavioral responses with clarity.</p>
-</div>
-
-<div class="feature-box">
-<h3>15+ Red Flags</h3>
-<p>Detect subtle manipulation early.</p>
-</div>
-
-<div class="feature-box">
-<h3>Behavioral Leverage</h3>
-<p>Understand emotional dynamics and influence.</p>
-</div>
-
-<div class="feature-box">
-<h3>30-Day Mastery Protocol</h3>
-<p>Transform your perception step by step.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- DIAGRAM -->
-
-<section class="diagram">
-
+<h2 style="text-align:center; font-size:32px; margin-bottom:40px;">What You Will Learn</h2><div class="feature-grid">
+<div class="feature-box fade"><h3>12 Laws of Human Alignment</h3><p>Understand the universal principles that govern behavior, influence, and attraction.</p></div>
+<div class="feature-box fade"><h3>10 Psychological Illusions</h3><p>Decode the illusions that blind most people to reality in relationships.</p></div>
+<div class="feature-box fade"><h3>12 Female Archetypes</h3><p>Predict patterns and responses with tactical clarity — no guessing.</p></div>
+<div class="feature-box fade"><h3>15+ Red Flags Most Men Miss</h3><p>Detect subtle manipulation that ruins connection before it even begins.</p></div>
+<div class="feature-box fade"><h3>Behavioral Leverage Techniques</h3><p>Control the emotional and psychological direction of interactions.</p></div>
+<div class="feature-box fade"><h3>30-Day Mastery Protocol</h3><p>Transform your perception, influence, and attraction with a step-by-step system.</p></div>
+</div></div>
+</section><section class="diagram fade">
 <div class="node">Attention</div>
 <div class="arrow">↓</div>
-
 <div class="node">Investment</div>
 <div class="arrow">↓</div>
-
 <div class="node">Attachment</div>
 <div class="arrow">↓</div>
-
 <div class="node">Influence</div>
-
-</section>
-
-<!-- LESSON PREVIEW -->
-
-<section id="lessons">
-
+</section><section id="lessons">
+<div class="container"><h2 style="text-align:center; font-size:32px; margin-bottom:40px;">Course Lessons (30-Day Mastery)</h2><div class="lesson fade">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_UNLISTED_VIDEO_ID_1" title="Lesson 1" frameborder="0" allowfullscreen></iframe>
+<h4>Lesson 1: Introduction to Human Behavior</h4>
+</div><div class="lesson fade">
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/YOUR_UNLISTED_VIDEO_ID_2" title="Lesson 2" frameborder="0" allowfullscreen></iframe>
+<h4>Lesson 2: Attraction Psychology</h4>
+</div></div>
+</section><section id="testimonials">
 <div class="container">
-
-<h2 style="text-align:center;">Course Preview</h2>
-
-<iframe src="https://www.youtube.com/embed/YOUR_UNLISTED_VIDEO_ID_1"></iframe>
-
-<h4>Lesson 1 – Introduction to Human Behavior</h4>
-
-<iframe src="https://www.youtube.com/embed/YOUR_UNLISTED_VIDEO_ID_2"></iframe>
-
-<h4>Lesson 2 – Attraction Psychology</h4>
-
-</div>
-
-</section>
-
-<!-- TESTIMONIALS -->
-
-<section id="testimonials">
-
+<h2 style="font-size:32px; margin-bottom:24px;">What People Say</h2><div class="testimonial fade">“I used to get ghosted and confused. Now I see behavior before emotion — life-changing.”</div>
+<div class="testimonial fade">“This system gave me clarity I never had — I feel unstoppable.”</div>
+<div class="testimonial fade">“I finally understand what was happening underneath the surface.”</div></div>
+</section><section id="email-capture">
 <div class="container">
-
-<h2>What People Say</h2>
-
-<div class="testimonial">
-“I used to get ghosted and confused. Now I understand behavior patterns.”
-</div>
-
-<div class="testimonial">
-“This system gave me clarity I never had.”
-</div>
-
-</div>
-
-</section>
-
-<!-- EMAIL CAPTURE -->
-
-<section id="email-capture">
-
+<h2>Get Your Free Psychology Guide</h2>
+<p>Enter your email to receive our exclusive guide: "5 Psychological Illusions Destroying Modern Relationships"</p><form action="https://YOUR_CONVERTKIT_FORM_URL" method="POST">
+<input type="email" name="email_address" placeholder="Enter your email" required>
+<button type="submit" class="cta">Get the Free Guide</button>
+</form></div>
+</section><section id="final-cta">
 <div class="container">
-
-<h2>Get the Free Psychology Guide</h2>
-
-<form>
-
-<input type="email" placeholder="Enter your email">
-
-<br><br>
-
-<button class="cta">
-Get the Guide
-</button>
-
-</form>
-
+<h2>Ready to Decode Human Behavior and Master Attraction?</h2>
+<p>Don’t wait. Take control of your relationships, influence, and psychological leverage now.</p>
+<button class="cta" onclick="openModal()">Reserve Your Access Today</button>
 </div>
-
-</section>
-
-<!-- FINAL CTA -->
-
-<section id="final-cta">
-
-<div class="container">
-
-<h2>Ready to Decode Human Behavior?</h2>
-
-<button class="cta" onclick="openModal()">
-Reserve Your Access
-</button>
-
-</div>
-
-</section>
-
-<!-- ALIGNMENT LIBRARY -->
-
-<section class="library">
-
+</section><!-- LIBRARY SECTION (ADDED) --><section class="library">
 <h2>The Human Alignment Library</h2>
-
 <p>
-Explore psychological frameworks, relationship insights,
+Explore psychological frameworks,
+relationship insights,
 and behavioral intelligence resources.
-</p>
-
-<a href="library.html">
-
-<button class="cta">
-Enter the Alignment Library
-</button>
-
+</p><a href="library.html">
+<button class="cta">Enter the Alignment Library</button>
 </a>
+</section><footer>© 2026 John Tumba Academy. All Rights Reserved.</footer><div id="purchaseModal" class="modal">
+<div class="modal-content"><h2>Unlock Human Alignment Mastery</h2>
+<p>Get the full 30-day system instantly.</p><!-- PAYPAL BUTTON (ADDED) --><div id="paypal-container-DFFBB2RC3UXWW"></div><button class="cta" onclick="window.location='https://wa.me/260779483121?text=I want to purchase Human Alignment Mastery via Mobile Money'">Pay via Mobile Money (WhatsApp)</button>
 
-</section>
+<button class="cta" disabled>Pay with Card (Coming Soon)</button>
 
-<!-- FOOTER -->
+<button class="cta" onclick="closeModal()">Close</button>
 
-<footer>
+</div>
+</div><script>
 
-© 2026 John Tumba Academy
-
-</footer>
-
-<!-- PURCHASE MODAL -->
-
-<div id="purchaseModal" class="modal">
-
-<div class="modal-content">
-
-<h2>Unlock Human Alignment Mastery</h2>
-
-<p>Get the full 30-day system instantly.</p>
-
-<!-- PAYPAL BUTTON -->
-
-<div id="paypal-container-DFFBB2RC3UXWW"></div>
-
-<script>
+// PAYPAL BUTTON RENDER
 paypal.HostedButtons({
-hostedButtonId:"DFFBB2RC3UXWW"
+hostedButtonId: "DFFBB2RC3UXWW",
 }).render("#paypal-container-DFFBB2RC3UXWW");
-</script>
 
-<button class="cta"
-onclick="window.location='https://wa.me/260779483121?text=I want to purchase Human Alignment Mastery via Mobile Money'">
+// Scroll-triggered animations
+const elements = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){ entry.target.classList.add("show"); }
+});
+});
+elements.forEach(el=>observer.observe(el));
 
-Pay via Mobile Money
+// Modal
+function openModal(){ document.getElementById("purchaseModal").style.display="block"; }
+function closeModal(){ document.getElementById("purchaseModal").style.display="none"; }
 
-</button>
+// Headline test
+var headlines = [
+"Stop Chasing. Start Decoding.",
+"The Psychology of Attraction Most Men Never Learn"
+];
 
-<button class="cta" disabled>
+var randomHeadline = headlines[Math.floor(Math.random()*headlines.length)];
+document.querySelector(".hero-title").innerText = randomHeadline;
 
-Card Payments Coming Soon
-
-</button>
-
-<button class="cta" onclick="closeModal()">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-
-<script>
-
-function openModal(){
-document.getElementById("purchaseModal").style.display="block";
-}
-
-function closeModal(){
-document.getElementById("purchaseModal").style.display="none";
-}
-
-</script>
-
-</body>
+</script></body>
   </html>
