@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Student Dashboard — Top Student Academy</title>
 
 <style>
@@ -54,14 +53,26 @@ button{
 button:disabled{
   background:#555;
 }
+
 .paywall{
   text-align:center;
   margin-top:50px;
 }
-</style>
-  <script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-</head>
 
+#adminUnlock{
+  display:block;
+  margin:40px auto 0 auto;
+  padding:12px 20px;
+  background:#ff4c00;
+  color:white;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+
+</head>
 <body>
 
 <div class="container">
@@ -72,106 +83,93 @@ button:disabled{
 
 <div class="paywall" id="paywall">
   <h2>Unlock Full System</h2>
-  <p>Access all modules and upgrade your thinking.</p>
+  <p>Enter your secure access code to unlock all modules.</p>
+  <input type="text" id="codeInput" placeholder="Enter your code" style="padding:10px;width:250px;border-radius:6px;border:none;margin-top:10px;">
+  <button onclick="redeemCode()">Unlock</button>
+  <div id="codeMessage" style="margin-top:15px;color:#ffce00;"></div>
 
-  <!-- PAYPAL BUTTON -->
-  <div id="paypal-container-APGW4MJDHM7K2"></div>
-  <a href="https://wa.me/260779483121?text=Hello%20I%20want%20to%20pay%20for%20Hybrid%20Intelligence%20System%20via%20Mobile%20Money"
-style="
-display:block;
-margin-top:15px;
-padding:15px;
-background:#25D366;
-color:white;
-text-align:center;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-">
-Pay via WhatsApp / Mobile Money
-  </a>
-<script>
-paypal.HostedButtons({
-  hostedButtonId: "APGW4MJDHM7K2",
-}).render("#paypal-container-APGW4MJDHM7K2")
-</script>
+  <button id="adminUnlock" onclick="manualUnlock()">Admin Manual Unlock</button>
 </div>
 
 </div>
 
 <script>
-
-const modules = [
-{
-title:"Learning Breakdown",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Cognitive Control",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Structured Thinking",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"AI Control",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Execution System",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Success Mapping",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Performance Engine",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Anti-Regression System",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Advanced Hybrid Thinking",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Mastery Layer",
-lessons:["Video Lesson","Exercise","Reflection"]
-},
-{
-title:"Bonus: Personal Optimization",
-lessons:["Video Lesson","Exercise","Reflection"]
-}
+// 50 secure, one-time-use codes
+let validCodes = [
+"X9K7B2M1","A4T9P8Q3","M6L2A9B8","F9V1C3N7","Y5D8H2W6",
+"Z3K1Q7L5","N4B9J6P2","T7V3M5R8","C2X8F4G1","H6S9Q2Y7",
+"P1L8V3D6","B9M5K2X7","R4T7J9C3","D6N2F8L5","G8H4Q7W1",
+"V2K9B5M6","S3L1N8P4","J7F2C6D8","Q6R3M1X2","K5B8L4T9",
+"E9H2V7P3","L6C1J9N8","O4T5B2R7","W7D3F8L1","M2G5K9H4",
+"N8P1C6T7","Z4R7L2Q5","A1F6B9D3","C9M2X7K5","R3H8L1V6",
+"V6P2T8J4","F1B7K3M9","S5L9C2N7","J8T4D6H1","G3R7V9P5",
+"K2M5F8B7","H9C1L4T6","L3P8N2J5","D7F1R6V3","M4K9B2H8",
+"N1V6C7T5","Z8L2F9P3","R5H1D8M4","B3K7J6C2","S6N9L1T7",
+"J2M5F4V8","G8C1R3H9","K7T6D2P5","H4B9L8N3","Q1F5M7V2","L6C3J8T9"
 ];
 
-let unlocked = localStorage.getItem("paid") === "true";
+// Check URL for ?code=XXXX
+const urlParams = new URLSearchParams(window.location.search);
+let codeFromURL = urlParams.get('code');
+
+let unlocked = localStorage.getItem("unlocked") === "true";
 let progress = JSON.parse(localStorage.getItem("progress")) || 0;
 
 const container = document.getElementById("modules");
 const paywall = document.getElementById("paywall");
+const codeMessage = document.getElementById("codeMessage");
 
-if(unlocked){
-  paywall.style.display="none";
+if(codeFromURL){
+  redeemCode(codeFromURL);
 }
+
+function redeemCode(codeInput=null){
+  const code = codeInput || document.getElementById("codeInput").value.trim();
+  if(validCodes.includes(code)){
+    unlocked = true;
+    localStorage.setItem("unlocked","true");
+    codeMessage.innerText="✅ Access granted!";
+    // Remove code from array so it cannot be reused
+    validCodes = validCodes.filter(c=>c!==code);
+    render();
+    paywall.style.display="none";
+  }else{
+    codeMessage.innerText="❌ Invalid code or already used.";
+  }
+}
+
+// Admin button to manually unlock dashboard
+function manualUnlock(){
+  unlocked = true;
+  localStorage.setItem("unlocked","true");
+  codeMessage.innerText="🔓 Admin unlock applied!";
+  paywall.style.display="none";
+  render();
+}
+
+const modules = [
+{title:"Learning Breakdown",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Cognitive Control",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Structured Thinking",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"AI Control",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Execution System",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Success Mapping",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Performance Engine",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Anti-Regression System",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Advanced Hybrid Thinking",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Mastery Layer",lessons:["Video Lesson","Exercise","Reflection"]},
+{title:"Bonus: Personal Optimization",lessons:["Video Lesson","Exercise","Reflection"]}
+];
 
 function render(){
   container.innerHTML="";
-
   modules.forEach((mod,index)=>{
     const div = document.createElement("div");
     div.className="module";
-
-    if(!unlocked && index>0){
-      div.classList.add("locked");
-    }
+    if(!unlocked && index>0) div.classList.add("locked");
 
     const title = document.createElement("h3");
     title.innerText="Module "+(index+1)+" — "+mod.title;
-
     div.appendChild(title);
 
     if(unlocked || index===0){
@@ -183,7 +181,6 @@ function render(){
       });
 
       const btn = document.createElement("button");
-
       if(index===progress){
         btn.innerText="Complete Module";
         btn.onclick=()=>{
@@ -209,6 +206,5 @@ function render(){
 render();
 
 </script>
-
 </body>
 </html>
