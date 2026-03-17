@@ -15,14 +15,14 @@ body{
 }
 
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:auto;
-  padding:40px 20px;
+  padding:30px;
 }
 
 h1{
   text-align:center;
-  margin-bottom:40px;
+  margin-bottom:30px;
 }
 
 .module{
@@ -30,17 +30,20 @@ h1{
   padding:20px;
   border-radius:12px;
   margin-bottom:15px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
 }
 
-.module.locked{
-  opacity:0.4;
+.locked{opacity:0.4;}
+
+.lesson{
+  margin-top:10px;
+  padding:10px;
+  background:#1a2140;
+  border-radius:8px;
 }
 
 button{
-  padding:10px 20px;
+  margin-top:10px;
+  padding:10px 15px;
   border:none;
   border-radius:8px;
   background:#ffce00;
@@ -50,7 +53,10 @@ button{
 
 button:disabled{
   background:#555;
-  cursor:not-allowed;
+}
+.paywall{
+  text-align:center;
+  margin-top:50px;
 }
 </style>
 </head>
@@ -63,66 +69,126 @@ button:disabled{
 
 <div id="modules"></div>
 
+<div class="paywall" id="paywall">
+  <h2>Unlock Full System</h2>
+  <p>Access all modules and upgrade your thinking.</p>
+
+  <!-- PAYPAL BUTTON -->
+  <form action="https://www.paypal.com/ncp/payment/YOUR_BUTTON_ID" method="post" target="_blank">
+    <button type="submit">Unlock Now</button>
+  </form>
+</div>
+
 </div>
 
 <script>
 
-const moduleList = [
-"Learning Breakdown",
-"Cognitive Control",
-"Structured Thinking",
-"AI Control",
-"Execution System",
-"Success Mapping",
-"Performance Engine",
-"Anti-Regression System",
-"Advanced Hybrid Thinking",
-"Mastery Layer",
-"Bonus: Personal Optimization"
+const modules = [
+{
+title:"Learning Breakdown",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Cognitive Control",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Structured Thinking",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"AI Control",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Execution System",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Success Mapping",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Performance Engine",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Anti-Regression System",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Advanced Hybrid Thinking",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Mastery Layer",
+lessons:["Video Lesson","Exercise","Reflection"]
+},
+{
+title:"Bonus: Personal Optimization",
+lessons:["Video Lesson","Exercise","Reflection"]
+}
 ];
 
+let unlocked = localStorage.getItem("paid") === "true";
 let progress = JSON.parse(localStorage.getItem("progress")) || 0;
 
 const container = document.getElementById("modules");
+const paywall = document.getElementById("paywall");
 
-function renderModules(){
-  container.innerHTML = "";
+if(unlocked){
+  paywall.style.display="none";
+}
 
-  moduleList.forEach((mod,index)=>{
+function render(){
+  container.innerHTML="";
+
+  modules.forEach((mod,index)=>{
     const div = document.createElement("div");
-    div.className = "module";
+    div.className="module";
 
-    if(index > progress){
+    if(!unlocked && index>0){
       div.classList.add("locked");
     }
 
-    const title = document.createElement("span");
-    title.innerText = "Module " + (index+1) + " — " + mod;
-
-    const btn = document.createElement("button");
-
-    if(index === progress){
-      btn.innerText = "Start";
-      btn.onclick = ()=>{
-        progress++;
-        localStorage.setItem("progress",progress);
-        renderModules();
-      };
-    } else if(index < progress){
-      btn.innerText = "Completed";
-      btn.disabled = true;
-    } else {
-      btn.innerText = "Locked";
-      btn.disabled = true;
-    }
+    const title = document.createElement("h3");
+    title.innerText="Module "+(index+1)+" — "+mod.title;
 
     div.appendChild(title);
-    div.appendChild(btn);
+
+    if(unlocked || index===0){
+      mod.lessons.forEach(l=>{
+        const lesson = document.createElement("div");
+        lesson.className="lesson";
+        lesson.innerText=l;
+        div.appendChild(lesson);
+      });
+
+      const btn = document.createElement("button");
+
+      if(index===progress){
+        btn.innerText="Complete Module";
+        btn.onclick=()=>{
+          progress++;
+          localStorage.setItem("progress",progress);
+          render();
+        };
+      }else if(index<progress){
+        btn.innerText="Completed";
+        btn.disabled=true;
+      }else{
+        btn.innerText="Locked";
+        btn.disabled=true;
+      }
+
+      div.appendChild(btn);
+    }
+
     container.appendChild(div);
   });
 }
 
-renderModules();
+render();
 
 </script>
 
