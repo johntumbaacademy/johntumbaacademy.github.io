@@ -59,6 +59,7 @@ button:disabled{
   margin-top:50px;
 }
 </style>
+  <script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 </head>
 
 <body>
@@ -74,9 +75,12 @@ button:disabled{
   <p>Access all modules and upgrade your thinking.</p>
 
   <!-- PAYPAL BUTTON -->
-  <form action="https://www.paypal.com/ncp/payment/YOUR_BUTTON_ID" method="post" target="_blank">
-    <button type="submit">Unlock Now</button>
-  </form>
+  <div id="paypal-container-APGW4MJDHM7K2"></div>
+<script>
+paypal.HostedButtons({
+  hostedButtonId: "APGW4MJDHM7K2",
+}).render("#paypal-container-APGW4MJDHM7K2")
+</script>
 </div>
 
 </div>
