@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hybrid Intelligence System</title>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:radial-gradient(circle at top,#0a0f2a,#03050d);
+  color:white;
+}
+
+/* NAVBAR */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.3);
+  padding:15px 30px;
+  z-index:1000;
+}
+
+.nav h3{
+  margin:0;
+  font-weight:500;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:56px;
+  background:linear-gradient(90deg,#fff,#ffce00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+  font-size:20px;
+  color:#b7c0ff;
+  max-width:650px;
+}
+
+.micro{
+  margin-top:10px;
+  font-size:14px;
+  color:#888;
+}
+
+.cta{
+  margin-top:30px;
+  padding:18px 50px;
+  border-radius:14px;
+  background:#ffce00;
+  color:black;
+  font-weight:600;
+  text-decoration:none;
+  box-shadow:0 10px 30px rgba(255,206,0,0.3);
+  transition:0.3s;
+}
+.cta:hover{
+  transform:scale(1.08);
+}
+
+/* SECTION */
+.section{
+  padding:120px 20px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
+}
+
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.alt{
+  background:rgba(255,255,255,0.02);
+}
+
+.section h2{
+  font-size:40px;
+  margin-bottom:20px;
+}
+
+.section p{
+  max-width:700px;
+  margin:auto;
+  color:#cbd4ff;
+  line-height:1.8;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+  margin-top:50px;
+}
+
+.card{
+  background:rgba(255,255,255,0.03);
+  padding:30px;
+  border-radius:18px;
+  backdrop-filter:blur(10px);
+  transition:0.3s;
+}
+.card:hover{
+  transform:translateY(-12px);
+  box-shadow:0 0 25px rgba(255,206,0,0.2);
+}
+
+/* INTERRUPT */
+.interrupt{
+  padding:80px 20px;
+  font-size:24px;
+  color:#aaa;
+  text-align:center;
+}
+
+/* FINAL */
+.final{
+  padding:140px 20px;
+  text-align:center;
+}
+
+/* STICKY CTA */
+.sticky{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#ffce00;
+  text-align:center;
+  padding:18px;
+}
+
+.sticky a{
+  color:black;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:36px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="nav">
+  <h3>Top Student Academy</h3>
+</div>
+
+<div class="hero">
+  <h1>Stop Studying Like Everyone Else.</h1>
+  <p>Start thinking like the top 1% using Hybrid Intelligence.</p>
+  <a href="#" class="cta">Enter the System</a>
+  <div class="micro">No pressure. Just clarity.</div>
+</div>
+
+<div class="section alt">
+  <h2>The Hidden Problem</h2>
+  <p>Most students are falling behind by copying AI, forgetting fast, and confusing effort with progress.</p>
+</div>
+
+<div class="interrupt">
+  Most students won’t act on this.<br>
+  Not because they don’t understand…<br>
+  But because they delay.
+</div>
+
+<div class="section">
+  <h2>The Hybrid Intelligence System™</h2>
+  <p>You combine AI speed, human reasoning, and verification into one system.</p>
+</div>
+
+<div class="section alt">
+  <h2>Transformation</h2>
+  <div class="grid">
+    <div class="card">Confused → Clear</div>
+    <div class="card">Dependent → Independent</div>
+    <div class="card">Overwhelmed → Precise</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Inside the System</h2>
+  <div class="grid">
+    <div class="card">Break complex topics into simple understanding</div>
+    <div class="card">Detect AI errors before they affect results</div>
+    <div class="card">Remember faster without rereading</div>
+    <div class="card">Think in clear steps, not confusion</div>
+    <div class="card">Turn AI into a thinking partner</div>
+    <div class="card">Stay calm under pressure</div>
+  </div>
+</div>
+
+<div class="final">
+  <h2>You Already Feel It</h2>
+  <p>The question is not whether this works. The question is whether you will use it.</p>
+  <a href="#" class="cta">Start Now</a>
+</div>
+
+<div class="sticky">
+  <a href="#">Start Now</a>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll',()=>{
+  sections.forEach(sec=>{
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+  </html>
