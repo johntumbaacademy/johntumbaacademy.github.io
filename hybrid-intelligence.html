@@ -1,18 +1,43 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hybrid Intelligence System</title>
+<title>Hybrid Intelligence System — Top Student Academy</title>
 
 <style>
+html{scroll-behavior:smooth;}
+
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
-  background:#03050d;
+  background:radial-gradient(circle at top,#0a0f2a,#03050d);
   color:white;
 }
+
+/* NAV */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 30px;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.4);
+  z-index:1000;
+}
+
+.nav a{
+  color:#ccc;
+  margin-left:20px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.nav a:hover{color:#ffce00;}
 
 /* HERO */
 .hero{
@@ -26,112 +51,159 @@ body{
 }
 
 .hero h1{
-  font-size:52px;
-  margin-bottom:10px;
-  background:linear-gradient(90deg,#ffffff,#ffce00);
+  font-size:58px;
+  background:linear-gradient(90deg,#fff,#ffce00);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .hero p{
   font-size:20px;
-  color:#aab3e0;
+  color:#b7c0ff;
   max-width:650px;
 }
 
 .cta{
   margin-top:30px;
-  padding:18px 45px;
-  border-radius:12px;
+  padding:18px 50px;
+  border-radius:14px;
   background:#ffce00;
   color:black;
   font-weight:600;
   text-decoration:none;
+  box-shadow:0 10px 30px rgba(255,206,0,0.3);
   transition:0.3s;
+  animation:pulse 2.5s infinite;
 }
-.cta:hover{
-  transform:scale(1.05);
+
+.cta:hover{transform:scale(1.08);}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.05);}
 }
 
 /* SECTION */
 .section{
-  padding:80px 20px;
+  padding:100px 20px;
   text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:0.8s;
 }
 
-.section.alt{
-  background:#070b1f;
+.section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.alt{
+  background:rgba(255,255,255,0.02);
 }
 
 .section h2{
-  font-size:34px;
-  margin-bottom:20px;
+  font-size:38px;
 }
 
 .section p{
   max-width:700px;
   margin:auto;
   color:#cbd4ff;
-  line-height:1.7;
 }
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+  gap:25px;
   margin-top:40px;
 }
 
 .card{
-  background:#11172b;
+  background:rgba(255,255,255,0.03);
   padding:25px;
   border-radius:16px;
-  transition:0.3s;
+  backdrop-filter:blur(10px);
+  transition:0.4s;
 }
+
 .card:hover{
-  transform:translateY(-10px);
+  transform:translateY(-10px) rotateX(4deg);
+  box-shadow:0 0 35px rgba(255,206,0,0.25);
+}
+
+/* INTERRUPT */
+.interrupt{
+  padding:70px 20px;
+  font-size:22px;
+  color:#aaa;
 }
 
 /* FINAL */
 .final{
-  padding:100px 20px;
+  padding:120px 20px;
+}
+
+/* STICKY CTA */
+.sticky{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#ffce00;
   text-align:center;
+  padding:15px;
+}
+
+.sticky a{
+  color:black;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero h1{font-size:36px;}
+  .section{padding:60px 15px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>Stop Studying Like Everyone Else.</h1>
-  <p>
-  Start thinking like the top 1%.  
-  This system trains you to use AI correctly — so you think faster, verify deeper, and outperform consistently.
-  </p>
+<!-- NAV -->
+<div class="nav">
+  <div>Top Student Academy</div>
+  <div>
+    <a href="#problem">Problem</a>
+    <a href="#system">System</a>
+    <a href="#modules">Modules</a>
+  </div>
+</div>
 
-  <a href="https://wa.me/260779483121?text=HYBRID%20INTELLIGENCE%20SYSTEM" class="cta">Enter the System</a>
+<!-- HERO -->
+<div class="hero" id="hero">
+  <h1>Stop Studying Like Everyone Else.</h1>
+  <p>Start thinking like the top 1% using Hybrid Intelligence.</p>
+  <a href="https://wa.me/260779483121" class="cta">Enter the System</a>
 </div>
 
 <!-- PROBLEM -->
-<div class="section alt">
+<div class="section alt" id="problem">
   <h2>The Hidden Problem</h2>
-  <p>
-  Most students are already falling behind.  
-  They copy AI without understanding.  
-  They forget what they study.  
-  They confuse effort with progress.
-  </p>
+  <p>Most students copy AI, forget fast, and mistake effort for progress.</p>
 </div>
 
-<!-- MECHANISM -->
-<div class="section">
+<!-- INTERRUPT -->
+<div class="interrupt">
+  Most students won’t act.<br>
+  Not because they don’t understand…<br>
+  But because they delay.
+</div>
+
+<!-- SYSTEM -->
+<div class="section" id="system">
   <h2>The Hybrid Intelligence System™</h2>
-  <p>
-  You will learn how to combine AI speed, human reasoning, and verification discipline into one system.  
-  You don’t depend on AI. You control it.
-  </p>
+  <p>AI speed + Human reasoning + Verification discipline.</p>
 </div>
 
 <!-- TRANSFORMATION -->
@@ -145,50 +217,43 @@ body{
 </div>
 
 <!-- MODULES -->
-<div class="section">
-  <h2>The System</h2>
-  <p>
-  10 Modules. One outcome: Structured thinking, deep focus, AI mastery, and performance systems.
-  </p>
-</div>
-
-<!-- DIFFERENT -->
-<div class="section alt">
-  <h2>Why This Is Different</h2>
-  <p>
-  Most courses give information.  
-  This system builds thinking frameworks, verification habits, and cognitive control.
-  </p>
-</div>
-
-<!-- COST -->
-<div class="section">
-  <h2>The Cost of Staying the Same</h2>
-  <p>
-  AI is evolving. Students are adapting.  
-  If you don’t — you fall behind quietly.
-  </p>
-</div>
-
-<!-- FILTER -->
-<div class="section alt">
-  <h2>This Is For You If</h2>
-  <p>
-  You are serious about performance, thinking, and mastery.  
-  This is not for passive learners or shortcut seekers.
-  </p>
+<div class="section" id="modules">
+  <h2>Inside the System</h2>
+  <div class="grid">
+    <div class="card">Break complexity into clarity</div>
+    <div class="card">Detect AI errors instantly</div>
+    <div class="card">Retain without repetition</div>
+    <div class="card">Structured thinking system</div>
+    <div class="card">AI as a thinking partner</div>
+    <div class="card">Calm performance under pressure</div>
+  </div>
 </div>
 
 <!-- FINAL -->
 <div class="final">
   <h2>You Already Feel It</h2>
-  <p>
-  You either stay where you are…  
-  Or enter the system that upgrades how you think.
-  </p>
-
-  <a href="https://wa.me/260779483121?text=START%20HYBRID%20INTELLIGENCE" class="cta">Start Now</a>
+  <p>The question is not if this works. The question is if you will use it.</p>
+  <a href="https://wa.me/260779483121" class="cta">Start Now</a>
 </div>
+
+<!-- STICKY CTA -->
+<div class="sticky">
+  <a href="https://wa.me/260779483121">Start Now</a>
+</div>
+
+<script>
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:0.2});
+
+document.querySelectorAll('.section').forEach(sec=>{
+  observer.observe(sec);
+});
+</script>
 
 </body>
 </html>
