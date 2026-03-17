@@ -12,34 +12,28 @@ body{
   background:#03050d;
   color:white;
 }
-
 .container{
   max-width:1000px;
   margin:auto;
   padding:30px;
 }
-
 h1{
   text-align:center;
   margin-bottom:30px;
 }
-
 .module{
   background:#11172b;
   padding:20px;
   border-radius:12px;
   margin-bottom:15px;
 }
-
 .locked{opacity:0.4;}
-
 .lesson{
   margin-top:10px;
   padding:10px;
   background:#1a2140;
   border-radius:8px;
 }
-
 button{
   margin-top:10px;
   padding:10px 15px;
@@ -49,125 +43,185 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-
 button:disabled{
   background:#555;
 }
-
+.unlock-section{
+  text-align:center;
+  margin-top:30px;
+}
+.unlock-section input{
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  margin-right:10px;
+}
 .paywall{
   text-align:center;
   margin-top:50px;
 }
-
-#adminUnlock{
+.paywall a{
   display:block;
-  margin:40px auto 0 auto;
-  padding:12px 20px;
-  background:#ff4c00;
-  color:white;
-  border:none;
-  border-radius:8px;
+  margin-top:15px;
+  padding:15px;
+  border-radius:10px;
+  text-decoration:none;
   font-weight:bold;
-  cursor:pointer;
+  color:white;
+  text-align:center;
+}
+.paywall .whatsapp{
+  background:#25D366;
 }
 </style>
 
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
 </head>
 <body>
-
 <div class="container">
 
 <h1>Hybrid Intelligence System</h1>
 
 <div id="modules"></div>
 
+<!-- Paywall Section for Payment -->
 <div class="paywall" id="paywall">
   <h2>Unlock Full System</h2>
-  <p>Enter your secure access code to unlock all modules.</p>
-  <input type="text" id="codeInput" placeholder="Enter your code" style="padding:10px;width:250px;border-radius:6px;border:none;margin-top:10px;">
-  <button onclick="redeemCode()">Unlock</button>
-  <div id="codeMessage" style="margin-top:15px;color:#ffce00;"></div>
+  <p>Access all modules and upgrade your thinking.</p>
 
-  <button id="adminUnlock" onclick="manualUnlock()">Admin Manual Unlock</button>
+  <!-- PayPal Button -->
+  <div id="paypal-container-APGW4MJDHM7K2"></div>
+
+  <!-- WhatsApp/Mobile Money -->
+  <a href="https://wa.me/260779483121?text=Hello%20I%20want%20to%20pay%20for%20Hybrid%20Intelligence%20System%20via%20Mobile%20Money" class="whatsapp">
+    Pay via WhatsApp / Mobile Money
+  </a>
+</div>
+
+<!-- Admin Manual Unlock -->
+<div class="unlock-section">
+  <input type="password" id="admin-code" placeholder="Enter Admin Unlock Code">
+  <button id="unlock-btn">Unlock Modules</button>
+  <p id="unlock-message" style="color:#ffce00;margin-top:10px;"></p>
 </div>
 
 </div>
 
 <script>
-// 50 secure, one-time-use codes
-let validCodes = [
-"X9K7B2M1","A4T9P8Q3","M6L2A9B8","F9V1C3N7","Y5D8H2W6",
-"Z3K1Q7L5","N4B9J6P2","T7V3M5R8","C2X8F4G1","H6S9Q2Y7",
-"P1L8V3D6","B9M5K2X7","R4T7J9C3","D6N2F8L5","G8H4Q7W1",
-"V2K9B5M6","S3L1N8P4","J7F2C6D8","Q6R3M1X2","K5B8L4T9",
-"E9H2V7P3","L6C1J9N8","O4T5B2R7","W7D3F8L1","M2G5K9H4",
-"N8P1C6T7","Z4R7L2Q5","A1F6B9D3","C9M2X7K5","R3H8L1V6",
-"V6P2T8J4","F1B7K3M9","S5L9C2N7","J8T4D6H1","G3R7V9P5",
-"K2M5F8B7","H9C1L4T6","L3P8N2J5","D7F1R6V3","M4K9B2H8",
-"N1V6C7T5","Z8L2F9P3","R5H1D8M4","B3K7J6C2","S6N9L1T7",
-"J2M5F4V8","G8C1R3H9","K7T6D2P5","H4B9L8N3","Q1F5M7V2","L6C3J8T9"
+// ---------------------- MODULES ----------------------
+const modules = [
+  {title:"Foundation of True Learning", lessons:[
+    '<a href="YOUTUBE_LINK_1" target="_blank">Video Lesson 1</a>',
+    '<a href="exercise1.html" target="_blank">Exercise 1</a>',
+    '<a href="reflection1.html" target="_blank">Reflection 1</a>',
+    '<a href="PDF_LINK_1" target="_blank">Module 1 PDF</a>'
+  ]},
+  {title:"Cognitive Control & Focus", lessons:[
+    '<a href="YOUTUBE_LINK_2" target="_blank">Video Lesson 2</a>',
+    '<a href="exercise2.html" target="_blank">Exercise 2</a>',
+    '<a href="reflection2.html" target="_blank">Reflection 2</a>',
+    '<a href="PDF_LINK_2" target="_blank">Module 2 PDF</a>'
+  ]},
+  {title:"Structured Thinking System", lessons:[
+    '<a href="YOUTUBE_LINK_3" target="_blank">Video Lesson 3</a>',
+    '<a href="exercise3.html" target="_blank">Exercise 3</a>',
+    '<a href="reflection3.html" target="_blank">Reflection 3</a>',
+    '<a href="PDF_LINK_3" target="_blank">Module 3 PDF</a>'
+  ]},
+  {title:"AI Integration Fundamentals", lessons:[
+    '<a href="YOUTUBE_LINK_4" target="_blank">Video Lesson 4</a>',
+    '<a href="exercise4.html" target="_blank">Exercise 4</a>',
+    '<a href="reflection4.html" target="_blank">Reflection 4</a>',
+    '<a href="PDF_LINK_4" target="_blank">Module 4 PDF</a>'
+  ]},
+  {title:"Deep Work & Execution System", lessons:[
+    '<a href="YOUTUBE_LINK_5" target="_blank">Video Lesson 5</a>',
+    '<a href="exercise5.html" target="_blank">Exercise 5</a>',
+    '<a href="reflection5.html" target="_blank">Reflection 5</a>',
+    '<a href="PDF_LINK_5" target="_blank">Module 5 PDF</a>'
+  ]},
+  {title:"Success Map System", lessons:[
+    '<a href="YOUTUBE_LINK_6" target="_blank">Video Lesson 6</a>',
+    '<a href="exercise6.html" target="_blank">Exercise 6</a>',
+    '<a href="reflection6.html" target="_blank">Reflection 6</a>',
+    '<a href="PDF_LINK_6" target="_blank">Module 6 PDF</a>'
+  ]},
+  {title:"Performance Optimization", lessons:[
+    '<a href="YOUTUBE_LINK_7" target="_blank">Video Lesson 7</a>',
+    '<a href="exercise7.html" target="_blank">Exercise 7</a>',
+    '<a href="reflection7.html" target="_blank">Reflection 7</a>',
+    '<a href="PDF_LINK_7" target="_blank">Module 7 PDF</a>'
+  ]},
+  {title:"Anti-Regression System", lessons:[
+    '<a href="YOUTUBE_LINK_8" target="_blank">Video Lesson 8</a>',
+    '<a href="exercise8.html" target="_blank">Exercise 8</a>',
+    '<a href="reflection8.html" target="_blank">Reflection 8</a>',
+    '<a href="PDF_LINK_8" target="_blank">Module 8 PDF</a>'
+  ]},
+  {title:"Advanced Hybrid Intelligence", lessons:[
+    '<a href="YOUTUBE_LINK_9" target="_blank">Video Lesson 9</a>',
+    '<a href="exercise9.html" target="_blank">Exercise 9</a>',
+    '<a href="reflection9.html" target="_blank">Reflection 9</a>',
+    '<a href="PDF_LINK_9" target="_blank">Module 9 PDF</a>'
+  ]},
+  {title:"Hidden Mastery Secrets", lessons:[
+    '<a href="YOUTUBE_LINK_10" target="_blank">Video Lesson 10</a>',
+    '<a href="exercise10.html" target="_blank">Exercise 10</a>',
+    '<a href="reflection10.html" target="_blank">Reflection 10</a>',
+    '<a href="PDF_LINK_10" target="_blank">Module 10 PDF</a>'
+  ]},
+  {title:"Bonus: Personalized Coaching System", lessons:[
+    '<a href="YOUTUBE_LINK_11" target="_blank">Video Lesson 11</a>',
+    '<a href="exercise11.html" target="_blank">Exercise 11</a>',
+    '<a href="reflection11.html" target="_blank">Reflection 11</a>',
+    '<a href="PDF_LINK_11" target="_blank">Bonus PDF</a>'
+  ]}
 ];
 
-// Check URL for ?code=XXXX
-const urlParams = new URLSearchParams(window.location.search);
-let codeFromURL = urlParams.get('code');
+// ---------------------- UNIQUE 50 CODES ----------------------
+let validCodes = [
+"HYBRID-001","HYBRID-002","HYBRID-003","HYBRID-004","HYBRID-005",
+"HYBRID-006","HYBRID-007","HYBRID-008","HYBRID-009","HYBRID-010",
+"HYBRID-011","HYBRID-012","HYBRID-013","HYBRID-014","HYBRID-015",
+"HYBRID-016","HYBRID-017","HYBRID-018","HYBRID-019","HYBRID-020",
+"HYBRID-021","HYBRID-022","HYBRID-023","HYBRID-024","HYBRID-025",
+"HYBRID-026","HYBRID-027","HYBRID-028","HYBRID-029","HYBRID-030",
+"HYBRID-031","HYBRID-032","HYBRID-033","HYBRID-034","HYBRID-035",
+"HYBRID-036","HYBRID-037","HYBRID-038","HYBRID-039","HYBRID-040",
+"HYBRID-041","HYBRID-042","HYBRID-043","HYBRID-044","HYBRID-045",
+"HYBRID-046","HYBRID-047","HYBRID-048","HYBRID-049","HYBRID-050"
+];
 
-let unlocked = localStorage.getItem("unlocked") === "true";
+// ---------------------- UNLOCK MANAGEMENT ----------------------
+let unlocked = JSON.parse(localStorage.getItem("unlocked")) || false;
 let progress = JSON.parse(localStorage.getItem("progress")) || 0;
 
 const container = document.getElementById("modules");
+const unlockBtn = document.getElementById("unlock-btn");
+const adminInput = document.getElementById("admin-code");
+const unlockMsg = document.getElementById("unlock-message");
 const paywall = document.getElementById("paywall");
-const codeMessage = document.getElementById("codeMessage");
 
-if(codeFromURL){
-  redeemCode(codeFromURL);
-}
-
-function redeemCode(codeInput=null){
-  const code = codeInput || document.getElementById("codeInput").value.trim();
-  if(validCodes.includes(code)){
+// PayPal automatic unlock
+paypal.HostedButtons({
+  hostedButtonId: "APGW4MJDHM7K2",
+  onApprove: function(data, actions){
     unlocked = true;
-    localStorage.setItem("unlocked","true");
-    codeMessage.innerText="✅ Access granted!";
-    // Remove code from array so it cannot be reused
-    validCodes = validCodes.filter(c=>c!==code);
-    render();
+    localStorage.setItem("unlocked",true);
     paywall.style.display="none";
-  }else{
-    codeMessage.innerText="❌ Invalid code or already used.";
+    renderModules();
   }
-}
+});
 
-// Admin button to manually unlock dashboard
-function manualUnlock(){
-  unlocked = true;
-  localStorage.setItem("unlocked","true");
-  codeMessage.innerText="🔓 Admin unlock applied!";
-  paywall.style.display="none";
-  render();
-}
-
-const modules = [
-{title:"Learning Breakdown",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Cognitive Control",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Structured Thinking",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"AI Control",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Execution System",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Success Mapping",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Performance Engine",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Anti-Regression System",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Advanced Hybrid Thinking",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Mastery Layer",lessons:["Video Lesson","Exercise","Reflection"]},
-{title:"Bonus: Personal Optimization",lessons:["Video Lesson","Exercise","Reflection"]}
-];
-
-function render(){
+// Render modules
+function renderModules(){
   container.innerHTML="";
   modules.forEach((mod,index)=>{
     const div = document.createElement("div");
     div.className="module";
-    if(!unlocked && index>0) div.classList.add("locked");
-
+    if(!unlocked && index>0){ div.classList.add("locked"); }
     const title = document.createElement("h3");
     title.innerText="Module "+(index+1)+" — "+mod.title;
     div.appendChild(title);
@@ -176,7 +230,7 @@ function render(){
       mod.lessons.forEach(l=>{
         const lesson = document.createElement("div");
         lesson.className="lesson";
-        lesson.innerText=l;
+        lesson.innerHTML=l;
         div.appendChild(lesson);
       });
 
@@ -186,7 +240,7 @@ function render(){
         btn.onclick=()=>{
           progress++;
           localStorage.setItem("progress",progress);
-          render();
+          renderModules();
         };
       }else if(index<progress){
         btn.innerText="Completed";
@@ -195,16 +249,29 @@ function render(){
         btn.innerText="Locked";
         btn.disabled=true;
       }
-
       div.appendChild(btn);
     }
-
     container.appendChild(div);
   });
 }
 
-render();
+renderModules();
 
+// ---------------------- ADMIN MANUAL UNLOCK ----------------------
+unlockBtn.onclick = function(){
+  const code = adminInput.value.trim();
+  if(validCodes.includes(code)){
+    unlocked = true;
+    localStorage.setItem("unlocked",true);
+    const index = validCodes.indexOf(code);
+    if(index>-1){ validCodes.splice(index,1); } // Remove used code
+    paywall.style.display="none";
+    unlockMsg.innerText="Modules unlocked successfully!";
+    renderModules();
+  }else{
+    unlockMsg.innerText="Invalid or already used code!";
+  }
+}
 </script>
 </body>
 </html>
