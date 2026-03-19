@@ -292,6 +292,28 @@ function toggleAdvanced(){
   // Here you can add more desktop-specific functions later
 }
 </script>
+<script>
+const correctCode = "TSA-2026";
 
+function unlockCourse(){
+  let userCode = document.getElementById("access-code").value;
+
+  if(userCode === correctCode){
+    localStorage.setItem("tsa_access", "granted");
+    showContent();
+  } else {
+    alert("Invalid Code. Please check and try again.");
+  }
+}
+
+function showContent(){
+  document.getElementById("locked-content").style.display = "none";
+  document.getElementById("unlocked-content").style.display = "block";
+}
+
+if(localStorage.getItem("tsa_access") === "granted"){
+  showContent();
+}
+</script>
 </body>
 </html>
