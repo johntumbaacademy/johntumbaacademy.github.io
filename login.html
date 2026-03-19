@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login - Top Student Academy</title>
+</head>
+
+<body style="background:#03050d; color:white; text-align:center; padding-top:100px; font-family:sans-serif;">
+
+<h1>Student Login</h1>
+
+<input type="text" id="email" placeholder="Enter Email" style="padding:10px; margin:10px;"><br>
+
+<input type="password" id="password" placeholder="Enter Password" style="padding:10px; margin:10px;"><br>
+
+<button onclick="login()" style="padding:10px 20px; background:#ffce00; border:none;">Login</button>
+
+<p id="error" style="color:red;"></p>
+
+<script>
+function login(){
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  // TEMP ACCOUNT (YOU CONTROL THIS)
+  if(email === "student@test.com" && password === "1234"){
+    localStorage.setItem("tsa_user", "logged_in");
+    window.location.href = "dashboard.html";
+  } else {
+    document.getElementById("error").innerText = "Invalid login details";
+  }
+}
+</script>
+
+</body>
+</html>
