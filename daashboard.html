@@ -151,7 +151,27 @@ button{cursor:pointer;}
   <p>This dashboard is only available to enrolled students.</p>
   <a href="https://wa.me/260779483121?text=I%20want%20to%20enroll" class="cta-btn">Unlock Access</a>
   </div>
+<!-- LOCK SYSTEM START -->
+<div id="locked-content">
 
+<div style="text-align:center; padding:40px;">
+  <h2>🔒 Restricted Access</h2>
+  <p>This dashboard is only available to enrolled students.</p>
+
+  <input type="text" id="access-code" placeholder="Enter Access Code" style="padding:10px; border-radius:8px; border:none; margin-top:10px;">
+
+  <br><br>
+
+  <button onclick="unlockCourse()" class="cta-btn">Unlock Access</button>
+
+  <br><br>
+
+  <a href="https://wa.me/260779483121?text=I%20want%20to%20enroll" class="cta-btn">Get Access Code</a>
+</div>
+
+</div>
+
+<div id="unlocked-content" style="display:none;">
 <!-- MODULES -->
 <div class="module-container">
 
