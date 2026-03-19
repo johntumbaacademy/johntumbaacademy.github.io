@@ -129,6 +129,11 @@ button{cursor:pointer;}
 </style>
 </head>
 <body>
+  <script>
+if(localStorage.getItem("tsa_user") !== "logged_in"){
+  window.location.href = "login.html";
+}
+  </script>
 
 <!-- HEADER -->
 <div class="header">
