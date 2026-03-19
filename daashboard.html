@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top Student Academy - AI Coding & Skills Dashboard</title>
+<style>
+/* Base & Font */
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:#03050d;
+  color:white;
+}
+a{text-decoration:none; color:#ffce00;}
+button{cursor:pointer;}
+
+/* HEADER */
+.header{
+  padding:20px;
+  text-align:center;
+  background:#11172b;
+}
+.header h1{font-size:28px;}
+.header p{color:#aab3e0;}
+
+/* MODULES */
+.module-container{
+  padding:20px;
+  max-width:900px;
+  margin:auto;
+}
+.module{
+  background:#11172b;
+  margin-bottom:15px;
+  border-radius:12px;
+  overflow:hidden;
+  transition:0.3s;
+}
+.module-header{
+  padding:15px;
+  font-size:20px;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#1b1f35;
+}
+.module-header:hover{background:#232946;}
+.module-content{
+  display:none;
+  padding:15px;
+  background:#141b2e;
+}
+.module-content p, .module-content a{
+  color:#cbd4ff;
+  margin-bottom:10px;
+}
+.show{display:block;}
+
+/* BUTTONS */
+.cta-btn{
+  display:inline-block;
+  padding:12px 25px;
+  margin:5px 0;
+  background:#ffce00;
+  color:black;
+  border-radius:8px;
+  font-weight:600;
+  transition:0.2s;
+}
+.cta-btn:hover{transform:scale(1.05);}
+
+/* PROGRESS TRACKER */
+.progress-container{
+  background:#11172b;
+  padding:15px;
+  border-radius:12px;
+  margin-bottom:20px;
+}
+.progress-bar{
+  background:#ffce00;
+  height:20px;
+  width:0%;
+  border-radius:10px;
+  transition:0.5s;
+}
+.progress-label{
+  text-align:right;
+  font-size:14px;
+  margin-top:5px;
+}
+
+/* BADGES & CERTIFICATES */
+.badges, .certificates{
+  display:flex;
+  overflow-x:auto;
+  padding:10px 0;
+}
+.badge, .certificate{
+  background:#1b1f35;
+  padding:15px;
+  border-radius:12px;
+  margin-right:10px;
+  flex:0 0 250px;
+  text-align:center;
+}
+
+/* ADVANCED TOGGLE */
+.toggle-container{
+  text-align:center;
+  margin:20px 0;
+}
+.toggle-btn{
+  padding:10px 20px;
+  border-radius:8px;
+  background:#ffce00;
+  color:black;
+  font-weight:600;
+}
+
+/* MOBILE ADJUSTMENTS */
+@media (max-width:600px){
+  .module-header{font-size:18px;}
+  .badge, .certificate{flex:0 0 200px;}
+  .cta-btn{padding:10px 20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <h1>Top Student Academy Dashboard</h1>
+  <p>AI Coding, Smartphone Skills, and Hybrid Intelligence Mastery</p>
+</div>
+
+<!-- ADVANCED MODE TOGGLE -->
+<div class="toggle-container">
+  <button class="toggle-btn" onclick="toggleAdvanced()">Switch to Advanced/Desktop Mode</button>
+</div>
+
+<!-- PROGRESS TRACKER -->
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+  <div class="progress-label" id="progress-label">0% Completed</div>
+</div>
+
+<!-- MODULES -->
+<div class="module-container">
+
+  <!-- Module 1 -->
+  <div class="module">
+    <div class="module-header" onclick="toggleModule(this)">
+      Module 1: AI Coding Basics
+      <span>+</span>
+    </div>
+    <div class="module-content">
+      <p>Learn fundamentals of AI coding using mobile-friendly tools like ACode and Replit.</p>
+      <a href="https://www.youtube.com/unlisted1" target="_blank" class="cta-btn">Watch Lesson</a>
+      <a href="https://meet.google.com/example1" target="_blank" class="cta-btn">Join Live Session</a>
+      <a href="https://wa.me/260779483121?text=MODULE1%20SUBMISSION" target="_blank" class="cta-btn">Submit Assignment</a>
+    </div>
+  </div>
+
+  <!-- Module 2 -->
+  <div class="module">
+    <div class="module-header" onclick="toggleModule(this)">
+      Module 2: Smartphone Graphic Design
+      <span>+</span>
+    </div>
+    <div class="module-content">
+      <p>Master Canva, Pixlr, and other smartphone apps for high-level graphic design.</p>
+      <a href="https://www.youtube.com/unlisted2" target="_blank" class="cta-btn">Watch Lesson</a>
+      <a href="https://meet.google.com/example2" target="_blank" class="cta-btn">Join Live Session</a>
+      <a href="https://wa.me/260779483121?text=MODULE2%20SUBMISSION" target="_blank" class="cta-btn">Submit Assignment</a>
+    </div>
+  </div>
+
+  <!-- Module 3 -->
+  <div class="module">
+    <div class="module-header" onclick="toggleModule(this)">
+      Module 3: Smartphone Video Editing
+      <span>+</span>
+    </div>
+    <div class="module-content">
+      <p>Edit professional videos using CapCut, InShot, and Kinemaster on your phone.</p>
+      <a href="https://www.youtube.com/unlisted3" target="_blank" class="cta-btn">Watch Lesson</a>
+      <a href="https://meet.google.com/example3" target="_blank" class="cta-btn">Join Live Session</a>
+      <a href="https://wa.me/260779483121?text=MODULE3%20SUBMISSION" target="_blank" class="cta-btn">Submit Assignment</a>
+    </div>
+  </div>
+
+  <!-- Module 4 -->
+  <div class="module">
+    <div class="module-header" onclick="toggleModule(this)">
+      Module 4: Social Media Content & Management
+      <span>+</span>
+    </div>
+    <div class="module-content">
+      <p>Create content and manage social media for personal or business growth.</p>
+      <a href="https://www.youtube.com/unlisted4" target="_blank" class="cta-btn">Watch Lesson</a>
+      <a href="https://meet.google.com/example4" target="_blank" class="cta-btn">Join Live Session</a>
+      <a href="https://wa.me/260779483121?text=MODULE4%20SUBMISSION" target="_blank" class="cta-btn">Submit Assignment</a>
+    </div>
+  </div>
+
+  <!-- Module 5 -->
+  <div class="module">
+    <div class="module-header" onclick="toggleModule(this)">
+      Module 5: Sales & Monetization Skills
+      <span>+</span>
+    </div>
+    <div class="module-content">
+      <p>Learn to sell your digital skills, create income streams, and market yourself professionally.</p>
+      <a href="https://www.youtube.com/unlisted5" target="_blank" class="cta-btn">Watch Lesson</a>
+      <a href="https://meet.google.com/example5" target="_blank" class="cta-btn">Join Live Session</a>
+      <a href="https://wa.me/260779483121?text=MODULE5%20SUBMISSION" target="_blank" class="cta-btn">Submit Assignment</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- BADGES -->
+<div class="module-container">
+  <h2>Earn Badges & Certificates</h2>
+  <div class="badges">
+    <div class="badge">AI Coding Badge</div>
+    <div class="badge">Graphic Design Badge</div>
+    <div class="badge">Video Editing Badge</div>
+    <div class="badge">Social Media Badge</div>
+    <div class="badge">Sales Badge</div>
+  </div>
+
+  <div class="certificates">
+    <div class="certificate">Hybrid Intelligence Certificate</div>
+    <div class="certificate">Skills Mastery Certificate</div>
+  </div>
+</div>
+
+<script>
+function toggleModule(header){
+  let content = header.nextElementSibling;
+  content.classList.toggle('show');
+  header.querySelector('span').textContent = content.classList.contains('show') ? '-' : '+';
+}
+
+// Progress simulation
+let progress = 0;
+function updateProgress(){
+  progress += 20; // each module counted as 20% for demo
+  if(progress>100) progress=100;
+  document.getElementById('progress-bar').style.width = progress+'%';
+  document.getElementById('progress-label').innerText = progress+'% Completed';
+}
+
+// Advanced/Desktop Mode toggle
+function toggleAdvanced(){
+  alert("Advanced/Desktop Mode enabled. All features now visible for laptop users.");
+  // Here you can add more desktop-specific functions later
+}
+</script>
+
+</body>
+</html>
