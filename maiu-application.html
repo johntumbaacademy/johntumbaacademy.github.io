@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #f0f3f8, #d9e2f3);
+  background: linear-gradient(135deg, #f3f6f9, #e0e8f5);
   color: #111;
 }
 
@@ -33,7 +33,7 @@ body {
   font-weight: 600;
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .hero p {
@@ -42,28 +42,22 @@ body {
   margin: 20px auto;
   font-size: 1.1rem;
   opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1.4s ease forwards;
+  animation: fadeUp 1.6s ease forwards;
 }
 
-/* SECTIONS */
+/* SECTION */
 .section {
   padding: 60px 20px;
   max-width: 950px;
   margin: auto;
   opacity: 0;
   transform: translateY(60px);
-  transition: all 0.8s ease;
-}
-
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
+  transition: all 1s ease;
 }
 
 /* GLASS CARD */
 .box {
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.85);
   backdrop-filter: blur(18px);
   border-radius: 18px;
   padding: 35px;
@@ -90,8 +84,6 @@ body {
   font-weight: 500;
   transition: 0.3s;
   font-size: 1rem;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
 }
 
 /* PAYPAL */
@@ -134,8 +126,8 @@ body {
 
 <!-- CONTENT -->
 <div class="section">
+
   <div class="box">
-    <h2>What MAIU Is</h2>
     <p>
       Martial Arts Integrity University restores martial arts to its original purpose — the formation of the human being, not just the fighter.
       <br><br>
@@ -149,11 +141,10 @@ body {
   </div>
 
   <div class="box">
-    <h2>Who Should Apply</h2>
     <p>
-      MAIU is for those who:
+      Who Should Apply:
       <ul>
-        <li>Value clarity over entertainment</li>
+        <li>Those who value clarity over entertainment</li>
         <li>Seek discipline over shortcuts</li>
         <li>Understand mastery is earned, not granted</li>
         <li>Ready to become inevitable in mind, body, and purpose</li>
@@ -162,9 +153,8 @@ body {
   </div>
 
   <div class="box">
-    <h2>Benefits of Enrollment</h2>
     <p>
-      Gain structured access to the full MAIU system:
+      Benefits of Enrollment:
       <ul>
         <li>Immediate access to foundational texts</li>
         <li>Inner Chamber Levels 1–14 (PDFs & handbooks)</li>
@@ -177,46 +167,37 @@ body {
 
   <!-- ACTIONS -->
   <div class="actions">
-    <!-- PAYPAL BUTTON -->
+    <!-- PAYPAL HOSTED BUTTON -->
     <div id="paypal-container-MAIUAPP"></div>
 
-    <!-- WHATSAPP BUTTON -->
+    <!-- WHATSAPP MOBILE MONEY -->
     <a 
-      href="https://wa.me/260779483121?text=Hello%20Master%20John%2C%20I%20want%20to%20enroll%20in%20Martial%20Arts%20Integrity%20University%20and%20pay%20via%20mobile%20money."
+      href="https://wa.me/260XXXXXXXXX?text=Hello%20Master%20John%2C%20I%20want%20to%20enroll%20in%20Martial%20Arts%20Integrity%20University%20and%20pay%20via%20mobile%20money."
       class="btn whatsapp-btn"
       target="_blank">
       Pay via Mobile Money
     </a>
   </div>
+
 </div>
 
 <script>
-  // PayPal Integration
-  </script>
-  <div id="paypal-container-CYE5T2DB4T2B4"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "CYE5T2DB4T2B4",
-  }).render("#paypal-container-CYE5T2DB4T2B4")
-</script>
+paypal.HostedButtons({
+  hostedButtonId: "MAIUAPP", // Replace with your PayPal hosted button ID
+}).render("#paypal-container-MAIUAPP");
 
-  // Scroll Reveal Sections
-  const sections = document.querySelectorAll('.section');
-  window.addEventListener('scroll', () => {
-    const trigger = window.innerHeight * 0.85;
-    sections.forEach(sec => {
-      const top = sec.getBoundingClientRect().top;
-      if (top < trigger) {
-        sec.classList.add('show');
-      }
-    });
-  });
+const sections = document.querySelectorAll('.section');
 
-  // Trigger sections on load for hero and first section
-  window.addEventListener('load', () => {
-    sections.forEach(sec => sec.classList.add('show'));
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < trigger) {
+      sec.classList.add('show');
+    }
   });
+});
 </script>
 
 </body>
-  </html>
+</html>
