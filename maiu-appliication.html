@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAIU Application — John Tumba Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+  }
+  header {
+    text-align: center;
+    padding: 4rem 2rem 2rem 2rem;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeUp 1s ease forwards;
+  }
+  header p {
+    font-size: 1.2rem;
+    opacity: 0.85;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+  }
+  .section {
+    background: rgba(0,0,0,0.35);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+  .section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+  }
+  ul {
+    padding-left: 1.2rem;
+  }
+  li {
+    margin-bottom: 0.7rem;
+    line-height: 1.4rem;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+  }
+  @keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  .paypal-btn {
+    margin-top: 2rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Martial Arts Integrity University – Application</h1>
+  <p>Forge mind, body, and spirit under the guidance of Master John T. the First. Only for those committed to mastery.</p>
+</header>
+
+<div class="sections">
+  <div class="section">
+    <h2>What MAIU Is</h2>
+    <p>Martial Arts Integrity University restores martial arts to its original purpose — the formation of the human being, not just the fighter.</p>
+    <ul>
+      <li>Self-mastery over showmanship</li>
+      <li>Perception, awareness, and control over brute force</li>
+      <li>Integrity, discipline, and ethical action over ego or medals</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Why MAIU Exists</h2>
+    <p>Modern martial arts reward visibility over mastery. MAIU restores structure, clarity, and internal authority.</p>
+    <ul>
+      <li>Training attention, awareness, and perception</li>
+      <li>Conditioning body, mind, and spirit simultaneously</li>
+      <li>Developing ethical restraint, courage, and presence</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Who Should Apply</h2>
+    <p>This program is for those who:</p>
+    <ul>
+      <li>Value clarity over entertainment</li>
+      <li>Seek discipline over shortcuts</li>
+      <li>Understand mastery is earned, not granted</li>
+      <li>Want to be unshakable in mind, body, and purpose</li>
+    </ul>
+    <p>If you are looking for instant results or viral fame, this is not for you.</p>
+  </div>
+
+  <div class="section">
+    <h2>Benefits of Enrollment</h2>
+    <ul>
+      <li>Access to full MAIU Library & System</li>
+      <li>Inner Chamber Levels 1–14 (PDFs & handbooks)</li>
+      <li>Practical Drills Handbook & 12-Month Grandmaster Calendar</li>
+      <li>Story & Script Version for mental rehearsal</li>
+      <li>Modern Adaptation Handbook for contemporary life</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Apply to MAIU</h2>
+    <p>Start with clarity. Build discipline daily. Progress intentionally. Achieve mastery on your terms.</p>
+
+    <!-- PayPal Button -->
+    <div class="paypal-btn">
+      <script 
+        src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD">
+      </script>
+
+      <div id="paypal-container-APPLICATION"></div>
+      <script>
+        paypal.HostedButtons({
+          hostedButtonId: "APPLICATION",
+        }).render("#paypal-container-APPLICATION")
+      </script>
+    </div>
+
+    <!-- WhatsApp Payment Option -->
+    <div style="text-align:center; margin-top:1rem;">
+      <a href="https://wa.me/260YOURNUMBER?text=Hello%20Master%20John,%20I%20want%20to%20apply%20to%20MAIU" 
+         class="btn" style="background: linear-gradient(90deg, #ff7eb3, #ff758c);">
+        Pay via WhatsApp
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
