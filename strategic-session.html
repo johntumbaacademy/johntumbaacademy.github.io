@@ -183,4 +183,24 @@ h2 {
 </div>
 
 <script>
-paypal.Hosted
+paypal.HostedButtons({
+  hostedButtonId: "REPLACE_WITH_YOUR_ID",
+}).render("#paypal-container-SESSION");
+
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
