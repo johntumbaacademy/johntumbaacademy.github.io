@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Origin of the System — John Tumba</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #eaeaea;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero p {
+  color: #aaa;
+  margin-top: 20px;
+  max-width: 700px;
+  opacity: 0;
+  animation: fadeUp 1.6s ease forwards;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TEXT BLOCK */
+.block {
+  margin-bottom: 50px;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+/* HEADINGS */
+h2 {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>
+      This System Was Not Built From Trends.<br>
+      It Was Built From Observation, Failure, and Correction.
+    </h1>
+    <p>
+      What you are about to read is not motivation.  
+      It is the structure behind the system you are entering.
+    </p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="block">
+    <h2>Who Is Behind This System</h2>
+    <p>
+      My name is John Tumba.
+      <br><br>
+      I work at the intersection of:
+      anatomy, physiology, strength, mobility, cardiovascular health, and real-life human performance.
+      <br><br>
+      My background is in Public Health.
+      But this system was not built from theory alone.
+      <br><br>
+      It was built from observing where both medicine and fitness fail to explain what people feel.
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>The Problem Most People Cannot Name</h2>
+    <p>
+      Most people are not sick.
+      But they do not feel strong, light, or capable.
+      <br><br>
+      Medical tests return “normal”.
+      But the body feels heavy, stiff, slow, and inefficient.
+      <br><br>
+      This is not disease.
+      <br><br>
+      This is deconditioning.
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>The Principle Behind Everything</h2>
+    <p>
+      The body does not fail with age.
+      <br><br>
+      It adapts to what you stop demanding from it.
+      <br><br>
+      No demand → no adaptation.
+      <br><br>
+      This system exists to restore that demand intelligently.
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>The Philosophy of Mastery</h2>
+    <p>
+      True mastery is not accumulation.
+      <br><br>
+      It is elimination.
+      <br><br>
+      Removing what is unnecessary until only what works remains.
+      <br><br><br>
+      Understanding without application is philosophy.
+      <br>
+      Application without understanding is movement.
+      <br><br>
+      Mastery is when both become one.
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>Why This System Exists</h2>
+    <p>
+      Fitness became performance.
+      Medicine became diagnosis.
+      <br><br>
+      But the space between them was ignored.
+      <br><br>
+      That space is where most people live.
+      <br><br>
+      This system fills that gap.
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>What Happens Next</h2>
+    <p>
+      The understanding you have now is only partial.
+      <br><br>
+      Real understanding comes through structured application.
+      <br><br>
+      That is where the systems, training, and library come in.
+    </p>
+
+    <a href="maiu-library.html" class="btn">
+      Continue Into The System
+    </a>
+  </div>
+
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
