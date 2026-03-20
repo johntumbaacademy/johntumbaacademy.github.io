@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Consultation with Master John T. the First</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- PAYPAL SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #eef2f7, #dfe7f3);
+  color: #111;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero p {
+  color: #555;
+  max-width: 650px;
+  margin: 20px auto;
+  font-size: 1.1rem;
+  opacity: 0;
+  animation: fadeUp 1.6s ease forwards;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* GLASS CARD */
+.box {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 35px;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.box p {
+  color: #333;
+}
+
+/* ACTIONS */
+.actions {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* WHATSAPP */
+.whatsapp-btn {
+  border: 1px solid #25D366;
+  color: #25D366;
+  background: transparent;
+}
+
+.whatsapp-btn:hover {
+  background: #25D366;
+  color: #fff;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Book a Private Consultation with Master John T. the First</h1>
+    <p>
+      Personal guidance, realignment of your body systems, and elite training strategy
+      for strength, longevity, and performance. Limited spots available for serious individuals.
+    </p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="box">
+    <p>
+      This consultation is for those who want:
+      <br><br>
+      – Personalized assessment of strength, mobility, and metabolic health  
+      – Customized plan for immediate progress  
+      – Direct mentorship from a master with decades of expertise  
+      – High-level insights into longevity, performance, and martial arts
+    </p>
+  </div>
+
+  <div class="box">
+    <p>
+      Why apply for a consultation:
+      <br><br>
+      – You will not waste time on generic advice  
+      – You will gain clarity and actionable steps  
+      – You get access to a trusted authority in fitness and martial arts  
+      – Only serious, committed individuals will be considered  
+    </p>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+
+    <!-- PAYPAL HOSTED BUTTON -->
+    <div id="paypal-container-CONSULT1"></div>
+
+    <!-- WHATSAPP MOBILE MONEY -->
+    <a 
+      href="https://wa.me/260XXXXXXXXX?text=Hello%20Master%20John%2C%20I%20want%20to%20book%20a%20consultation%20and%20pay%20via%20mobile%20money."
+      class="btn whatsapp-btn"
+      target="_blank">
+      Pay via Mobile Money
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+paypal.HostedButtons({
+  hostedButtonId: "CONSULT1", // Replace with your real PayPal hosted button ID
+}).render("#paypal-container-CONSULT1");
+
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
