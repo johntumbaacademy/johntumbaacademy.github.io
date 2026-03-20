@@ -13,7 +13,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0a0a0a;
+  background: linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
   color: #fff;
 }
 
@@ -28,14 +28,18 @@ body {
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #ffffff, #aaaaaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp 1.2s ease forwards;
 }
 
 .hero p {
-  color: #aaa;
+  color: #bbb;
   margin-top: 20px;
   max-width: 600px;
   margin-left: auto;
@@ -47,7 +51,7 @@ body {
 /* SECTION */
 .section {
   padding: 80px 20px;
-  max-width: 800px;
+  max-width: 850px;
   margin: auto;
   opacity: 0;
   transform: translateY(60px);
@@ -60,17 +64,44 @@ body {
 }
 
 .box {
-  border: 1px solid #222;
-  padding: 30px;
-  border-radius: 12px;
-  background: #111;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 35px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
   margin-top: 30px;
 }
 
-/* PAYPAL CENTER */
-.paypal-box {
-  margin-top: 30px;
+/* BUTTON AREA */
+.actions {
+  margin-top: 40px;
   text-align: center;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* PAYPAL BUTTON WRAPPER */
+.paypal-box {
+  margin-top: 20px;
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp-btn {
+  border: 1px solid #25D366;
+  color: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background: #25D366;
+  color: #000;
 }
 
 /* ANIMATION */
@@ -100,9 +131,7 @@ body {
 <div class="section">
 
   <div class="box">
-    <p>
-      This is not a workout plan.
-    </p>
+    <p>This is not a workout plan.</p>
 
     <p>
       It is a correction of one of the most widespread misunderstandings in fitness:
@@ -110,7 +139,7 @@ body {
     </p>
 
     <p>
-      Inside this brief, you will understand:
+      Inside this brief:
       <br><br>
       – Why most training fails despite effort  
       <br>– The difference between muscle and function  
@@ -119,16 +148,26 @@ body {
     </p>
 
     <p>
-      This document restores clarity.
+      This document restores clarity.  
       And clarity changes everything.
     </p>
   </div>
 
-  <!-- PAYMENT -->
-  <div class="paypal-box">
+  <!-- ACTIONS -->
+  <div class="actions">
 
-    <!-- 🔥 YOUR PAYPAL BUTTON GOES HERE -->
-    <div id="paypal-container-V299MREYVRR8U"></div>
+    <!-- PAYPAL -->
+    <div class="paypal-box">
+      <div id="paypal-container-V299MREYVRR8U"></div>
+    </div>
+
+    <!-- WHATSAPP FALLBACK -->
+    <a 
+      href="https://wa.me/260XXXXXXXXX?text=Hello%20Master%20John%2C%20I%20would%20like%20to%20purchase%20the%20Functional%20Power%20PDF.%20Please%20guide%20me%20on%20payment."
+      class="btn whatsapp-btn"
+      target="_blank">
+      Pay via WhatsApp
+    </a>
 
   </div>
 
