@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90-Day Strength, Longevity & Metabolic Reset</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- PAYPAL SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(180deg, #050505, #0a0a0a);
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #ffffff, #aaaaaa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero p {
+  color: #bbb;
+  max-width: 650px;
+  margin: 20px auto;
+  opacity: 0;
+  animation: fadeUp 1.6s ease forwards;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box {
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 35px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+  margin-top: 30px;
+}
+
+/* ACTIONS */
+.actions {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.whatsapp-btn {
+  border: 1px solid #25D366;
+  color: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background: #25D366;
+  color: #000;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Your Body Has Not Failed.<br>It Has Adapted to Less.</h1>
+    <p>
+      A 90-day structured system to restore strength, mobility,
+      cardiovascular efficiency, and metabolic function.
+    </p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="box">
+    <p>
+      Most people feel “fine” medically — but physically limited.
+    </p>
+
+    <p>
+      Heavy body. Low energy. Stiff movement. Slow recovery.
+    </p>
+
+    <p>
+      This is not disease.
+      <br><br>
+      This is systemic deconditioning.
+    </p>
+  </div>
+
+  <div class="box">
+    <p>
+      This system restores:
+      <br><br>
+      – Strength that supports your joints  
+      <br>– Cardiovascular efficiency  
+      <br>– Mobility and movement freedom  
+      <br>– Metabolic stability  
+    </p>
+
+    <p>
+      Not through long workouts.
+      <br>
+      Not through exhaustion.
+      <br><br>
+      But through structured biological adaptation.
+    </p>
+  </div>
+
+  <div class="box">
+    <p>
+      The structure is simple:
+      <br><br>
+      – Short daily sessions (10–25 minutes)  
+      <br>– Clear progression  
+      <br>– System-based training  
+      <br>– Real-world performance focus  
+    </p>
+
+    <p>
+      This is not random training.
+      <br>
+      This is a system.
+    </p>
+  </div>
+
+  <div class="box">
+    <p>
+      This program is for individuals who:
+      <br><br>
+      – Feel physically off despite being “healthy”  
+      <br>– Want strength, energy, and movement back  
+      <br>– Prefer clarity over hype  
+    </p>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="actions">
+
+    <!-- PAYPAL -->
+    <div id="paypal-container-JUYZBVA8AJREY"></div>
+
+    <!-- WHATSAPP MOBILE MONEY -->
+    <a 
+      href="https://wa.me/260XXXXXXXXX?text=Hello%20Master%20John%2C%20I%20want%20to%20join%20the%2090-day%20Strength%20Longevity%20%26%20Metabolic%20Reset.%20I%20will%20pay%20via%20mobile%20money."
+      class="btn whatsapp-btn"
+      target="_blank">
+      Pay via Mobile Money (WhatsApp)
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+paypal.HostedButtons({
+  hostedButtonId: "JUYZBVA8AJREY",
+}).render("#paypal-container-JUYZBVA8AJREY");
+
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
