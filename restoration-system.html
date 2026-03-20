@@ -7,15 +7,14 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-<!-- PAYPAL SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 
 <style>
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #050505, #0a0a0a);
-  color: #fff;
+  background: linear-gradient(135deg, #eef2f7, #dfe7f3);
+  color: #111;
 }
 
 /* HERO */
@@ -30,18 +29,18 @@ body {
 
 .hero h1 {
   font-size: 3rem;
-  background: linear-gradient(90deg, #ffffff, #aaaaaa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  color: #111;
   opacity: 0;
   transform: translateY(40px);
   animation: fadeUp 1.2s ease forwards;
 }
 
 .hero p {
-  color: #bbb;
+  color: #555;
   max-width: 650px;
   margin: 20px auto;
+  font-size: 1.1rem;
   opacity: 0;
   animation: fadeUp 1.6s ease forwards;
 }
@@ -49,7 +48,7 @@ body {
 /* SECTION */
 .section {
   padding: 80px 20px;
-  max-width: 900px;
+  max-width: 950px;
   margin: auto;
   opacity: 0;
   transform: translateY(60px);
@@ -61,39 +60,52 @@ body {
   transform: translateY(0);
 }
 
+/* GLASS CARDS */
 .box {
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
   padding: 35px;
-  border-radius: 14px;
-  background: rgba(255,255,255,0.02);
-  backdrop-filter: blur(8px);
   margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.box p {
+  color: #333;
 }
 
 /* ACTIONS */
 .actions {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
+/* BUTTONS */
 .btn {
   display: inline-block;
   margin: 10px;
   padding: 14px 26px;
-  border-radius: 8px;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 500;
   transition: 0.3s;
 }
 
+/* WHATSAPP */
 .whatsapp-btn {
   border: 1px solid #25D366;
   color: #25D366;
+  background: transparent;
 }
 
 .whatsapp-btn:hover {
   background: #25D366;
-  color: #000;
+  color: #fff;
+}
+
+/* PAYPAL CONTAINER */
+#paypal-container-JUYZBVA8AJREY {
+  margin-bottom: 15px;
 }
 
 /* ANIMATION */
@@ -113,8 +125,8 @@ body {
   <div>
     <h1>Your Body Has Not Failed.<br>It Has Adapted to Less.</h1>
     <p>
-      A 90-day structured system to restore strength, mobility,
-      cardiovascular efficiency, and metabolic function.
+      A structured 90-day system designed to restore strength,
+      mobility, cardiovascular efficiency, and metabolic function.
     </p>
   </div>
 </div>
@@ -124,17 +136,16 @@ body {
 
   <div class="box">
     <p>
-      Most people feel “fine” medically — but physically limited.
+      Most people are not sick — but they do not feel strong, light, or capable.
     </p>
 
     <p>
-      Heavy body. Low energy. Stiff movement. Slow recovery.
+      Low energy. Stiff movement. Reduced strength. Slower recovery.
     </p>
 
     <p>
-      This is not disease.
-      <br><br>
-      This is systemic deconditioning.
+      This is not disease.  
+      This is deconditioning.
     </p>
   </div>
 
@@ -145,42 +156,34 @@ body {
       – Strength that supports your joints  
       <br>– Cardiovascular efficiency  
       <br>– Mobility and movement freedom  
-      <br>– Metabolic stability  
-    </p>
-
-    <p>
-      Not through long workouts.
-      <br>
-      Not through exhaustion.
-      <br><br>
-      But through structured biological adaptation.
+      <br>– Metabolic balance  
     </p>
   </div>
 
   <div class="box">
     <p>
-      The structure is simple:
+      Built on:
       <br><br>
-      – Short daily sessions (10–25 minutes)  
-      <br>– Clear progression  
-      <br>– System-based training  
-      <br>– Real-world performance focus  
+      – Short, controlled sessions  
+      <br>– Progressive adaptation  
+      <br>– Recovery-based structure  
+      <br>– Real-world performance  
     </p>
 
     <p>
-      This is not random training.
-      <br>
-      This is a system.
+      This is not exercise.  
+      This is system restoration.
     </p>
   </div>
 
   <div class="box">
     <p>
-      This program is for individuals who:
+      This program is for individuals who want:
       <br><br>
-      – Feel physically off despite being “healthy”  
-      <br>– Want strength, energy, and movement back  
-      <br>– Prefer clarity over hype  
+      – Energy  
+      <br>– Strength  
+      <br>– Movement confidence  
+      <br>– A body that feels capable again  
     </p>
   </div>
 
@@ -190,12 +193,12 @@ body {
     <!-- PAYPAL -->
     <div id="paypal-container-JUYZBVA8AJREY"></div>
 
-    <!-- WHATSAPP MOBILE MONEY -->
+    <!-- WHATSAPP -->
     <a 
       href="https://wa.me/260XXXXXXXXX?text=Hello%20Master%20John%2C%20I%20want%20to%20join%20the%2090-day%20Strength%20Longevity%20%26%20Metabolic%20Reset.%20I%20will%20pay%20via%20mobile%20money."
       class="btn whatsapp-btn"
       target="_blank">
-      Pay via Mobile Money (WhatsApp)
+      Pay via Mobile Money
     </a>
 
   </div>
