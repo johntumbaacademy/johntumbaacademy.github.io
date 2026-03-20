@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAIU Library — John Tumba Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+  }
+  header {
+    text-align: center;
+    padding: 4rem 2rem 2rem 2rem;
+  }
+  header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeUp 1s ease forwards;
+  }
+  header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    animation: fadeUp 1s ease 0.3s forwards;
+  }
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+  }
+  .section {
+    background: rgba(0,0,0,0.3);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+  }
+  .section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  }
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffd700;
+  }
+  ul {
+    padding-left: 1.2rem;
+  }
+  li {
+    margin-bottom: 0.7rem;
+    line-height: 1.4rem;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.3);
+  }
+  @keyframes fadeUp {
+    0% {opacity: 0; transform: translateY(20px);}
+    100% {opacity: 1; transform: translateY(0);}
+  }
+  /* PayPal container styling */
+  .paypal-btn {
+    margin-top: 2rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Martial Arts Integrity University Library</h1>
+  <p>Every PDF, text, and handbook you need to progress from novice to Inner Chamber mastery. Structured, authoritative, and integrated.</p>
+</header>
+
+<div class="sections">
+  <div class="section">
+    <h2>Foundational Texts</h2>
+    <ul>
+      <li>MAIU Text I – The Inner Chamber Doctrine</li>
+      <li>MAIU Text II – Levels of Discipline</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Inner Chamber Levels 1–14</h2>
+    <ul>
+      <li>Level 1 – Seal of Breath & Blood</li>
+      <li>Level 2 – Eyes, Ears & Spirit of the Warrior</li>
+      <li>Level 3 – Tendon, Spirit & Shadow Powers</li>
+      <li>Level 4 – Awakening the Indestructible Body</li>
+      <li>Level 5 – Shadow State</li>
+      <li>Level 6 – Dragon’s Edge</li>
+      <li>Level 7 – Sky Method</li>
+      <li>Level 8 – Void Method</li>
+      <li>Level 9 – Immortal Method</li>
+      <li>Level 10 – Heaven Method</li>
+      <li>Level 11 – Eternal Method</li>
+      <li>Level 12 – Cosmic Method</li>
+      <li>Level 13 – Legendary Method</li>
+      <li>Level 14 – Immortal Method of the Ancestral Spirit</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Supplemental Handbooks</h2>
+    <ul>
+      <li>Practical Drills Handbook</li>
+      <li>12-Month Grandmaster Calendar</li>
+      <li>Story & Script Version</li>
+      <li>Modern Adaptation Handbook</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Access & Value</h2>
+    <p>Some PDFs are free to explore. Most are available at strategic value to reinforce commitment. All are designed to preserve authority, clarity, and progression.</p>
+
+    <!-- PayPal Button Integration -->
+    <div class="paypal-btn">
+      <script 
+        src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD">
+      </script>
+
+      <div id="paypal-container-SJ5UDFT5DTAZC"></div>
+      <script>
+        paypal.HostedButtons({
+          hostedButtonId: "SJ5UDFT5DTAZC",
+        }).render("#paypal-container-SJ5UDFT5DTAZC")
+      </script>
+    </div>
+
+    <!-- WhatsApp Payment Option -->
+    <div style="text-align:center; margin-top:1rem;">
+      <a href="https://wa.me/260YOURNUMBER?text=Hello%20Master%20John,%20I%20want%20to%20pay%20for%20MAIU%20Library%20Access" 
+         class="btn" style="background: linear-gradient(90deg, #ff7eb3, #ff758c);">
+        Pay via WhatsApp
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
