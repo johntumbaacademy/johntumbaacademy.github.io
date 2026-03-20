@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functional Power</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero p {
+  color: #aaa;
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeUp 1.6s ease forwards;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box {
+  border: 1px solid #222;
+  padding: 30px;
+  border-radius: 12px;
+  background: #111;
+  margin-top: 30px;
+}
+
+/* PAYPAL CENTER */
+.paypal-box {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Functional Power</h1>
+    <p>
+      Why muscles were never the measure of strength —
+      and what real fitness actually is.
+    </p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="box">
+    <p>
+      This is not a workout plan.
+    </p>
+
+    <p>
+      It is a correction of one of the most widespread misunderstandings in fitness:
+      that visible muscles define strength, health, and performance.
+    </p>
+
+    <p>
+      Inside this brief, you will understand:
+      <br><br>
+      – Why most training fails despite effort  
+      <br>– The difference between muscle and function  
+      <br>– What real strength actually means  
+      <br>– How to measure fitness correctly  
+    </p>
+
+    <p>
+      This document restores clarity.
+      And clarity changes everything.
+    </p>
+  </div>
+
+  <!-- PAYMENT -->
+  <div class="paypal-box">
+
+    <!-- 🔥 YOUR PAYPAL BUTTON GOES HERE -->
+    <div id="paypal-container-V299MREYVRR8U"></div>
+
+  </div>
+
+</div>
+
+<script>
+paypal.HostedButtons({
+  hostedButtonId: "V299MREYVRR8U",
+}).render("#paypal-container-V299MREYVRR8U");
+
+const sections = document.querySelectorAll('.section');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      sec.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
