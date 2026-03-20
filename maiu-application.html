@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Martial Arts Integrity University — Application</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- PAYPAL SDK -->
 <script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
@@ -20,7 +20,7 @@ body {
 
 /* HERO */
 .hero {
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,59 +45,78 @@ body {
   animation: fadeUp 1.6s ease forwards;
 }
 
-/* SECTION */
+/* SECTION FIXED */
 .section {
   padding: 60px 20px;
   max-width: 950px;
   margin: auto;
   opacity: 0;
-  transform: translateY(0);
-  transition: all 1s ease;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-/* GLASS CARD */
+/* THIS WAS MISSING */
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* GLASS CARDS */
 .box {
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(16px);
   border-radius: 18px;
   padding: 35px;
   margin-top: 30px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.box:hover {
+  transform: translateY(-4px);
 }
 
 .box p {
   color: #333;
+  margin-bottom: 10px;
+}
+
+.box ul {
+  padding-left: 20px;
+}
+
+.box li {
+  margin-bottom: 8px;
 }
 
 /* ACTIONS */
 .actions {
   text-align: center;
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
+/* BUTTONS */
 .btn {
   display: inline-block;
   margin: 10px;
   padding: 14px 28px;
   border-radius: 12px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
   transition: 0.3s;
   font-size: 1rem;
 }
 
 /* PAYPAL */
 .paypal-btn {
-  border: 1px solid #0070ba;
+  background: linear-gradient(90deg, #0070ba, #003087);
   color: #fff;
-  background: #0070ba;
 }
 
 /* WHATSAPP */
 .whatsapp-btn {
-  border: 1px solid #25D366;
+  border: 2px solid #25D366;
   color: #25D366;
-  background: transparent;
 }
 
 .whatsapp-btn:hover {
@@ -114,13 +133,14 @@ body {
 }
 </style>
 </head>
+
 <body>
 
 <!-- HERO -->
 <div class="hero">
   <div>
-    <h1>Martial Arts Integrity University – Where Discipline Becomes Destiny</h1>
-    <p>Forge mind, body, and spirit under the guidance of Master John T. the First. Not for entertainment. Not for display. Only for those committed to mastery.</p>
+    <h1>Martial Arts Integrity University</h1>
+    <p>Where discipline becomes destiny. Not for entertainment. Only for those committed to mastery.</p>
   </div>
 </div>
 
@@ -128,75 +148,75 @@ body {
 <div class="section">
 
   <div class="box">
-    <p>
-      Martial Arts Integrity University restores martial arts to its original purpose — the formation of the human being, not just the fighter.
-      <br><br>
-      Focus:
-      <ul>
-        <li>Self-mastery over showmanship</li>
-        <li>Perception, awareness, and control over brute force</li>
-        <li>Integrity, discipline, and ethical action over ego or medals</li>
-      </ul>
-    </p>
+    <p>Martial Arts Integrity University restores martial arts to its original purpose — the formation of the human being.</p>
+    <ul>
+      <li>Self-mastery over showmanship</li>
+      <li>Perception and control over brute force</li>
+      <li>Integrity and discipline over ego</li>
+    </ul>
   </div>
 
   <div class="box">
-    <p>
-      Who Should Apply:
-      <ul>
-        <li>Those who value clarity over entertainment</li>
-        <li>Seek discipline over shortcuts</li>
-        <li>Understand mastery is earned, not granted</li>
-        <li>Ready to become inevitable in mind, body, and purpose</li>
-      </ul>
-    </p>
+    <p><strong>Who Should Apply:</strong></p>
+    <ul>
+      <li>Those who value clarity over entertainment</li>
+      <li>Seek discipline over shortcuts</li>
+      <li>Understand mastery is earned</li>
+      <li>Ready to become inevitable</li>
+    </ul>
   </div>
 
   <div class="box">
-    <p>
-      Benefits of Enrollment:
-      <ul>
-        <li>Immediate access to foundational texts</li>
-        <li>Inner Chamber Levels 1–14 (PDFs & handbooks)</li>
-        <li>Practical Drills Handbook & 12-Month Grandmaster Calendar</li>
-        <li>Story & Script Version for mental rehearsal</li>
-        <li>Modern Adaptation Handbook for contemporary life</li>
-      </ul>
-    </p>
+    <p><strong>Benefits of Enrollment:</strong></p>
+    <ul>
+      <li>Foundational texts access</li>
+      <li>Inner Chamber Levels 1–14</li>
+      <li>Practical drills & training systems</li>
+      <li>Structured mastery progression</li>
+    </ul>
   </div>
 
   <!-- ACTIONS -->
   <div class="actions">
-    <!-- PAYPAL HOSTED BUTTON -->
+
+    <!-- PAYPAL BUTTON -->
     <div id="paypal-container-MAIUAPP"></div>
 
-    <!-- WHATSAPP MOBILE MONEY -->
+    <!-- WHATSAPP -->
     <a 
-      href="https://wa.me/260779483121?text=Hello%20Master%20John%2C%20I%20want%20to%20enroll%20in%20Martial%20Arts%20Integrity%20University%20and%20pay%20via%20mobile%20money."
+      href="https://wa.me/260779483121?text=Hello%20Master%20John%2C%20I%20am%20ready%20to%20apply%20for%20Martial%20Arts%20Integrity%20University%20and%20pay%20via%20mobile%20money."
       class="btn whatsapp-btn"
       target="_blank">
       Pay via Mobile Money
     </a>
+
   </div>
 
 </div>
 
 <script>
 paypal.HostedButtons({
-  hostedButtonId: "CYE5T2DB4T2B4", // Replace with your PayPal hosted button ID
+  hostedButtonId: "CYE5T2DB4T2B4"
 }).render("#paypal-container-MAIUAPP");
 
+/* SCROLL FIX */
 const sections = document.querySelectorAll('.section');
 
-window.addEventListener('scroll', () => {
+function revealSections() {
   const trigger = window.innerHeight * 0.85;
+
   sections.forEach(sec => {
     const top = sec.getBoundingClientRect().top;
+
     if (top < trigger) {
       sec.classList.add('show');
     }
   });
-});
+}
+
+/* RUN ON LOAD + SCROLL */
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
 </script>
 
 </body>
