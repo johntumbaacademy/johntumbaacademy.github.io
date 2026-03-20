@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Strategic Session — Private Consultation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #eaeaea;
+}
+
+/* HERO */
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.hero p {
+  color: #aaa;
+  margin-top: 20px;
+  max-width: 700px;
+  opacity: 0;
+  animation: fadeUp 1.6s ease forwards;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 20px;
+  max-width: 850px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* BLOCK */
+.block {
+  margin-bottom: 50px;
+  line-height: 1.8;
+  color: #ccc;
+}
+
+h2 {
+  color: #fff;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 26px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+/* PAYPAL */
+.paypal-btn {
+  background: linear-gradient(90deg, #0070ba, #005ea6);
+  color: #fff;
+}
+
+/* WHATSAPP */
+.whatsapp-btn {
+  border: 1px solid #25D366;
+  color: #25D366;
+}
+
+.whatsapp-btn:hover {
+  background: #25D366;
+  color: #fff;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>
+      This Is Not a Casual Conversation.<br>
+      It Is Strategic Correction.
+    </h1>
+    <p>
+      For individuals who understand that something is off —  
+      but cannot identify or correct it alone.
+    </p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="block">
+    <h2>Who This Is For</h2>
+    <p>
+      This is for individuals who:
+      <br><br>
+      • Feel physically limited despite being “fine” medically  
+      • Want clarity, not motivation  
+      • Value structure over guesswork  
+      • Are ready to correct, not complain  
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>What Happens In This Session</h2>
+    <p>
+      This is not a motivational call.
+      <br><br>
+      We identify:
+      <br>
+      • Where your system is breaking down  
+      • What your body is lacking (strength, mobility, cardiovascular capacity)  
+      • What needs to be corrected first  
+      <br><br>
+      You leave with clarity and direction.
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>Important</h2>
+    <p>
+      This session is direct, structured, and focused.
+      <br><br>
+      It is not for entertainment.
+      <br><br>
+      It is for correction.
+    </p>
+  </div>
+
+  <!-- ACTIONS -->
+  <div class="block" style="text-align:center;">
+
+    <!-- PAYPAL BUTTON -->
+    <div id="paypal-container-SESSION"></div>
+
+    <!-- WHATSAPP -->
+    <a 
+      href="https://wa.me/260779483121?text=Hello%20Master%20John%2C%20I%20want%20to%20book%20a%20strategic%20performance%20consultation."
+      class="btn whatsapp-btn"
+      target="_blank">
+      Request via WhatsApp
+    </a>
+
+  </div>
+
+</div>
+
+<script>
+paypal.Hosted
