@@ -30,8 +30,6 @@ body {
 
 .hero h1 {
   font-size: 2.5rem;
-  opacity: 0;
-  transform: translateY(40px);
   animation: fadeUp 1.2s ease forwards;
 }
 
@@ -39,23 +37,14 @@ body {
   color: #aaa;
   margin-top: 20px;
   max-width: 700px;
-  opacity: 0;
   animation: fadeUp 1.6s ease forwards;
 }
 
-/* SECTION */
+/* SECTION — NOW VISIBLE BY DEFAULT */
 .section {
   padding: 80px 20px;
   max-width: 850px;
   margin: auto;
-  opacity: 0;
-  transform: translateY(60px);
-  transition: all 1s ease;
-}
-
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 /* BLOCK */
@@ -99,6 +88,10 @@ h2 {
 
 /* ANIMATION */
 @keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
@@ -117,7 +110,7 @@ h2 {
       It Is Strategic Correction.
     </h1>
     <p>
-      For individuals who understand that something is off —  
+      For individuals who understand something is off —  
       but cannot identify or correct it alone.
     </p>
   </div>
@@ -129,26 +122,20 @@ h2 {
   <div class="block">
     <h2>Who This Is For</h2>
     <p>
-      This is for individuals who:
-      <br><br>
-      • Feel physically limited despite being “fine” medically  
-      • Want clarity, not motivation  
-      • Value structure over guesswork  
-      • Are ready to correct, not complain  
+      • Feel physically limited despite being “fine” medically<br>
+      • Want clarity, not motivation<br>
+      • Value structure over guesswork<br>
+      • Ready to correct, not complain
     </p>
   </div>
 
   <div class="block">
     <h2>What Happens In This Session</h2>
     <p>
-      This is not a motivational call.
-      <br><br>
-      We identify:
-      <br>
-      • Where your system is breaking down  
-      • What your body is lacking (strength, mobility, cardiovascular capacity)  
-      • What needs to be corrected first  
-      <br><br>
+      We identify:<br><br>
+      • Where your system is breaking down<br>
+      • What your body is lacking<br>
+      • What needs correction first<br><br>
       You leave with clarity and direction.
     </p>
   </div>
@@ -156,23 +143,21 @@ h2 {
   <div class="block">
     <h2>Important</h2>
     <p>
-      This session is direct, structured, and focused.
-      <br><br>
-      It is not for entertainment.
-      <br><br>
-      It is for correction.
+      This is not motivation.<br>
+      This is correction.<br><br>
+      Only for serious individuals.
     </p>
   </div>
 
   <!-- ACTIONS -->
   <div class="block" style="text-align:center;">
 
-    <!-- PAYPAL BUTTON -->
+    <!-- PAYPAL -->
     <div id="paypal-container-SESSION"></div>
 
     <!-- WHATSAPP -->
     <a 
-      href="https://wa.me/260779483121?text=Hello%20Master%20John%2C%20I%20want%20to%20book%20a%20strategic%20performance%20consultation."
+      href="https://wa.me/260779483121?text=Hello%20Master%20John%2C%20I%20want%20to%20book%20a%20strategic%20consultation."
       class="btn whatsapp-btn"
       target="_blank">
       Request via WhatsApp
@@ -186,20 +171,6 @@ h2 {
 paypal.HostedButtons({
   hostedButtonId: "REPLACE_WITH_YOUR_ID",
 }).render("#paypal-container-SESSION");
-
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.85;
-
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-
-    if (top < trigger) {
-      sec.classList.add('show');
-    }
-  });
-});
 </script>
 
 </body>
