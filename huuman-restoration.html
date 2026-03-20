@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Human Restoration Systems</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
 body {
   margin: 0;
@@ -15,33 +6,54 @@ body {
   color: #fff;
 }
 
+/* TOP AUTHORITY BAR */
+.top-bar {
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: #888;
+  padding: 15px 10px;
+  border-bottom: 1px solid #111;
+}
+
 /* HERO */
 .hero {
-  height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 20px;
+  flex-direction: column;
 }
 
 .hero h1 {
   font-size: 2.8rem;
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeUp 1.2s ease forwards;
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero p {
   color: #aaa;
   margin-top: 20px;
   opacity: 0;
-  animation: fadeUp 1.6s ease forwards;
+  animation: fadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* SUB AUTHORITY */
+.sub-authority {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #777;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  animation: fadeUp 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* SECTION */
 .section {
-  padding: 80px 20px;
+  padding: 60px 20px 80px;
   max-width: 1000px;
   margin: auto;
   opacity: 0;
@@ -54,28 +66,89 @@ body {
   transform: translateY(0);
 }
 
+/* CARD — APPLE LEVEL MICRO INTERACTION */
 .card {
+  position: relative;
   border: 1px solid #222;
   padding: 30px;
   margin-top: 25px;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #111;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease;
+  overflow: hidden;
 }
 
-/* BUTTON */
+/* subtle gradient glow layer */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* hover effect */
+.card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-color: #555;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* BUTTON — MICRO INTERACTION */
 .btn {
+  position: relative;
   display: inline-block;
   margin-top: 20px;
   padding: 12px 22px;
-  border: 1px solid #fff;
+  border-radius: 8px;
+  border: 1px solid #444;
   color: #fff;
   text-decoration: none;
-  transition: 0.3s;
+  background: linear-gradient(90deg, #111, #1a1a1a);
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
+/* light sweep effect */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.6s;
+}
+
+/* hover */
 .btn:hover {
   background: #fff;
   color: #000;
+  border-color: #fff;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.btn:hover::after {
+  left: 100%;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 0.9rem;
+  border-top: 1px solid #111;
 }
 
 /* ANIMATION */
@@ -86,93 +159,3 @@ body {
   }
 }
 </style>
-</head>
-
-<body>
-
-<!-- HERO -->
-<div class="hero">
-  <div>
-    <h1>Your Body Is Not Failing.<br>It Is Deconditioning.</h1>
-    <p>Structured systems for strength, longevity, and human performance.</p>
-  </div>
-</div>
-
-<!-- OPTIONS -->
-<div class="section">
-
-  <!-- PDF -->
-  <div class="card">
-    <h2>Functional Power</h2>
-    <p>A short paid brief correcting the biggest myth in fitness.</p>
-
-    <!-- BUTTON -->
-    <a href="functional-power.html" class="btn">
-      Explore PDF
-    </a>
-  </div>
-
-  <!-- 90 DAY SYSTEM -->
-  <div class="card">
-    <h2>90-Day Strength, Longevity & Metabolic Reset</h2>
-    <p>Restore your body's systems through structured progression.</p>
-
-    <!-- BUTTON -->
-    <a href="restoration-system.html" class="btn">
-      View System
-    </a>
-  </div>
-
-  <!-- MARTIAL ARTS -->
-  <div class="card">
-    <h2>Martial Arts Integrity University</h2>
-    <p>Discipline, control, and mastery training.</p>
-
-    <!-- BUTTON -->
-    <a href="maiu-application.html" class="btn">
-      Apply for Training
-    </a>
-  </div>
-
-  <!-- CONSULTATION -->
-  <div class="card">
-    <h2>Book a Consultation</h2>
-    <p>Clarity and correction for serious individuals.</p>
-
-    <!-- BUTTON -->
-    <a href="consultation.html" class="btn">
-      Request Access
-    </a>
-  </div>
-
-  <!-- LIBRARY -->
-  <div class="card">
-    <h2>MAIU Library</h2>
-    <p>Books on martial arts, health, and performance.</p>
-
-    <!-- BUTTON -->
-    <a href="maiu-library.html" class="btn">
-      Explore Library
-    </a>
-  </div>
-
-</div>
-
-<script>
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const trigger = window.innerHeight * 0.85;
-
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-
-    if (top < trigger) {
-      sec.classList.add('show');
-    }
-  });
-});
-</script>
-
-</body>
-</html>
