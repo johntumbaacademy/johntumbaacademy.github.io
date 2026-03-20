@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Human Restoration Systems</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -15,14 +15,14 @@ body {
   color: #fff;
 }
 
-/* TOP AUTHORITY BAR */
+/* TOP AUTHORITY BAR (UPGRADED VISUAL) */
 .top-bar {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   letter-spacing: 1px;
-  color: #888;
-  padding: 15px 10px;
-  border-bottom: 1px solid #111;
+  padding: 15px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  font-weight: 600;
 }
 
 /* HERO */
@@ -37,25 +37,32 @@ body {
 }
 
 .hero h1 {
-  font-size: 2.8rem;
+  font-size: 3rem;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #ffffff, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 0;
   transform: translateY(40px);
-  animation: fadeUp 1.2s ease forwards;
+  animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .hero p {
-  color: #aaa;
   margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ccc;
   opacity: 0;
-  animation: fadeUp 1.6s ease forwards;
+  animation: fadeUp 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* INSERTED AUTHORITY LINE */
+/* MIDDLE AUTHORITY LINE (NOW VISIBLE & PREMIUM) */
 .sub-authority {
   margin-top: 25px;
-  font-size: 0.95rem;
-  color: #777;
-  letter-spacing: 0.5px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   opacity: 0;
   animation: fadeUp 2s ease forwards;
 }
@@ -75,47 +82,72 @@ body {
   transform: translateY(0);
 }
 
+/* CARD */
 .card {
-  border: 1px solid #222;
+  position: relative;
+  border-radius: 16px;
   padding: 30px;
   margin-top: 25px;
-  border-radius: 14px;
   background: #111;
-  transition: 0.3s ease;
+  border: 1px solid #222;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  overflow: hidden;
 }
 
 .card:hover {
-  border-color: #555;
-  transform: translateY(-4px);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  border-color: #00c6ff;
 }
 
-/* BUTTON IMPROVED */
+/* BUTTONS — NOW HIGHLY MAGNETIC */
 .btn {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 22px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  color: #fff;
+  border-radius: 10px;
+  font-weight: 600;
   text-decoration: none;
-  background: linear-gradient(90deg, #111, #1a1a1a);
+  color: #fff;
   transition: all 0.3s ease;
 }
 
-.btn:hover {
-  background: #fff;
-  color: #000;
-  border-color: #fff;
-  box-shadow: 0 0 15px rgba(255,255,255,0.15);
+/* INDIVIDUAL BUTTON COLORS */
+.btn-pdf {
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
 }
 
-/* FOOTER AUTHORITY */
+.btn-90day {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  color: #000;
+}
+
+.btn-maiu {
+  background: linear-gradient(90deg, #ff758c, #ff7eb3);
+}
+
+.btn-consult {
+  background: linear-gradient(90deg, #9d50bb, #6e48aa);
+}
+
+.btn-library {
+  background: linear-gradient(90deg, #43e97b, #38f9d7);
+  color: #000;
+}
+
+/* BUTTON HOVER */
+.btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* FOOTER */
 .footer {
   text-align: center;
   padding: 60px 20px;
-  color: #666;
-  font-size: 0.9rem;
-  border-top: 1px solid #111;
+  font-size: 0.95rem;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  margin-top: 40px;
 }
 
 /* ANIMATION */
@@ -130,7 +162,7 @@ body {
 
 <body>
 
-<!-- TOP LINE (ADDED) -->
+<!-- TOP BAR -->
 <div class="top-bar">
   John Tumba Academy — Elite Hub | Human Performance • Restoration • Health
 </div>
@@ -141,7 +173,6 @@ body {
     <h1>Your Body Is Not Failing.<br>It Is Deconditioning.</h1>
     <p>Structured systems for strength, longevity, and human performance.</p>
 
-    <!-- INSERTED MIDDLE LINE -->
     <div class="sub-authority">
       Your portal to Elite Fitness, Martial Arts Mastery, and Human Performance Systems
     </div>
@@ -151,59 +182,39 @@ body {
 <!-- OPTIONS -->
 <div class="section">
 
-  <!-- PDF -->
   <div class="card">
     <h2>Functional Power</h2>
     <p>A short paid brief correcting the biggest myth in fitness.</p>
-
-    <a href="functional-power.html" class="btn">
-      Explore PDF
-    </a>
+    <a href="functional-power.html" class="btn btn-pdf">Explore PDF</a>
   </div>
 
-  <!-- 90 DAY SYSTEM -->
   <div class="card">
     <h2>90-Day Strength, Longevity & Metabolic Reset</h2>
     <p>Restore your body's systems through structured progression.</p>
-
-    <a href="restoration-system.html" class="btn">
-      View System
-    </a>
+    <a href="restoration-system.html" class="btn btn-90day">View System</a>
   </div>
 
-  <!-- MARTIAL ARTS -->
   <div class="card">
     <h2>Martial Arts Integrity University</h2>
     <p>Discipline, control, and mastery training.</p>
-
-    <a href="maiu-application.html" class="btn">
-      Apply for Training
-    </a>
+    <a href="maiu-application.html" class="btn btn-maiu">Apply for Training</a>
   </div>
 
-  <!-- CONSULTATION -->
   <div class="card">
     <h2>Book a Consultation</h2>
     <p>Clarity and correction for serious individuals.</p>
-
-    <a href="consultation.html" class="btn">
-      Request Access
-    </a>
+    <a href="consultation.html" class="btn btn-consult">Request Access</a>
   </div>
 
-  <!-- LIBRARY -->
   <div class="card">
     <h2>MAIU Library</h2>
     <p>Books on martial arts, health, and performance.</p>
-
-    <a href="maiu-library.html" class="btn">
-      Explore Library
-    </a>
+    <a href="maiu-library.html" class="btn btn-library">Explore Library</a>
   </div>
 
 </div>
 
-<!-- AUTHORITY FOOTER (ADDED) -->
+<!-- FOOTER -->
 <div class="footer">
   This is not fitness content.<br>
   This is structured human performance restoration.<br><br>
@@ -227,4 +238,4 @@ window.addEventListener('scroll', () => {
 </script>
 
 </body>
-      </html>
+</html>
