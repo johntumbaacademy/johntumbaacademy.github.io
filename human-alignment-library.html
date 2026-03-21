@@ -21,10 +21,6 @@ section {
   text-align: center;
 }
 
-h1, h2, h3 {
-  margin-bottom: 20px;
-}
-
 h1 {
   font-size: 48px;
   font-weight: 800;
@@ -36,6 +32,7 @@ p {
   font-size: 18px;
 }
 
+/* GRID */
 .library-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -43,8 +40,9 @@ p {
   margin-top: 40px;
 }
 
+/* BOOK CARD */
 .book-card {
-  padding: 20px;
+  padding: 25px;
   border: 1px solid #222;
   border-radius: 12px;
   cursor: pointer;
@@ -55,13 +53,10 @@ p {
 
 .book-card:hover {
   background: #222;
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
-.library-payment {
-  margin-top: 60px;
-}
-
+/* CTA */
 button.cta {
   padding: 14px 30px;
   background: #fff;
@@ -70,7 +65,6 @@ button.cta {
   font-weight: bold;
   border: none;
   cursor: pointer;
-  transition: 0.3s;
 }
 
 button.cta:hover {
@@ -79,6 +73,7 @@ button.cta:hover {
   border: 1px solid #fff;
 }
 
+/* PAYMENT */
 .payment {
   margin-top: 80px;
   padding: 60px 20px;
@@ -96,6 +91,7 @@ button.cta:hover {
   font-weight: bold;
 }
 
+/* ANIMATION */
 .fade {
   opacity: 0;
   transform: translateY(40px);
@@ -106,34 +102,30 @@ button.cta:hover {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Highlight payment section when trying to access locked book */
-.payment.highlight {
-  border: 2px solid #ff4c4c;
-  box-shadow: 0 0 20px #ff4c4c;
-  transition: all 0.6s ease;
-}
 </style>
 </head>
 
 <body>
 
-<!-- HERO / PREMIUM VAULT -->
-<section class="library">
+<!-- HERO -->
+<section>
   <h1 id="hero-title">Unlock Human Potential</h1>
-  <p>
+
+  <p id="hero-sub">
     This is not a collection of books.<br>
-    This is a structured system designed to reconstruct identity, behavior, and decision-making.
+    This is a system for rebuilding identity, behavior, and decisions.
   </p>
 
+  <!-- BOOK GRID -->
   <div class="library-grid fade">
-    <div class="book-card" onclick="accessBook('alignment-book.html')">Alignment Book</div>
-    <div class="book-card" onclick="accessBook('human-saving-system.html')">Human Saving System</div>
+
+    <div class="book-card" onclick="accessBook('alignment-book.html')">ALIGNMENT</div>
+    <div class="book-card" onclick="accessBook('human-saving-system.html')">The Human Saving System</div>
     <div class="book-card" onclick="accessBook('clarity-over-effort.html')">Clarity Over Effort</div>
     <div class="book-card" onclick="accessBook('identity-precedes-destiny.html')">Identity Precedes Destiny</div>
     <div class="book-card" onclick="accessBook('identity-reconstruction.html')">Identity Reconstruction</div>
     <div class="book-card" onclick="accessBook('modern-dating-power-reset.html')">Modern Dating Power Reset</div>
-    <div class="book-card" onclick="accessBook('relationship-manipulation-immunity.html')">Relationship Manipulation Immunity</div>
+    <div class="book-card" onclick="accessBook('relationship-manipulation-immunity.html')">Relationship Manipation Immunity</div>
     <div class="book-card" onclick="accessBook('rise-within-you.html')">The Rise Within You</div>
     <div class="book-card" onclick="accessBook('the-unheard-prayer.html')">The Unheard Prayer</div>
     <div class="book-card" onclick="accessBook('great-warning-to-humanity.html')">The Great Warning to Humanity</div>
@@ -143,21 +135,50 @@ button.cta:hover {
     <div class="book-card" onclick="accessBook('hidden-truth.html')">The Hidden Truth</div>
     <div class="book-card" onclick="accessBook('source-code-of-human-behavior.html')">Source Code of Human Behavior</div>
     <div class="book-card" onclick="accessBook('owned-faith-principle.html')">The Owned Faith Principle</div>
-    <div class="book-card" onclick="accessBook('miscellaneous.html')">Miscellaneous PDFs</div>
+    <div class="book-card" onclick="accessBook('miscellaneous.html')">Miscellaneous</div>
+
   </div>
 
-  <div class="library-payment fade">
-    <h3>Unlock Full Library Access</h3>
-    <p>Access all books, frameworks, and systems in one place.</p>
-    <button class="cta" onclick="scrollToPayment()">Unlock Library Access</button>
+  <!-- MID CTA -->
+  <div style="margin-top:60px;">
+    <h3>You can explore… but access requires commitment.</h3>
+    <button class="cta" onclick="scrollToPayment()">Unlock Full Library</button>
   </div>
 </section>
 
-<!-- PAYMENT SECTION -->
+<!-- EMOTIONAL ESCALATION -->
+<section class="fade">
+  <h2>Most People Don’t Lack Information</h2>
+  <p>
+    They lack structure.<br><br>
+    They repeat patterns they don’t understand.<br>
+    They feel pressure they cannot explain.<br>
+    They stay… or leave… without clarity.
+  </p>
+</section>
+
+<section class="fade">
+  <h2>This Library Exists For One Reason</h2>
+  <p>
+    To remove confusion.<br><br>
+    To restore judgment.<br>
+    To rebuild identity.
+  </p>
+</section>
+
+<!-- PAYMENT -->
 <section id="payment" class="payment fade">
+
   <h2>Unlock Full Library Access</h2>
-  <p>Access all books, all systems, all frameworks in one place.</p>
-  <p>This is not information. This is transformation.</p>
+
+  <p>
+    Access all books, all systems, all frameworks in one place.
+  </p>
+
+  <p>
+    This is not information.<br>
+    This is transformation.
+  </p>
 
   <a class="btn" href="https://wa.me/260779483121">
     Pay via WhatsApp
@@ -166,52 +187,45 @@ button.cta:hover {
   <a class="btn" href="https://paypal.me/YOUR_LINK">
     Pay via PayPal
   </a>
+
 </section>
 
 <script>
-// ROTATING HERO TITLES
-const heroTitles = [
+
+// ROTATING HEADLINES
+const titles = [
   "Unlock Human Potential",
   "Master Your Identity",
   "Decode Every Behavior"
 ];
-let heroIndex = 0;
-const heroEl = document.getElementById("hero-title");
-setInterval(() => {
-  heroIndex = (heroIndex + 1) % heroTitles.length;
-  heroEl.innerText = heroTitles[heroIndex];
-}, 4000);
 
-// Scroll animations
+let i = 0;
+setInterval(()=>{
+  i = (i+1) % titles.length;
+  document.getElementById("hero-title").innerText = titles[i];
+},4000);
+
+// SCROLL ANIMATION
 const elements = document.querySelectorAll(".fade");
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.classList.add("show"); }
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
   });
 });
 elements.forEach(el=>observer.observe(el));
 
-// PAYMENT LOCK SYSTEM
-let hasPurchased = false; // CHANGE TO TRUE AFTER PAYMENT INTEGRATION
-
+// BOOK NAVIGATION (UPDATED)
 function accessBook(url){
-  if(hasPurchased){
-    window.location.href = url;
-  } else {
-    // Highlight payment section
-    const paymentSection = document.getElementById("payment");
-    paymentSection.classList.add("highlight");
-    paymentSection.scrollIntoView({ behavior: "smooth" });
-
-    // Remove highlight after 2 seconds
-    setTimeout(() => { paymentSection.classList.remove("highlight"); }, 2000);
-  }
+  window.location.href = url;
 }
 
-// Scroll to payment section
+// SCROLL TO PAYMENT
 function scrollToPayment(){
   document.getElementById("payment").scrollIntoView({ behavior: "smooth" });
 }
+
 </script>
 
 </body>
