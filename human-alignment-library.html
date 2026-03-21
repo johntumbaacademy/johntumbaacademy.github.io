@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Human Alignment Library</title>
+<title>Human Alignment Premium Vault</title>
 
 <style>
 body {
@@ -11,6 +11,7 @@ body {
   font-family: Arial, sans-serif;
   background: #000;
   color: #fff;
+  scroll-behavior: smooth;
 }
 
 section {
@@ -20,39 +21,71 @@ section {
   text-align: center;
 }
 
+h1, h2, h3 {
+  margin-bottom: 20px;
+}
+
 h1 {
-  font-size: 40px;
+  font-size: 48px;
+  font-weight: 800;
 }
 
 p {
   color: #aaa;
+  line-height: 1.6;
+  font-size: 18px;
 }
 
-.books {
+.library-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
   margin-top: 40px;
 }
 
-.book {
+.book-card {
   padding: 20px;
   border: 1px solid #222;
   border-radius: 12px;
   cursor: pointer;
+  transition: all 0.3s;
+  background: #111;
+  font-weight: bold;
+}
+
+.book-card:hover {
+  background: #222;
+  transform: translateY(-4px);
+}
+
+.library-payment {
+  margin-top: 60px;
+}
+
+button.cta {
+  padding: 14px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-.book:hover {
-  background: #111;
+button.cta:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .payment {
   margin-top: 80px;
-  padding: 40px;
+  padding: 60px 20px;
   border-top: 1px solid #222;
 }
 
+/* Buttons for payment */
 .btn {
   display: inline-block;
   margin: 10px;
@@ -63,83 +96,102 @@ p {
   border-radius: 30px;
   font-weight: bold;
 }
+
+/* Fade animation */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-  <section class="library">
-
-<h2>The Human Alignment Library</h2>
-
-<p>
-This is not a collection of books.
-<br><br>
-This is a structured system designed to reconstruct identity, behavior, and decision-making.
-</p>
-
-<div class="library-grid">
-
-  <div class="book-card" onclick="goToBook()">Alignment Book</div>
-  <div class="book-card" onclick="goToBook()">Human Saving System</div>
-  <div class="book-card" onclick="goToBook()">Clarity Over Effort</div>
-  <div class="book-card" onclick="goToBook()">Identity Precedes Destiny</div>
-  <div class="book-card" onclick="goToBook()">Identity Reconstruction</div>
-  <div class="book-card" onclick="goToBook()">Modern Power Reset</div>
-  <div class="book-card" onclick="goToBook()">Relationship Manipulation Immunity</div>
-  <div class="book-card" onclick="goToBook()">The Rise Within You</div>
-  <div class="book-card" onclick="goToBook()">The Unheard Prayer</div>
-  <div class="book-card" onclick="goToBook()">The Great Warning to Humanity</div>
-  <div class="book-card" onclick="goToBook()">Sex Is Never Casual</div>
-  <div class="book-card" onclick="goToBook()">Identity Theft of the Human Soul</div>
-  <div class="book-card" onclick="goToBook()">The Enemy Within</div>
-  <div class="book-card" onclick="goToBook()">The Hidden Truth</div>
-  <div class="book-card" onclick="goToBook()">Miscellaneous PDFs</div>
-
-</div>
-
-<div class="library-payment">
-  <h3>Unlock Full Library Access</h3>
-
+<!-- HERO / PREMIUM VAULT -->
+<section class="library">
+  <h1 id="hero-title">Unlock Human Potential</h1>
   <p>
-  Access all books, frameworks, and systems in one place.
+    This is not a collection of books.<br>
+    This is a structured system designed to reconstruct identity, behavior, and decision-making.
   </p>
 
-  <button class="cta" onclick="scrollToPayment()">Unlock Library Access</button>
-</div>
+  <div class="library-grid fade">
+    <div class="book-card" onclick="goToBook('alignment.html')">Alignment Book</div>
+    <div class="book-card" onclick="goToBook('human-saving-system.html')">Human Saving System</div>
+    <div class="book-card" onclick="goToBook('clarity-over-effort.html')">Clarity Over Effort</div>
+    <div class="book-card" onclick="goToBook('identity-precedes-destiny.html')">Identity Precedes Destiny</div>
+    <div class="book-card" onclick="goToBook('identity-reconstruction.html')">Identity Reconstruction</div>
+    <div class="book-card" onclick="goToBook('modern-dating-power-reset.html')">Modern Dating Power Reset</div>
+    <div class="book-card" onclick="goToBook('relationship-manipulation-immunity.html')">Relationship Manipulation Immunity</div>
+    <div class="book-card" onclick="goToBook('rise-within-you.html')">The Rise Within You</div>
+    <div class="book-card" onclick="goToBook('the-unheard-prayer.html')">The Unheard Prayer</div>
+    <div class="book-card" onclick="goToBook('great-warning-to-humanity.html')">The Great Warning to Humanity</div>
+    <div class="book-card" onclick="goToBook('sex-is-never-casual.html')">Sex Is Never Casual</div>
+    <div class="book-card" onclick="goToBook('identity-theft-of-soul.html')">Identity Theft of the Human Soul</div>
+    <div class="book-card" onclick="goToBook('enemy-within.html')">The Enemy Within</div>
+    <div class="book-card" onclick="goToBook('hidden-truth.html')">The Hidden Truth</div>
+    <div class="book-card" onclick="goToBook('miscellaneous.html')">Miscellaneous PDFs</div>
+  </div>
+
+  <div class="library-payment fade">
+    <h3>Unlock Full Library Access</h3>
+    <p>Access all books, frameworks, and systems in one place.</p>
+    <button class="cta" onclick="scrollToPayment()">Unlock Library Access</button>
+  </div>
+</section>
 
 <!-- PAYMENT SECTION -->
-<section id="payment" class="payment">
-
+<section id="payment" class="payment fade">
   <h2>Unlock Full Library Access</h2>
+  <p>Access all books, all systems, all frameworks in one place.</p>
+  <p>This is not information. This is transformation.</p>
 
-  <p>
-    Access all books, all systems, all frameworks in one place.
-  </p>
-
-  <p>
-    This is not information.
-    This is transformation.
-  </p>
-
-  <!-- WHATSAPP -->
   <a class="btn" href="https://wa.me/260779483121">
     Pay via WhatsApp
   </a>
 
-  <!-- PAYPAL -->
   <a class="btn" href="https://paypal.me/YOUR_LINK">
     Pay via PayPal
   </a>
-
 </section>
 
 <script>
-function goToPayment() {
-  document.getElementById("payment").scrollIntoView({
-    behavior: "smooth"
+// ROTATING HERO TITLES
+const heroTitles = [
+  "Unlock Human Potential",
+  "Master Your Identity",
+  "Decode Every Behavior"
+];
+let heroIndex = 0;
+const heroEl = document.getElementById("hero-title");
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroTitles.length;
+  heroEl.innerText = heroTitles[heroIndex];
+}, 4000);
+
+// Scroll animations
+const elements = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add("show"); }
   });
+});
+elements.forEach(el=>observer.observe(el));
+
+// Go to book landing page
+function goToBook(url){
+  window.location.href = url;
+}
+
+// Scroll to payment
+function scrollToPayment(){
+  document.getElementById("payment").scrollIntoView({ behavior: "smooth" });
 }
 </script>
 
