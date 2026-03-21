@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alignment</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 44px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 32px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* FADE ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DIVIDER */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: #fff;
+  margin: 40px auto;
+}
+
+/* TOC STYLE */
+.toc p {
+  margin: 8px 0;
+  color: #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="fade">
+  <h1>Most Relationship Pain Is Not Caused by Love</h1>
+  <p>It is caused by confusion.</p>
+</section>
+
+<!-- BREAKDOWN -->
+<section class="fade">
+  <h2>You Don’t Need Another Relationship Book</h2>
+  <p>
+    You don’t need more advice.
+    <br><br>
+    You don’t need to communicate better.
+    <br><br>
+    You don’t need to love harder.
+    <br><br>
+    You need clarity.
+  </p>
+</section>
+
+<!-- REVELATION -->
+<section class="fade">
+  <h2>This Is What ALIGNMENT Does</h2>
+  <p>
+    It replaces guessing with a standard.
+    <br><br>
+    It shows you what to do when clarity appears.
+    <br><br>
+    It removes panic, guilt, and self-betrayal.
+  </p>
+</section>
+
+<!-- AUTHORITY -->
+<section class="fade">
+  <h2>This Is Not About Fixing People</h2>
+  <p>
+    This system teaches you how to:
+    <br><br>
+    End confusion early<br>
+    Prevent emotional damage<br>
+    Choose peace before attachment<br>
+    Exit without destruction<br>
+    Commit only when order already exists
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- STRUCTURED REVELATION (TOC) -->
+<section class="fade toc">
+  <h2>This Is A System — Not A Book</h2>
+  
+  <p>Clarity Arrives Early</p>
+  <p>Delay Is the Damage</p>
+  <p>Attachment vs Alignment</p>
+  <p>Chaos Resists Structure</p>
+  <p>Forgiveness Without Accountability</p>
+  <p>The Body Knows First</p>
+  <p>Facts Before Feelings</p>
+  <p>Responsibility Without Intimacy</p>
+  <p>Silence, Boundaries, and Containment</p>
+  <p>Marriage Does Not Create Order</p>
+  <p>Respect Comes Before Love</p>
+  <p>Peace Is the First Filter</p>
+  <p>Clean Exits</p>
+  <p>Self-Forgiveness Through Correction</p>
+  <p>The Partner Selection Doctrine</p>
+  <p>Courtship Without Self-Betrayal</p>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHO IT'S FOR -->
+<section class="fade">
+  <h2>This Is For You If</h2>
+  <p>
+    You stayed too long<br>
+    You forgave too much<br>
+    You feel calm alone but anxious in relationships<br>
+    You are tired of explaining boundaries<br>
+    You want peace — not emotional chaos
+  </p>
+</section>
+
+<!-- FINAL SHIFT -->
+<section class="fade">
+  <h2>This Will Feel Like Relief</h2>
+  <p>
+    If you are done guessing…<br>
+    If you are done negotiating your peace…<br>
+    If you are done betraying clarity for attachment…
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="fade">
+  <h2>ALIGNMENT</h2>
+  <p>The Human Saving System for Love, Commitment, and Peace</p>
+
+  <a href="index.html#library" class="cta">
+    Return to Library Access
+  </a>
+</section>
+
+<script>
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+  </html>
