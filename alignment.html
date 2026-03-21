@@ -247,8 +247,18 @@ var headlines = [
 "The Psychology of Attraction Most Men Never Learn"
 ];
 
-var randomHeadline = headlines[Math.floor(Math.random()*headlines.length)];
-document.querySelector(".hero-title").innerText = randomHeadline;
+var headlines = [
+"Stop Chasing. Start Decoding.",
+"The Psychology of Attraction Most Men Never Learn",
+"Decode Human Behavior"
+];
 
+let index = 0;
+const title = document.querySelector(".hero-title");
+
+setInterval(() => {
+  index = (index + 1) % headlines.length;
+  title.innerText = headlines[index];
+}, 4000);
 </body>
   </html>
