@@ -85,7 +85,6 @@ button.cta:hover {
   border-top: 1px solid #222;
 }
 
-/* Buttons for payment */
 .btn {
   display: inline-block;
   margin: 10px;
@@ -97,7 +96,6 @@ button.cta:hover {
   font-weight: bold;
 }
 
-/* Fade animation */
 .fade {
   opacity: 0;
   transform: translateY(40px);
@@ -107,6 +105,13 @@ button.cta:hover {
 .fade.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Highlight payment section when trying to access locked book */
+.payment.highlight {
+  border: 2px solid #ff4c4c;
+  box-shadow: 0 0 20px #ff4c4c;
+  transition: all 0.6s ease;
 }
 </style>
 </head>
@@ -122,21 +127,23 @@ button.cta:hover {
   </p>
 
   <div class="library-grid fade">
-    <div class="book-card" onclick="goToBook('alignment.html')">Alignment Book</div>
-    <div class="book-card" onclick="goToBook('human-saving-system.html')">Human Saving System</div>
-    <div class="book-card" onclick="goToBook('clarity-over-effort.html')">Clarity Over Effort</div>
-    <div class="book-card" onclick="goToBook('identity-precedes-destiny.html')">Identity Precedes Destiny</div>
-    <div class="book-card" onclick="goToBook('identity-reconstruction.html')">Identity Reconstruction</div>
-    <div class="book-card" onclick="goToBook('modern-dating-power-reset.html')">Modern Dating Power Reset</div>
-    <div class="book-card" onclick="goToBook('relationship-manipulation-immunity.html')">Relationship Manipulation Immunity</div>
-    <div class="book-card" onclick="goToBook('rise-within-you.html')">The Rise Within You</div>
-    <div class="book-card" onclick="goToBook('the-unheard-prayer.html')">The Unheard Prayer</div>
-    <div class="book-card" onclick="goToBook('great-warning-to-humanity.html')">The Great Warning to Humanity</div>
-    <div class="book-card" onclick="goToBook('sex-is-never-casual.html')">Sex Is Never Casual</div>
-    <div class="book-card" onclick="goToBook('identity-theft-of-soul.html')">Identity Theft of the Human Soul</div>
-    <div class="book-card" onclick="goToBook('enemy-within.html')">The Enemy Within</div>
-    <div class="book-card" onclick="goToBook('hidden-truth.html')">The Hidden Truth</div>
-    <div class="book-card" onclick="goToBook('miscellaneous.html')">Miscellaneous PDFs</div>
+    <div class="book-card" onclick="accessBook('alignment.html')">Alignment Book</div>
+    <div class="book-card" onclick="accessBook('human-saving-system.html')">Human Saving System</div>
+    <div class="book-card" onclick="accessBook('clarity-over-effort.html')">Clarity Over Effort</div>
+    <div class="book-card" onclick="accessBook('identity-precedes-destiny.html')">Identity Precedes Destiny</div>
+    <div class="book-card" onclick="accessBook('identity-reconstruction.html')">Identity Reconstruction</div>
+    <div class="book-card" onclick="accessBook('modern-dating-power-reset.html')">Modern Dating Power Reset</div>
+    <div class="book-card" onclick="accessBook('relationship-manipulation-immunity.html')">Relationship Manipulation Immunity</div>
+    <div class="book-card" onclick="accessBook('rise-within-you.html')">The Rise Within You</div>
+    <div class="book-card" onclick="accessBook('the-unheard-prayer.html')">The Unheard Prayer</div>
+    <div class="book-card" onclick="accessBook('great-warning-to-humanity.html')">The Great Warning to Humanity</div>
+    <div class="book-card" onclick="accessBook('sex-is-never-casual.html')">Sex Is Never Casual</div>
+    <div class="book-card" onclick="accessBook('identity-theft-of-soul.html')">Identity Theft of the Human Soul</div>
+    <div class="book-card" onclick="accessBook('enemy-within.html')">The Enemy Within</div>
+    <div class="book-card" onclick="accessBook('hidden-truth.html')">The Hidden Truth</div>
+    <div class="book-card" onclick="accessBook('source-code-of-human-behavior.html')">Source Code of Human Behavior</div>
+    <div class="book-card" onclick="accessBook('owned-faith-principle.html')">The Owned Faith Principle</div>
+    <div class="book-card" onclick="accessBook('miscellaneous.html')">Miscellaneous PDFs</div>
   </div>
 
   <div class="library-payment fade">
@@ -184,12 +191,24 @@ const observer = new IntersectionObserver(entries=>{
 });
 elements.forEach(el=>observer.observe(el));
 
-// Go to book landing page
-function goToBook(url){
-  window.location.href = url;
+// PAYMENT LOCK SYSTEM
+let hasPurchased = false; // CHANGE TO TRUE AFTER PAYMENT INTEGRATION
+
+function accessBook(url){
+  if(hasPurchased){
+    window.location.href = url;
+  } else {
+    // Highlight payment section
+    const paymentSection = document.getElementById("payment");
+    paymentSection.classList.add("highlight");
+    paymentSection.scrollIntoView({ behavior: "smooth" });
+
+    // Remove highlight after 2 seconds
+    setTimeout(() => { paymentSection.classList.remove("highlight"); }, 2000);
+  }
 }
 
-// Scroll to payment
+// Scroll to payment section
 function scrollToPayment(){
   document.getElementById("payment").scrollIntoView({ behavior: "smooth" });
 }
