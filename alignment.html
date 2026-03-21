@@ -242,9 +242,13 @@ elements.forEach(el=>observer.observe(el));
 function openModal(){ document.getElementById("purchaseModal").style.display="block"; }
 function closeModal(){ document.getElementById("purchaseModal").style.display="none"; }
 
-var headlines = ["Stop Chasing. Start Decoding.","The Psychology of Attraction Most Men Never Learn"];
-document.querySelector(".hero-title").innerText = headlines[Math.floor(Math.random()*headlines.length)];
-</script>
+var headlines = [
+"Stop Chasing. Start Decoding.",
+"The Psychology of Attraction Most Men Never Learn"
+];
+
+var randomHeadline = headlines[Math.floor(Math.random()*headlines.length)];
+document.querySelector(".hero-title").innerText = randomHeadline;
 
 </body>
   </html>
