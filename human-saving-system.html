@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Human Saving System</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 44px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 16px 32px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* DIVIDER */
+.divider {
+  width: 60px;
+  height: 2px;
+  background: #fff;
+  margin: 40px auto;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="fade">
+  <h1>You Are Not Weak</h1>
+  <p>You are navigating reality without a map.</p>
+</section>
+
+<!-- PRESSURE REALITY -->
+<section class="fade">
+  <h2>This Is Where Most People Break</h2>
+  <p>
+    Love exists.<br>
+    But stability doesn’t.<br><br>
+
+    Responsibility exists.<br>
+    But clarity doesn’t.<br><br>
+
+    Children exist.<br>
+    Money exists.<br>
+    History exists.<br><br>
+
+    And no one teaches you how to think when all of it collides.
+  </p>
+</section>
+
+<!-- SYSTEM INTRO -->
+<section class="fade">
+  <h2>This Book Exists For One Reason</h2>
+  <p>
+    Not to tell you to leave.<br>
+    Not to tell you to stay.<br><br>
+
+    But to restore your ability to decide — correctly.
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT IT IS -->
+<section class="fade">
+  <h2>This Is Not A Relationship Book</h2>
+  <p>
+    It is a human decision framework.<br><br>
+
+    Built for people who:<br><br>
+
+    Cannot leave immediately<br>
+    Cannot stay blindly<br>
+    Cannot afford emotional or financial collapse<br>
+    Cannot risk destroying their children’s stability<br>
+    Cannot keep losing themselves
+  </p>
+</section>
+
+<!-- WHAT IT DOES -->
+<section class="fade">
+  <h2>What This System Does</h2>
+  <p>
+    Stabilize before deciding<br>
+    Recognize patterns without panic<br>
+    Stay without self-destruction<br>
+    Exit without destroying your future<br>
+    Rebuild judgment after pressure
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- INTRO DEPTH -->
+<section class="fade">
+  <h2>Most People Are Not Destroyed By Cruelty</h2>
+  <p>
+    They are destroyed by confusion that lasts too long.<br><br>
+
+    This book was written because intelligent people
+    are living inside complex situations —<br><br>
+
+    where hope and evidence conflict,<br>
+    and no system exists to guide them.
+  </p>
+</section>
+
+<!-- AUTHORITY -->
+<section class="fade">
+  <h2>This Book Will Not Ask You To Be Brave</h2>
+  <p>
+    It will ask you to be accurate.<br><br>
+
+    Because accuracy restores power faster than emotion ever will.
+  </p>
+</section>
+
+<div class="divider"></div>
+
+<!-- DEDICATION STYLE -->
+<section class="fade">
+  <h2>This Is For You</h2>
+  <p>
+    If you stayed longer than you should have<br>
+    because responsibility was heavier than freedom.<br><br>
+
+    If you left and wondered if you destroyed everything —<br>
+    when in reality, you saved yourself.<br><br>
+
+    If you are still deciding.<br><br>
+
+    This is your map.
+  </p>
+</section>
+
+<!-- FINAL SHIFT -->
+<section class="fade">
+  <h2>This Will Not Rush You</h2>
+  <p>
+    It will not pressure you.<br><br>
+
+    It will ensure that whatever you decide —<br>
+    you decide as yourself.
+  </p>
+</section>
+
+<!-- CTA -->
+<section class="fade">
+  <h2>The Human Saving System</h2>
+  <p>How to Stay, Leave, or Rebuild Without Losing Yourself</p>
+
+  <a href="index.html#library" class="cta">
+    Return to Library Access
+  </a>
+</section>
+
+<script>
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
