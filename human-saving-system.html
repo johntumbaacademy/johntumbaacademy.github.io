@@ -232,16 +232,18 @@ you must start with alignment.
   </p>
 
   <div style="margin-top:30px;">
+    
+  <a href="#" class="cta" onclick="accessBook('alignment-book.html')">
+  Apply It Through Alignment
+</a><br>
 
-    <a href="alignment-book.html" class="cta">Read ALIGNMENT</a><br><br>
+<a href="#" class="cta" onclick="accessBook('human-saving-system.html')">
+  Use It In Real Decisions
+</a><br>
 
-    <a href="human-saving-system.html" class="cta">The Human Saving System</a><br><br>
-
-    <a href="identity-reconstruction.html" class="cta">Identity Reconstruction</a><br><br>
-
-    <a href="destiny-pathfinder.html" class="cta">Destiny Pathfinder</a>
-
-  </div>
+<a href="#" class="cta" onclick="accessBook('great-warning-to-humanity.html')">
+  See What Happens Without It
+</a>
 </section>
 <script>
 // SCROLL ANIMATION
@@ -288,5 +290,25 @@ window.onload = function(){
   }
 }
 </script>
+  <script>
+function accessBook(url){
+  const state = getUserState('user_state'); // read what the user clicked in Step 2
+  setUserState('last_book', url);          // remember the last book they tried to open
+
+  // decide where to go
+  if(state === "confused"){
+    window.location.href = "human-saving-system.html";
+  }
+  else if(state === "stuck"){
+    window.location.href = "alignment-book.html";
+  }
+  else if(state === "rebuilding"){
+    window.location.href = "identity-reconstruction.html";
+  }
+  else{
+    window.location.href = url; // if stable, go to the book they clicked
+  }
+}
+  </script>
 </body>
 </html>
