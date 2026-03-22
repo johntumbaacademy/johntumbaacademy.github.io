@@ -184,20 +184,17 @@ Most people read this… and return to reacting instead of understanding.
     But without structure… clarity collapses under pressure.
   </p>
 
-  <a href="alignment-book.html" class="cta"
-  onclick="localStorage.setItem('entryType','alignment')">
+  <a href="#" class="cta" onclick="accessBook('alignment-book.html')">
   Apply It Through Alignment
-  </a><br>
+</a><br>
 
-  <a href="human-saving-system.html" class="cta"
-  onclick="localStorage.setItem('entryType','pressure')">
+<a href="#" class="cta" onclick="accessBook('human-saving-system.html')">
   Use It In Real Decisions
-  </a><br>
+</a><br>
 
-  <a href="great-warning-to-humanity.html" class="cta"
-  onclick="localStorage.setItem('entryType','warning')">
+<a href="#" class="cta" onclick="accessBook('great-warning-to-humanity.html')">
   See What Happens Without It
-  </a>
+</a>
 </section>
 
 <!-- FINAL CTA -->
@@ -291,5 +288,25 @@ window.onload = function(){
   }
 }
 </script>
+  <script>
+function accessBook(url){
+  const state = getUserState('user_state'); // read what the user clicked in Step 2
+  setUserState('last_book', url);          // remember the last book they tried to open
+
+  // decide where to go
+  if(state === "confused"){
+    window.location.href = "human-saving-system.html";
+  }
+  else if(state === "stuck"){
+    window.location.href = "alignment-book.html";
+  }
+  else if(state === "rebuilding"){
+    window.location.href = "identity-reconstruction.html";
+  }
+  else{
+    window.location.href = url; // if stable, go to the book they clicked
+  }
+}
+  </script>
 </body>
 </html>
