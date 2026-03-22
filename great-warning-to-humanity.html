@@ -247,5 +247,29 @@ window.onload = function(){
   }
 }
   </script>
+  <script>
+function accessBook(url){
+  // read the user state from memory
+  const state = getUserState('user_state');
+
+  // remember which book they tried to open
+  setUserState('last_book', url);
+
+  // choose the right book depending on their state
+  if(state === "confused"){
+    window.location.href = "human-saving-system.html";
+  }
+  else if(state === "stuck"){
+    window.location.href = "alignment-book.html";
+  }
+  else if(state === "rebuilding"){
+    window.location.href = "identity-reconstruction.html";
+  }
+  else{
+    // if they are stable or state not set, go to the book they clicked
+    window.location.href = url;
+  }
+}
+  </script>
 </body>
 </html>
