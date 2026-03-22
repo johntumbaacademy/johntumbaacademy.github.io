@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Owned Faith Principle</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 26px; }
+
+p {
+  color: #aaa;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 14px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CROSS LINKS */
+.cross-links {
+  margin-top: 60px;
+}
+
+.cross-links a {
+  display: block;
+  color: #ccc;
+  margin: 10px 0;
+  text-decoration: none;
+}
+
+.cross-links a:hover {
+  color: #fff;
+}
+
+/* PERSONALIZATION */
+.highlight {
+  color: #fff;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="fade">
+  <h1 id="hook">Faith Is Not What You Say. It Is What Holds You.</h1>
+  <p id="personal-line">
+    Most people don’t lose stability because life is hard…  
+    they lose it because their peace depends on outcomes.
+  </p>
+</section>
+
+<!-- ESCALATION 1 -->
+<section class="fade">
+  <h2>The Hidden Instability</h2>
+  <p>
+    You can believe strongly…  
+    and still collapse when uncertainty appears.
+    <br><br>
+    You can pray…  
+    and still panic when results delay.
+    <br><br>
+    Because belief is not the same as stability.
+  </p>
+</section>
+
+<!-- ESCALATION 2 -->
+<section class="fade">
+  <h2>The Real Problem</h2>
+  <p>
+    Most people are not lacking faith.
+    <br><br>
+    They are relying on borrowed faith.
+    <br><br>
+    Words they were taught.  
+    Stories they heard.  
+    Ideas they never internalized.
+    <br><br>
+    And when life becomes unpredictable…  
+    borrowed faith cannot hold them steady.
+  </p>
+</section>
+
+<!-- ESCALATION 3 -->
+<section class="fade">
+  <h2>The Shift</h2>
+  <p>
+    Owned Faith is not hoping life will be easy.
+    <br><br>
+    <span class="highlight">
+    It is remaining stable while life is uncertain.
+    </span>
+  </p>
+</section>
+
+<!-- DOCTRINE -->
+<section class="fade">
+  <h2>What This Book Installs</h2>
+  <p>
+    This is not inspiration.
+    <br><br>
+    This is a stability system.
+    <br><br>
+    Inside, you will learn how to:
+    <br><br>
+    Anchor your mind when outcomes are unclear  
+    Separate belief from emotional dependency  
+    Build internal certainty without external proof  
+    Maintain clarity under pressure  
+    Act without inner collapse  
+  </p>
+</section>
+
+<!-- IDENTITY STRIKE -->
+<section class="fade">
+  <h2>This Is Where Most People Break</h2>
+  <p>
+    When life becomes uncertain…  
+    their mind searches for guarantees.
+    <br><br>
+    When guarantees don’t appear…  
+    they panic.
+    <br><br>
+    Not because life failed…
+    <br><br>
+    But because their stability depended on outcomes.
+  </p>
+</section>
+
+<!-- RESOLUTION -->
+<section class="fade">
+  <h2>What Changes After This</h2>
+  <p>
+    You still plan.  
+    You still work.  
+    You still care.
+    <br><br>
+    But your peace is no longer fragile.
+    <br><br>
+    You become steady.
+    <br><br>
+    And once the mind is stable…  
+    judgment improves.
+  </p>
+</section>
+
+<!-- CROSS LINKING -->
+<section class="fade cross-links">
+  <h2>Continue The System</h2>
+
+  <a href="alignment-book.html">
+    → ALIGNMENT — When clarity replaces confusion
+  </a>
+
+  <a href="human-saving-system.html">
+    → HUMAN SAVING SYSTEM — When pressure requires structure
+  </a>
+
+  <a href="source-code-of-human-behavior.html">
+    → SOURCE CODE — When patterns must be understood
+  </a>
+
+  <a href="great-warning-to-humanity.html">
+    → GREAT WARNING — When consequences become real
+  </a>
+</section>
+
+<!-- FINAL PRESSURE -->
+<section class="fade">
+  <h2>You Already Know Which One You Are</h2>
+  <p>
+    The one who collapses when life is uncertain…
+    <br><br>
+    or the one who remains stable.
+    <br><br>
+    This book does not convince you.
+    <br><br>
+    It reveals you.
+  </p>
+
+  <a href="index.html#payment" class="cta">
+    Unlock Full Library Access
+  </a>
+</section>
+
+<script>
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+
+// PERSONALIZATION
+const hooks = [
+  "Faith Is Not What You Say. It Is What Holds You.",
+  "Your Stability Is Being Tested By Uncertainty",
+  "Most People Collapse When Outcomes Delay"
+];
+
+let i = 0;
+setInterval(() => {
+  i = (i + 1) % hooks.length;
+  document.getElementById("hook").innerText = hooks[i];
+}, 4000);
+</script>
+
+</body>
+  </html>
