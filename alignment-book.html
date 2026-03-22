@@ -222,6 +222,15 @@ const observer = new IntersectionObserver(entries => {
 
 elements.forEach(el => observer.observe(el));
 </script>
+<script>
+// ===== USER STATE (BRAIN) =====
+function setUserState(key, value){
+  localStorage.setItem(key, value);
+}
 
+function getUserState(key){
+  return localStorage.getItem(key);
+}
+</script>
 </body>
   </html>
