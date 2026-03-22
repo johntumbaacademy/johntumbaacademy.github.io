@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Great Warning to Humanity</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 14px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.cta:hover {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+/* FADE ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PRESSURE SECTION */
+.warning {
+  color: #ff4c4c;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOOK -->
+<section class="fade">
+  <h1>Most People Do Not Lose Their Future Suddenly</h1>
+  <p>
+    They lose it quietly.<br><br>
+    Through ignored judgment… delayed decisions… and small compromises repeated over time.
+  </p>
+</section>
+
+<!-- COLLAPSE -->
+<section class="fade">
+  <h2>The Collapse Is Never Loud</h2>
+  <p>
+    It does not begin with disaster.<br><br>
+    It begins with tolerance.<br>
+    Tolerance of what should have been corrected early.<br><br>
+    By the time consequences appear…<br>
+    they feel sudden — but they are not.
+  </p>
+</section>
+
+<!-- INTELLIGENCE FAILURE -->
+<section class="fade">
+  <h2>Intelligence Does Not Protect You</h2>
+  <p>
+    Many intelligent people still destroy their future.<br><br>
+    Not because they lack knowledge…<br>
+    but because judgment collapses under pressure.<br><br>
+    Desire rewrites logic.<br>
+    Emotion overrides clarity.<br>
+    Delay replaces decision.
+  </p>
+</section>
+
+<!-- AUTHORITY -->
+<section class="fade">
+  <h2>This Is Not Motivation</h2>
+  <p>
+    This is not a book to make you feel better.<br><br>
+    This is a manual.<br><br>
+    A system designed to restore judgment<br>
+    before consequences become irreversible.
+  </p>
+</section>
+
+<!-- CONTROLLED EXPOSURE -->
+<section class="fade">
+  <h2>Inside This Book, You Will Confront</h2>
+  <p>
+    • How desire quietly overrides discipline<br>
+    • Why delay is the beginning of loss<br>
+    • How pressure exposes your real decision patterns<br>
+    • Why intelligence fails without structure<br>
+    • How to exit situations before damage becomes permanent
+  </p>
+</section>
+
+<!-- CREATOR TONE -->
+<section class="fade">
+  <h2>The Warning Was Always There</h2>
+  <p>
+    Reality does not shout.<br><br>
+    It signals… waits… and then enforces.<br><br>
+    <span class="warning">
+    Consequences do not negotiate.
+    </span><br><br>
+    They arrive exactly where judgment was abandoned.
+  </p>
+</section>
+
+<!-- URGENCY -->
+<section class="fade">
+  <h2>You Are Still Early — For Now</h2>
+  <p>
+    Most people realize too late.<br><br>
+    Not because the signs were hidden…<br>
+    but because they were ignored.<br><br>
+    You are reading this before that point.<br><br>
+    That is your advantage.
+  </p>
+</section>
+
+<!-- FINAL DECISION -->
+<section class="fade">
+  <h2>You Now Have Two Options</h2>
+  <p>
+    Continue without structure…<br>
+    and learn through consequence.<br><br>
+    Or return, and install clarity before pressure decides for you.
+  </p>
+
+  <a href="index.html#library" class="cta">
+    Return to Library Access
+  </a>
+</section>
+
+<script>
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+
+elements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
