@@ -158,17 +158,18 @@ h1, h2 {
 <div class="section">
     <h2>Access</h2>
     <p class="price">ZMW 950</p>
+
     <p style="text-align:center; color:#ff3b3b; font-weight:bold;">
-⚠️ Only <span id="slots">7</span> slots left
+        ⚠️ Only <span id="slots">7</span> slots left
     </p>
 
     <!-- PAYPAL BUTTON -->
     <div id="paypal-button-container"></div>
 
-    <!-- WHATSAPP FALLBACK -->
+    <!-- WHATSAPP -->
     <div style="text-align:center;">
         <a href="https://wa.me/260XXXXXXXXX?text=DOMINATE.%20My%20exam%20is%20in:%20___%20hours.%20My%20biggest%20problem%20is:%20___" class="button">
-DM DOMINATE
+            DM DOMINATE
         </a>
     </div>
 </div>
@@ -187,7 +188,10 @@ DM DOMINATE
 
 </div>
 
+<!-- ================= SCRIPTS ================= -->
+
 <script>
+/* ===== TIMER (RESET-PROOF) ===== */
 let storedDeadline = localStorage.getItem("deadline");
 
 if (!storedDeadline) {
@@ -198,34 +202,75 @@ if (!storedDeadline) {
 
 let deadline = parseInt(storedDeadline);
 
-let x = setInterval(function() {
+setInterval(function() {
     let now = new Date().getTime();
     let distance = deadline - now;
 
-    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    let seconds = Math.floor((distance % (1000*60)) / 1000);
 
     document.getElementById("countdown").innerHTML =
         hours + "h " + minutes + "m " + seconds + "s";
 
     if (distance < 0) {
-        clearInterval(x);
         document.getElementById("countdown").innerHTML = "CLOSED";
     }
 }, 1000);
-</script>
-<script>
+
+
+/* ===== DYNAMIC SLOTS SYSTEM ===== */
 let slots = localStorage.getItem("slots");
+let lastVisit = localStorage.getItem("lastVisit");
 
 if (!slots) {
-    slots = 7;
+    slots = Math.floor(Math.random() * 3) + 5; // 5–7
     localStorage.setItem("slots", slots);
 }
 
+let now = new Date().getTime();
+
+if (lastVisit) {
+    let minutesPassed = Math.floor((now - lastVisit) / 60000);
+
+    if (minutesPassed > 0 && slots > 1) {
+        slots = Math.max(1, slots - minutesPassed);
+        localStorage.setItem("slots", slots);
+    }
+}
+
+localStorage.setItem("lastVisit", now);
+
 document.getElementById("slots").innerText = slots;
+
+
+/* ===== PAYPAL BUTTON ===== */
+paypal.Buttons({
+
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: { value: '50.00' }
+            }]
+        });
+    },
+
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+
+            let slots = localStorage.getItem("slots");
+            if (slots > 0) {
+                slots--;
+                localStorage.setItem("slots", slots);
+            }
+
+            window.location.href = "https://wa.me/260XXXXXXXXX?text=I%20PAID";
+        });
+    }
+
+}).render('#paypal-button-container');
+
 </script>
 
-</body>
 </body>
 </html>
