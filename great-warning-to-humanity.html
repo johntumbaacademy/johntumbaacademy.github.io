@@ -85,7 +85,21 @@ p {
     Through ignored judgment… delayed decisions… and small compromises repeated over time.
   </p>
 </section>
+<section style="margin-top:40px;">
+  <h3>Where are you right now?</h3>
 
+  <button onclick="setPath('confused')">I feel confused</button>
+  <button onclick="setPath('stuck')">I feel stuck</button>
+  <button onclick="setPath('rebuilding')">I am rebuilding</button>
+  <button onclick="setPath('stable')">I want stability</button>
+</section>
+
+<script>
+function setPath(state){
+  setUserState('user_state', state);
+  alert("Path updated: " + state);
+}
+</script>
 <!-- COLLAPSE -->
 <section class="fade">
   <h2>The Collapse Is Never Loud</h2>
