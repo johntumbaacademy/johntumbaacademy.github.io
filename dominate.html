@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>40-Hour Exam Domination Protocol</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0b0b0b;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.hero {
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    color: #ff3b3b;
+    font-size: 34px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 20px;
+    background: #ff3b3b;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.section {
+    margin-top: 50px;
+}
+
+.box {
+    background: #141414;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 4px solid #ff3b3b;
+}
+
+.highlight {
+    color: #ff3b3b;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 30px;
+    color: #00ffae;
+    text-align: center;
+}
+
+.testimonial {
+    background: #111;
+    padding: 15px;
+    margin-top: 15px;
+    border-left: 3px solid #00ffae;
+}
+
+.timer {
+    text-align: center;
+    font-size: 28px;
+    color: #ff3b3b;
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #777;
+}
+</style>
+
+<!-- PayPal SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+    <h1>40-Hour Exam Domination Protocol</h1>
+    <p style="text-align:center;">Only for students who want control under pressure.</p>
+</div>
+
+<!-- TIMER -->
+<div class="section">
+    <h2>Execution Window Closing In:</h2>
+    <div class="timer" id="countdown">Loading...</div>
+</div>
+
+<!-- PAIN -->
+<div class="section">
+    <h2>You Already Feel It</h2>
+    <div class="box">
+        <p>Confusion. Overwhelm. Re-reading without direction.</p>
+        <p><span class="highlight">That is not lack of effort. That is lack of control.</span></p>
+    </div>
+</div>
+
+<!-- MECHANISM -->
+<div class="section">
+    <h2>This Changes Everything</h2>
+    <div class="box">
+        <p>This is NOT a study guide.</p>
+        <p>This is a <span class="highlight">decision system</span>.</p>
+        <p>What to study. What to ignore. When to stop.</p>
+        <p>No guessing. No wasted time.</p>
+    </div>
+</div>
+
+<!-- OUTCOME -->
+<div class="section">
+    <h2>After This</h2>
+    <div class="box">
+        <p>• You enter exams structured</p>
+        <p>• You stop panic cycles</p>
+        <p>• You execute under pressure</p>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section">
+    <h2>Proof</h2>
+
+    <div class="testimonial">
+        “I studied less but scored higher. This removed all confusion.” — Student A
+    </div>
+
+    <div class="testimonial">
+        “I stopped panicking completely. I knew exactly what to do.” — Student B
+    </div>
+
+    <div class="testimonial">
+        “This is not motivation. It’s control.” — Student C
+    </div>
+</div>
+
+<!-- OFFER -->
+<div class="section">
+    <h2>Access</h2>
+    <p class="price">ZMW 950</p>
+
+    <!-- PAYPAL BUTTON -->
+    <div id="paypal-button-container"></div>
+
+    <!-- WHATSAPP FALLBACK -->
+    <div style="text-align:center;">
+        <a href="https://wa.me/260XXXXXXXXX?text=DOMINATE" class="button">Or DM DOMINATE</a>
+    </div>
+</div>
+
+<!-- FINAL -->
+<div class="section">
+    <div class="box">
+        <p>Clarity removed panic.</p>
+        <p><span class="highlight">This determines if you dominate or repeat.</span></p>
+    </div>
+</div>
+
+<div class="footer">
+    Only for serious students.
+</div>
+
+</div>
+
+<script>
+// COUNTDOWN TIMER (24 HOURS)
+let deadline = new Date().getTime() + (24 * 60 * 60 * 1000);
+
+let x = setInterval(function() {
+    let now = new Date().getTime();
+    let distance = deadline - now;
+
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        hours + "h " + minutes + "m " + seconds + "s ";
+
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "CLOSED";
+    }
+}, 1000);
+
+// PAYPAL BUTTON
+paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '50.00' // adjust equivalent of ZMW 950
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            window.location.href = "https://wa.me/260XXXXXXXXX?text=PAID";
+        });
+    }
+}).render('#paypal-button-container');
+
+</script>
+
+</body>
+</html>
