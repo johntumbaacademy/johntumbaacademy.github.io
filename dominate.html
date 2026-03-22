@@ -215,6 +215,17 @@ let x = setInterval(function() {
     }
 }, 1000);
 </script>
+<script>
+let slots = localStorage.getItem("slots");
 
+if (!slots) {
+    slots = 7;
+    localStorage.setItem("slots", slots);
+}
+
+document.getElementById("slots").innerText = slots;
+</script>
+
+</body>
 </body>
 </html>
