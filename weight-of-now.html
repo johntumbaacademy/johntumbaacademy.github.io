@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Weight of Now</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 28px; margin-top:20px; }
+
+p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOOK -->
+<section class="fade">
+  <h1>You Are Not Overwhelmed</h1>
+  <h2>You Are Carrying Time Incorrectly</h2>
+
+  <p id="dynamic-message" style="color:#ff4c4c;"></p>
+
+  <p>
+    Most people are not free.<br><br>
+    They carry the weight of yesterday<br>
+    and the fear of tomorrow—<br><br>
+    while neglecting the only place they have control:
+    <strong>now.</strong>
+  </p>
+
+  <p id="pressure-line" style="color:#ff4c4c; margin-top:20px;"></p>
+</section>
+
+<!-- USER STATE -->
+<section>
+  <h3>Where are you right now?</h3>
+
+  <button onclick="setPath('confused')">I feel confused</button>
+  <button onclick="setPath('stuck')">I feel stuck</button>
+  <button onclick="setPath('rebuilding')">I am rebuilding</button>
+  <button onclick="setPath('stable')">I want stability</button>
+</section>
+
+<!-- RECOGNITION -->
+<section class="fade">
+  <h2>The Problem Is Not Your Life</h2>
+  <p>
+    It is where your attention lives.<br><br>
+    Replaying what cannot change.<br>
+    Anticipating what you cannot control.<br><br>
+    While neglecting what requires action now.
+  </p>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="fade">
+  <h2>The Present Is Not A Moment</h2>
+  <p>
+    It is a responsibility.<br><br>
+    Pain becomes instruction.<br>
+    Stress becomes direction.<br>
+    Uncertainty becomes discipline.
+  </p>
+</section>
+
+<!-- AUTHORITY -->
+<section class="fade">
+  <h2>If Pressure Does Not Refine You</h2>
+  <p style="color:#ff4c4c;">
+    It will break you.
+  </p>
+</section>
+
+<!-- SYSTEM TITLE -->
+<section class="fade">
+  <h2>THE BURDEN OF TIME</h2>
+  <p>
+    Why your past and future are destroying your present.
+  </p>
+</section>
+
+<!-- UNIVERSAL LAWS -->
+<section class="fade">
+  <h2>This Is Not Opinion</h2>
+
+  <p><strong>Reality already follows structure:</strong><br>
+  Cause produces effect.<br>
+  Energy transforms.<br>
+  Repetition creates outcomes.</p>
+
+  <p><strong>But reality is not comfortable:</strong><br>
+  The future is uncertain.<br>
+  Consequences delay.<br>
+  Pressure reveals weakness.</p>
+
+  <p style="color:#ff4c4c;"><strong>And reality does not negotiate:</strong><br>
+  You are responsible.<br>
+  Some decisions cannot be reversed.<br>
+  Misalignment collapses.</p>
+</section>
+
+<!-- WHAT YOU LEARN -->
+<section class="fade">
+  <h2>This Book Installs</h2>
+  <p>
+    • Converting stress into clarity<br>
+    • Using pain without reliving it<br>
+    • Acting correctly under uncertainty<br>
+    • Discipline under pressure<br>
+    • Emotional control in decision making
+  </p>
+</section>
+
+<!-- CROSS LINK -->
+<section class="fade">
+  <h2>Continue The System</h2>
+
+  <a href="#" class="cta" onclick="accessBook('source-code.html')">
+    See Reality Clearly
+  </a><br>
+
+  <a href="#" class="cta" onclick="accessBook('alignment-book.html')">
+    Correct Your Actions
+  </a><br>
+
+  <a href="#" class="cta" onclick="accessBook('owned-faith.html')">
+    Stabilize Your Mind
+  </a><br>
+
+  <a href="#" class="cta" onclick="accessBook('great-warning-to-humanity.html')">
+    Understand Consequences
+  </a>
+</section>
+
+<!-- FINAL -->
+<section class="fade">
+  <h2>You Already Feel The Pressure</h2>
+  <p>
+    The question is not whether it exists.<br><br>
+    The question is:<br><br>
+    Will it confuse you…<br>
+    or train you?
+  </p>
+</section>
+
+<!-- SCRIPTS -->
+
+<script>
+// SCROLL
+const elements = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+elements.forEach(el => observer.observe(el));
+
+// MEMORY SYSTEM
+function setUserState(key, value){
+  localStorage.setItem(key, value);
+}
+
+function getUserState(key){
+  return localStorage.getItem(key);
+}
+
+// USER PATH
+function setPath(state){
+  setUserState('user_state', state);
+
+  if(state === "confused" || state === "stuck"){
+    setUserState('pressure_level', 'high');
+  }
+  else if(state === "rebuilding"){
+    setUserState('pressure_level', 'medium');
+  }
+  else{
+    setUserState('pressure_level', 'low');
+  }
+
+  alert("Path updated: " + state);
+}
+
+// ROUTING SYSTEM
+function accessBook(url){
+
+  const state = getUserState('user_state');
+  const pressure = getUserState('pressure_level');
+
+  if(pressure === "high"){
+    window.location.href = "weight-of-now.html";
+  }
+  else if(state === "stuck"){
+    window.location.href = "alignment-book.html";
+  }
+  else if(state === "confused"){
+    window.location.href = "source-code.html";
+  }
+  else if(state === "stable"){
+    window.location.href = "owned-faith.html";
+  }
+  else{
+    window.location.href = url;
+  }
+}
+
+// PERSONAL MESSAGE
+window.onload = function(){
+  const state = getUserState('user_state');
+  const message = document.getElementById("dynamic-message");
+
+  if(!message) return;
+
+  if(state === "confused"){
+    message.innerText = "You are not lost. You are overloaded without structure.";
+  }
+  else if(state === "stuck"){
+    message.innerText = "You are not stuck. You delayed correction.";
+  }
+  else if(state === "rebuilding"){
+    message.innerText = "Rebuilding requires precision, not speed.";
+  }
+  else if(state === "stable"){
+    message.innerText = "Stability must be protected under pressure.";
+  }
+}
+
+// EMOTIONAL ESCALATION
+const pressureLines = [
+  "Stress is not the problem. Misuse of it is.",
+  "You feel this because something was delayed.",
+  "This moment decides repetition or correction.",
+  "Pressure is training you. Whether you respond is your choice."
+];
+
+let pIndex = 0;
+
+setInterval(()=>{
+  const el = document.getElementById("pressure-line");
+  if(!el) return;
+  pIndex = (pIndex + 1) % pressureLines.length;
+  el.innerText = pressureLines[pIndex];
+}, 4000);
+
+</script>
+
+</body>
+    </html>
