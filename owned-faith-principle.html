@@ -246,6 +246,15 @@ setInterval(() => {
   document.getElementById("hook").innerText = hooks[i];
 }, 4000);
 </script>
+<script>
+// ===== USER STATE (BRAIN) =====
+function setUserState(key, value){
+  localStorage.setItem(key, value);
+}
 
+function getUserState(key){
+  return localStorage.getItem(key);
+}
+</script>
 </body>
   </html>
