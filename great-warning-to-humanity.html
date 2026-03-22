@@ -85,6 +85,7 @@ p {
     Through ignored judgment… delayed decisions… and small compromises repeated over time.
   </p>
 </section>
+  <h2 id="dynamic-message"></h2>
 <section style="margin-top:40px;">
   <h3>Where are you right now?</h3>
 
@@ -225,5 +226,26 @@ function getUserState(key){
   return localStorage.getItem(key);
 }
 </script>
+  <script>
+window.onload = function(){
+  const state = getUserState('user_state');
+  const message = document.getElementById("dynamic-message");
+
+  if(!message) return;
+
+  if(state === "confused"){
+    message.innerText = "You are not lost. You are seeing patterns without a system.";
+  }
+  else if(state === "stuck"){
+    message.innerText = "You are not stuck. You are repeating what has not been corrected.";
+  }
+  else if(state === "rebuilding"){
+    message.innerText = "Rebuilding requires clarity before speed.";
+  }
+  else if(state === "stable"){
+    message.innerText = "Stability is built before commitment, not after.";
+  }
+}
+  </script>
 </body>
 </html>
