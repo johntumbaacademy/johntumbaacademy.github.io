@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Source Code of Human Behavior</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+section {
+  padding: 100px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 28px; margin-top:20px; }
+
+p {
+  color: #aaa;
+  line-height: 1.7;
+  font-size: 18px;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 30px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOOK -->
+<section class="fade">
+  <h1>You Were Not Confused</h1>
+  <p id="dynamic-text" style="color:#ff4c4c;"></p>
+  <p>
+    You were observing patterns… without a framework to interpret them.<br><br>
+    So every experience felt separate.<br>
+    Even when it was the same pattern repeating.
+  </p>
+</section>
+
+<!-- RECOGNITION -->
+<section class="fade">
+  <h2>The Real Problem Is Not Difficulty</h2>
+  <p>
+    It is late understanding.<br><br>
+    People recognize instability after commitment.<br>
+    They recognize patterns after damage.<br>
+    They recognize direction after loss.
+  </p>
+</section>
+
+<!-- IDENTITY MIRROR -->
+<section class="fade">
+  <h2>This Is Where It Keeps Repeating</h2>
+  <p>
+    You have seen this before.<br><br>
+    Different people… same outcome.<br>
+    Different situations… same feeling.<br><br>
+    Not because life is random…<br>
+    but because patterns were never decoded.
+  </p>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="fade">
+  <h2>This Book Introduces A Different Lens</h2>
+  <p>
+    behavior → mechanism → pattern → consequence → decision<br><br>
+    Instead of reacting…<br>
+    you begin to interpret.<br><br>
+    And once you interpret correctly…<br>
+    confusion reduces naturally.
+  </p>
+</section>
+
+<!-- AUTHORITY -->
+<section class="fade">
+  <h2>This Is Not Advice</h2>
+  <p>
+    This is an interpretive framework.<br><br>
+    A structured way to understand human behavior<br>
+    without relying on emotion, assumption, or delayed realization.
+  </p>
+</section>
+
+<!-- CONSEQUENCE PRESSURE -->
+<section class="fade">
+  <h2>What Happens Without A Framework</h2>
+  <p>
+    Patterns repeat.<br><br>
+    Decisions feel uncertain.<br>
+    Experiences feel disconnected.<br><br>
+    And the same outcomes return…<br>
+    in different forms.
+  </p>
+</section>
+
+<!-- CONTROLLED EXPOSURE -->
+<section class="fade">
+  <h2>Inside This Book</h2>
+  <p>
+    • Why patterns feel invisible until consequences appear<br>
+    • How behavior reveals underlying mechanisms<br>
+    • Why people misinterpret signals repeatedly<br>
+    • How to recognize direction early<br>
+    • How to think in patterns instead of events
+  </p>
+</section>
+
+<!-- MICRO TRIGGER -->
+<p style="margin-top:40px; font-style:italic; color:#888; text-align:center;">
+Most people read this… and return to reacting instead of understanding.
+</p>
+
+<!-- CROSS-LINK SYSTEM -->
+<section class="fade">
+  <h2>If You Understand This, Continue</h2>
+  <p>
+    Recognition is the first step.<br><br>
+    But without structure… clarity collapses under pressure.
+  </p>
+
+  <a href="alignment-book.html" class="cta"
+  onclick="localStorage.setItem('entryType','alignment')">
+  Apply It Through Alignment
+  </a><br>
+
+  <a href="human-saving-system.html" class="cta"
+  onclick="localStorage.setItem('entryType','pressure')">
+  Use It In Real Decisions
+  </a><br>
+
+  <a href="great-warning-to-humanity.html" class="cta"
+  onclick="localStorage.setItem('entryType','warning')">
+  See What Happens Without It
+  </a>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fade">
+  <h2>You Now Have A Choice</h2>
+  <p>
+    Continue reacting to events…<br>
+    or begin recognizing patterns before they repeat.
+  </p>
+
+  <a href="index.html#library" class="cta">
+    Return to Library Access
+  </a>
+</section>
+
+<script>
+// SCROLL ANIMATION
+const elements = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+elements.forEach(el => observer.observe(el));
+
+// PERSONALIZATION
+const userType = localStorage.getItem("entryType");
+const dynamicText = document.getElementById("dynamic-text");
+
+if(dynamicText){
+  if(userType === "alignment"){
+    dynamicText.innerText = "You already saw the pattern. You just didn’t name it.";
+  }
+  if(userType === "pressure"){
+    dynamicText.innerText = "You are trying to decide… without fully understanding what you are seeing.";
+  }
+  if(userType === "warning"){
+    dynamicText.innerText = "This is not new to you. It is recognition.";
+  }
+}
+
+// TIME ESCALATION
+let time = 0;
+setInterval(()=>{
+  time++;
+
+  if(time === 15){
+    dynamicText.innerText = "You are still reading… which means this is familiar.";
+  }
+
+  if(time === 30){
+    dynamicText.innerText = "Most people never reach this level of recognition.";
+  }
+
+},1000);
+</script>
+
+</body>
+</html>
