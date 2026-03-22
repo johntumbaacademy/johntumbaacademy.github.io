@@ -183,8 +183,15 @@ h1, h2 {
 </div>
 
 <script>
-// COUNTDOWN TIMER (24 HOURS)
-let deadline = new Date().getTime() + (24 * 60 * 60 * 1000);
+let storedDeadline = localStorage.getItem("deadline");
+
+if (!storedDeadline) {
+    let newDeadline = new Date().getTime() + (24 * 60 * 60 * 1000);
+    localStorage.setItem("deadline", newDeadline);
+    storedDeadline = newDeadline;
+}
+
+let deadline = parseInt(storedDeadline);
 
 let x = setInterval(function() {
     let now = new Date().getTime();
@@ -195,32 +202,13 @@ let x = setInterval(function() {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     document.getElementById("countdown").innerHTML =
-        hours + "h " + minutes + "m " + seconds + "s ";
+        hours + "h " + minutes + "m " + seconds + "s";
 
     if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown").innerHTML = "CLOSED";
     }
 }, 1000);
-
-// PAYPAL BUTTON
-paypal.Buttons({
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: {
-                    value: '50.00' // adjust equivalent of ZMW 950
-                }
-            }]
-        });
-    },
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-            window.location.href = "https://wa.me/260XXXXXXXXX?text=PAID";
-        });
-    }
-}).render('#paypal-button-container');
-
 </script>
 
 </body>
