@@ -69,7 +69,21 @@ Most people do not fail because they lack effort.<br>
 They fail because they act on false signals.
   </p>
 </section>
+<section style="margin-top:40px;">
+  <h3>Where are you right now?</h3>
 
+  <button onclick="setPath('confused')">I feel confused</button>
+  <button onclick="setPath('stuck')">I feel stuck</button>
+  <button onclick="setPath('rebuilding')">I am rebuilding</button>
+  <button onclick="setPath('stable')">I want stability</button>
+</section>
+
+<script>
+function setPath(state){
+  setUserState('user_state', state);
+  alert("Path updated: " + state);
+}
+</script>
 <!-- RECOGNITION -->
 <section class="fade">
   <h2>The Real Problem Is Not Difficulty</h2>
