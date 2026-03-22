@@ -83,7 +83,21 @@ body{
   <h1>Clarity Over Effort</h1>
   <p>The system that replaces struggle with structured understanding</p>
 </div>
+<section style="margin-top:40px;">
+  <h3>Where are you right now?</h3>
 
+  <button onclick="setPath('confused')">I feel confused</button>
+  <button onclick="setPath('stuck')">I feel stuck</button>
+  <button onclick="setPath('rebuilding')">I am rebuilding</button>
+  <button onclick="setPath('stable')">I want stability</button>
+</section>
+
+<script>
+function setPath(state){
+  setUserState('user_state', state);
+  alert("Path updated: " + state);
+}
+</script>
 <div class="section">
   <h2>The Problem</h2>
   <p>
