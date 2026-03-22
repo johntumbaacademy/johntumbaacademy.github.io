@@ -205,6 +205,7 @@ function setPath(state){
 </section>
 <!-- SYSTEM CROSS LINK -->
 <section class="fade">
+  <h2>Apply Alignment in Action</h2>
   <h2>Continue The System</h2>
   <p>
     Most people don’t need more information.<br>
@@ -215,7 +216,17 @@ function setPath(state){
 
     <a href="alignment-book.html" class="cta">Read ALIGNMENT</a><br><br>
 
-    <a href="human-saving-system.html" class="cta">The Human Saving System</a><br><br>
+  <a href="#" class="cta" onclick="accessBook('source-code.html')">
+    Review Source Code
+  </a><br>
+
+  <a href="#" class="cta" onclick="accessBook('human-saving-system.html')">
+    Use It In Real Decisions
+  </a><br>
+
+  <a href="#" class="cta" onclick="accessBook('great-warning-to-humanity.html')">
+    See Consequences Without It
+  </a>
 
     <a href="identity-reconstruction.html" class="cta">Identity Reconstruction</a><br><br>
 
@@ -265,6 +276,30 @@ window.onload = function(){
   }
   else if(state === "stable"){
     message.innerText = "Stability is built before commitment, not after.";
+  }
+}
+</script>
+  <script>
+function accessBook(url){
+  // read the user state from memory
+  const state = getUserState('user_state');
+
+  // remember which book they tried to open
+  setUserState('last_book', url);
+
+  // choose the right book depending on their state
+  if(state === "confused"){
+    window.location.href = "human-saving-system.html";
+  }
+  else if(state === "stuck"){
+    window.location.href = "alignment-book.html";
+  }
+  else if(state === "rebuilding"){
+    window.location.href = "identity-reconstruction.html";
+  }
+  else{
+    // if they are stable or state not set, go to the book they clicked
+    window.location.href = url;
   }
 }
 </script>
