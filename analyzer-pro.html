@@ -109,7 +109,9 @@ analyze();
 }
 
 }
-
+let count = localStorage.getItem("analyzerCount") || 0;
+count++;
+localStorage.setItem("analyzerCount", count);
 function analyze(){
 
 let result = "";
