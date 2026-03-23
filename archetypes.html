@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Archetype System</title>
+
+<style>
+
+/* GLOBAL */
+body{
+margin:0;
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+text-align:center;
+}
+
+/* TITLE */
+h1{
+margin-top:40px;
+font-size:36px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+padding:40px;
+}
+
+/* CARDS */
+.card{
+background:#1c1c1c;
+padding:20px;
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+background:#ff4c4c;
+}
+
+/* MODAL */
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+align-items:center;
+justify-content:center;
+}
+
+.modal-content{
+background:#111;
+padding:30px;
+border-radius:12px;
+width:80%;
+max-width:500px;
+text-align:left;
+}
+
+.close{
+float:right;
+cursor:pointer;
+font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Decode Behavioral Archetypes</h1>
+
+<div class="grid">
+
+<div class="card" onclick="openModal('gatekeeper')">Gatekeeper</div>
+<div class="card" onclick="openModal('validation')">Validation Seeker</div>
+<div class="card" onclick="openModal('drama')">Drama Architect</div>
+<div class="card" onclick="openModal('silent')">Silent Evaluator</div>
+<div class="card" onclick="openModal('scarcity')">Scarcity Controller</div>
+<div class="card" onclick="openModal('comparison')">Comparison Tester</div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">X</span>
+
+<h2 id="title"></h2>
+<p id="description"></p>
+<p><strong>Meaning:</strong> <span id="meaning"></span></p>
+<p><strong>Correct Response:</strong> <span id="response"></span></p>
+
+</div>
+
+</div>
+
+<script>
+
+const data = {
+
+gatekeeper:{
+title:"Gatekeeper",
+description:"Tests consistency and patience through delayed responses.",
+meaning:"Evaluates reliability and emotional control.",
+response:"Do not over-pursue. Stay consistent and calm."
+},
+
+validation:{
+title:"Validation Seeker",
+description:"Seeks constant attention and reassurance.",
+meaning:"Driven by need for external approval.",
+response:"Do not over-feed attention. Stay measured."
+},
+
+drama:{
+title:"Drama Architect",
+description:"Creates emotional highs and lows.",
+meaning:"Tests your emotional stability.",
+response:"Stay neutral. Do not chase emotional swings."
+},
+
+silent:{
+title:"Silent Evaluator",
+description:"Observes more than communicates.",
+meaning:"Analyzing value without revealing intent.",
+response:"Stay composed. Avoid over-explaining."
+},
+
+scarcity:{
+title:"Scarcity Controller",
+description:"Limits availability to increase perceived value.",
+meaning:"Controls access to create leverage.",
+response:"Mirror energy. Do not chase access."
+},
+
+comparison:{
+title:"Comparison Tester",
+description:"Brings up others to test your confidence.",
+meaning:"Measures insecurity and self-worth.",
+response:"Remain unaffected. Do not compete."
+}
+
+};
+
+function openModal(type){
+document.getElementById("modal").style.display="flex";
+
+document.getElementById("title").innerText=data[type].title;
+document.getElementById("description").innerText=data[type].description;
+document.getElementById("meaning").innerText=data[type].meaning;
+document.getElementById("response").innerText=data[type].response;
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+</script>
+
+</body>
+</html>
