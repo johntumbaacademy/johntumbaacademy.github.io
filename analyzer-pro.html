@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Human Alignment Analyzer</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f0f0f;
+color:white;
+text-align:center;
+padding:40px;
+}
+
+.container{
+max-width:600px;
+margin:auto;
+background:#1c1c1c;
+padding:30px;
+border-radius:12px;
+}
+
+button{
+padding:12px 20px;
+margin:10px;
+background:#ff4c4c;
+border:none;
+color:white;
+cursor:pointer;
+border-radius:8px;
+}
+
+.hidden{
+display:none;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+background:#111;
+border-radius:10px;
+text-align:left;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Human Alignment Analyzer™</h1>
+<p>Answer honestly. Your pattern will be revealed.</p>
+
+<!-- QUESTION 1 -->
+<div id="q1">
+
+<p>When someone pulls away, what do you do?</p>
+
+<button onclick="answer('chase')">I chase and try harder</button>
+<button onclick="answer('wait')">I wait and observe</button>
+<button onclick="answer('react')">I react emotionally</button>
+
+</div>
+
+<!-- QUESTION 2 -->
+<div id="q2" class="hidden">
+
+<p>How do you handle slow replies?</p>
+
+<button onclick="answer('overthink')">I overthink</button>
+<button onclick="answer('match')">I match energy</button>
+<button onclick="answer('double')">I double text</button>
+
+</div>
+
+<!-- QUESTION 3 -->
+<div id="q3" class="hidden">
+
+<p>Do you fear losing them?</p>
+
+<button onclick="answer('yes')">Yes</button>
+<button onclick="answer('no')">No</button>
+
+</div>
+
+<!-- RESULT -->
+<div id="result" class="result hidden"></div>
+
+</div>
+
+<script>
+
+let answers = [];
+
+function answer(value){
+
+answers.push(value);
+
+if(answers.length === 1){
+document.getElementById("q1").classList.add("hidden");
+document.getElementById("q2").classList.remove("hidden");
+}
+
+else if(answers.length === 2){
+document.getElementById("q2").classList.add("hidden");
+document.getElementById("q3").classList.remove("hidden");
+}
+
+else{
+analyze();
+}
+
+}
+
+function analyze(){
+
+let result = "";
+
+if(answers.includes("chase") || answers.includes("double")){
+
+result = `
+<h2>Pattern: Over-Investment</h2>
+
+<p><strong>Diagnosis:</strong> You give too much attention too early.</p>
+
+<p><strong>Effect:</strong> This reduces perceived value and creates imbalance.</p>
+
+<p><strong>Correction:</strong> Regulate attention. Stop chasing. Match energy.</p>
+
+`;
+
+}
+
+else if(answers.includes("overthink") || answers.includes("yes")){
+
+result = `
+<h2>Pattern: Emotional Reactivity</h2>
+
+<p><strong>Diagnosis:</strong> You are controlled by emotional spikes.</p>
+
+<p><strong>Effect:</strong> This creates instability and loss of control.</p>
+
+<p><strong>Correction:</strong> Build emotional neutrality. Delay reactions.</p>
+
+`;
+
+}
+
+else{
+
+result = `
+<h2>Pattern: Controlled Presence</h2>
+
+<p><strong>Diagnosis:</strong> You maintain balance and awareness.</p>
+
+<p><strong>Effect:</strong> This increases attraction and stability.</p>
+
+<p><strong>Next Level:</strong> Learn advanced leverage control.</p>
+
+`;
+
+}
+
+document.getElementById("q3").classList.add("hidden");
+
+let resultBox = document.getElementById("result");
+
+resultBox.innerHTML = result;
+resultBox.classList.remove("hidden");
+
+}
+
+</script>
+
+</body>
+</html>
