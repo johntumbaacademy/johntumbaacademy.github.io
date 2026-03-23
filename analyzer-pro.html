@@ -176,6 +176,27 @@ resultBox.classList.remove("hidden");
 }
 
 </script>
+<script>
 
+function downloadPDF(){
+
+const { jsPDF } = window.jspdf;
+
+let doc = new jsPDF();
+
+doc.setFontSize(16);
+doc.text("Human Alignment Report", 20, 20);
+
+doc.setFontSize(12);
+
+let lines = doc.splitTextToSize(finalResult, 170);
+
+doc.text(lines, 20, 40);
+
+doc.save("Human_Alignment_Report.pdf");
+
+}
+
+</script>
 </body>
 </html>
