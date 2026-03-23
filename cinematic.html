@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Human Alignment Cinematic</title>
+
+<style>
+
+/* GLOBAL */
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#0f0f0f;
+color:white;
+overflow-x:hidden;
+}
+
+section{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+/* TEXT ANIMATION */
+.fade{
+opacity:0;
+transform:translateY(60px);
+transition:all 1s ease;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* HERO */
+.hero{
+background:linear-gradient(135deg,#000,#1a1a1a);
+}
+
+.hero h1{
+font-size:64px;
+font-weight:bold;
+}
+
+/* SECTION COLORS */
+.dark{background:#0f0f0f;}
+.light{background:#1c1c1c;}
+
+/* DIAGRAM */
+.diagram{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.node{
+padding:20px;
+background:#ff4c4c;
+border-radius:10px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
+}
+
+/* CTA */
+.cta{
+padding:16px 32px;
+background:#ff4c4c;
+border:none;
+border-radius:30px;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero fade">
+<h1>Stop Guessing Human Behavior</h1>
+</section>
+
+<!-- PROBLEM -->
+<section class="dark fade">
+<h2>You are not confused… you are blind to the pattern.</h2>
+</section>
+
+<!-- BREAKDOWN -->
+<section class="light fade">
+<h2>Attraction is not random.</h2>
+</section>
+
+<!-- TRUTH -->
+<section class="dark fade">
+<h2>It follows hidden structures.</h2>
+</section>
+
+<!-- SYSTEM -->
+<section class="light fade">
+<h2>The Human Alignment System</h2>
+</section>
+
+<!-- DIAGRAM -->
+<section class="dark fade">
+
+<div class="diagram">
+
+<div class="node">Attention</div>
+<div>↓</div>
+<div class="node">Investment</div>
+<div>↓</div>
+<div class="node">Attachment</div>
+<div>↓</div>
+<div class="node">Control</div>
+
+</div>
+
+</section>
+
+<!-- POWER -->
+<section class="light fade">
+<h2>12 Laws. 12 Archetypes. 15 Red Flags.</h2>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="dark fade">
+<h2>You don’t chase anymore. You decode.</h2>
+</section>
+
+<!-- CTA -->
+<section class="light fade">
+
+<div>
+<h2>Unlock the Full System</h2>
+
+<button class="cta">
+Get Access Now
+</button>
+</div>
+
+</section>
+
+<script>
+
+const elements = document.querySelectorAll(".fade");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+elements.forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
