@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <title>Human Alignment Analyzer</title>
+
+<!-- ✅ PDF LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 
@@ -57,34 +59,25 @@ text-align:left;
 
 <!-- QUESTION 1 -->
 <div id="q1">
-
 <p>When someone pulls away, what do you do?</p>
-
 <button onclick="answer('chase')">I chase and try harder</button>
 <button onclick="answer('wait')">I wait and observe</button>
 <button onclick="answer('react')">I react emotionally</button>
-
 </div>
 
 <!-- QUESTION 2 -->
 <div id="q2" class="hidden">
-
 <p>How do you handle slow replies?</p>
-
 <button onclick="answer('overthink')">I overthink</button>
 <button onclick="answer('match')">I match energy</button>
 <button onclick="answer('double')">I double text</button>
-
 </div>
 
 <!-- QUESTION 3 -->
 <div id="q3" class="hidden">
-
 <p>Do you fear losing them?</p>
-
 <button onclick="answer('yes')">Yes</button>
 <button onclick="answer('no')">No</button>
-
 </div>
 
 <!-- RESULT -->
@@ -95,6 +88,7 @@ text-align:left;
 <script>
 
 let answers = [];
+let finalResult = ""; // ✅ PDF STORAGE
 
 function answer(value){
 
@@ -117,26 +111,31 @@ analyze();
 }
 
 function analyze(){
-let finalResult = "";
-let finalResult = `
-Pattern: Over-Investment
 
-Diagnosis: You give too much attention too early.
-Effect: This reduces perceived value and creates imbalance.
-Correction: Regulate attention. Stop chasing. Match energy.
-`;
+let result = "";
 
 if(answers.includes("chase") || answers.includes("double")){
 
 result = `
 <h2>Pattern: Over-Investment</h2>
-
 <p><strong>Diagnosis:</strong> You give too much attention too early.</p>
-
 <p><strong>Effect:</strong> This reduces perceived value and creates imbalance.</p>
-
 <p><strong>Correction:</strong> Regulate attention. Stop chasing. Match energy.</p>
+`;
 
+finalResult = `
+HUMAN ALIGNMENT REPORT
+
+Pattern: Over-Investment
+
+Meaning:
+You give attention too early, reducing your perceived value.
+
+Risk Level:
+High — creates imbalance and weak positioning.
+
+Fix:
+Stop chasing. Match energy. Delay reactions.
 `;
 
 }
@@ -145,13 +144,24 @@ else if(answers.includes("overthink") || answers.includes("yes")){
 
 result = `
 <h2>Pattern: Emotional Reactivity</h2>
-
 <p><strong>Diagnosis:</strong> You are controlled by emotional spikes.</p>
-
 <p><strong>Effect:</strong> This creates instability and loss of control.</p>
-
 <p><strong>Correction:</strong> Build emotional neutrality. Delay reactions.</p>
+`;
 
+finalResult = `
+HUMAN ALIGNMENT REPORT
+
+Pattern: Emotional Reactivity
+
+Meaning:
+You react emotionally instead of staying stable.
+
+Risk Level:
+Medium to High — leads to loss of control.
+
+Fix:
+Pause. Delay reactions. Stay neutral.
 `;
 
 }
@@ -160,13 +170,24 @@ else{
 
 result = `
 <h2>Pattern: Controlled Presence</h2>
-
 <p><strong>Diagnosis:</strong> You maintain balance and awareness.</p>
-
 <p><strong>Effect:</strong> This increases attraction and stability.</p>
-
 <p><strong>Next Level:</strong> Learn advanced leverage control.</p>
+`;
 
+finalResult = `
+HUMAN ALIGNMENT REPORT
+
+Pattern: Controlled Presence
+
+Meaning:
+You maintain balance and emotional control.
+
+Advantage:
+High — strong attraction positioning.
+
+Next Step:
+Master deeper leverage systems.
 `;
 
 }
@@ -175,14 +196,23 @@ document.getElementById("q3").classList.add("hidden");
 
 let resultBox = document.getElementById("result");
 
-resultBox.innerHTML = result;
+resultBox.innerHTML = result + `
+
+<br><br>
+
+<button onclick="downloadPDF()">Download Your Report</button>
+
+<br><br>
+
+<button onclick="window.location.href='checkout.html'">
+Unlock Full Analysis
+</button>
+
+`;
+
 resultBox.classList.remove("hidden");
-  <button onclick="downloadPDF()">Download Your Report</button>
 
 }
-
-</script>
-<script>
 
 function downloadPDF(){
 
@@ -204,5 +234,6 @@ doc.save("Human_Alignment_Report.pdf");
 }
 
 </script>
+
 </body>
 </html>
