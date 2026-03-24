@@ -126,7 +126,7 @@ async function saveToFirebase(resultText){
     const db = window.db;
 
     await addDoc(collection(db, "users"), {
-      email: "anonymous", // upgrade later
+      email: email: userEmail,
       result: resultText,
       analyzerUsed: true,
       progress: 1,
