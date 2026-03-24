@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Full Report</title>
+</head>
+
+<body style="background:black; color:white; text-align:center; padding:40px;">
+
+<h1>Your Full Report</h1>
+
+<div id="fullResult"></div>
+
+<script>
+
+// LOAD FROM LOCAL STORAGE
+let result = localStorage.getItem("fullResult");
+
+document.getElementById("fullResult").innerHTML = result;
+
+</script>
+
+</body>
+</html>
