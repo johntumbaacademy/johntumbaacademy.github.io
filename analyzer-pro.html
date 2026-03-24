@@ -86,6 +86,32 @@ text-align:left;
 </div>
 
 <script>
+  <script>
+
+async function saveToFirebase(resultText){
+
+  try{
+
+    const db = window.db;
+
+    await addDoc(collection(db, "users"), {
+      email: "anonymous", // upgrade later
+      result: resultText,
+      analyzerUsed: true,
+      progress: 1,
+      lastPage: "analyzer",
+      timestamp: new Date()
+    });
+
+    console.log("Saved to Firebase");
+
+  } catch(error){
+    console.error("Error saving:", error);
+  }
+
+}
+
+</script>
 
 let answers = [];
 let finalResult = ""; // ✅ PDF STORAGE
