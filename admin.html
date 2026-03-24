@@ -7,17 +7,27 @@
 <style>
 body {
   font-family: Arial;
-  background: #000;
+  background: #0f0f0f;
   color: #fff;
   padding: 20px;
 }
+
 h1 {
   text-align: center;
 }
+
+.box {
+  background: #1c1c1c;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
 .user {
   border: 1px solid #444;
   padding: 10px;
   margin: 10px 0;
+  border-radius: 8px;
 }
 </style>
 </head>
@@ -26,28 +36,51 @@ h1 {
 
 <h1>Admin Dashboard</h1>
 
+<!-- 🔥 STATS -->
+<div class="box">
+<h2>Total Users</h2>
+<p id="users">0</p>
+</div>
+
+<div class="box">
+<h2>Analyzer Uses</h2>
+<p id="analyzer">0</p>
+</div>
+
+<div class="box">
+<h2>Emails Collected</h2>
+<p id="emails">0</p>
+</div>
+
+<!-- 🔥 USER LIST -->
+<div class="box">
+<h2>User Data</h2>
 <div id="user-list"></div>
+</div>
 
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js"></script>
+<!-- ✅ MODERN FIREBASE -->
+<script type="module">
 
-<script>
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// 🔥 YOUR CONFIG
 const firebaseConfig = {
-  apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
+  apiKey: "YOUR_API_KEY",
   authDomain: "alignment-tsa-library.firebaseapp.com",
   projectId: "alignment-tsa-library",
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-const db = firebase.firestore();
-
-// 🔒 ONLY ALLOW YOU (ADMIN EMAIL)
+// 🔒 ADMIN EMAIL
 const adminEmail = "tumbajohn12@gmail.com";
 
-firebase.auth().onAuthStateChanged(function(user) {
+// 🔐 AUTH CHECK
+onAuthStateChanged(auth, (user) => {
 
   if (!user || user.email !== adminEmail) {
     alert("Access denied");
@@ -55,31 +88,56 @@ firebase.auth().onAuthStateChanged(function(user) {
     return;
   }
 
-  loadUsers();
+  loadDashboard();
 });
 
-function loadUsers(){
-  db.collection("users").get().then((querySnapshot) => {
+// 🔥 LOAD DATA
+async function loadDashboard(){
 
-    const container = document.getElementById("user-list");
+  let usersCount = 0;
+  let emailsCount = 0;
+  let analyzerCount = 0;
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
+  const container = document.getElementById("user-list");
 
-      const div = document.createElement("div");
-      div.classList.add("user");
+  const querySnapshot = await getDocs(collection(db, "users"));
 
-      div.innerHTML = `
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Progress:</strong> ${data.progress || 0}</p>
-        <p><strong>Last Page:</strong> ${data.lastPage || "N/A"}</p>
-      `;
+  querySnapshot.forEach((doc) => {
 
-      container.appendChild(div);
-    });
+    const data = doc.data();
+
+    usersCount++;
+
+    if(data.email){
+      emailsCount++;
+    }
+
+    if(data.analyzerUsed){
+      analyzerCount++;
+    }
+
+    // 👇 USER CARD
+    const div = document.createElement("div");
+    div.classList.add("user");
+
+    div.innerHTML = `
+      <p><strong>Email:</strong> ${data.email || "N/A"}</p>
+      <p><strong>Progress:</strong> ${data.progress || 0}</p>
+      <p><strong>Last Page:</strong> ${data.lastPage || "N/A"}</p>
+      <p><strong>Analyzer Used:</strong> ${data.analyzerUsed ? "Yes" : "No"}</p>
+    `;
+
+    container.appendChild(div);
 
   });
+
+  // 🔥 UPDATE UI
+  document.getElementById("users").innerText = usersCount;
+  document.getElementById("emails").innerText = emailsCount;
+  document.getElementById("analyzer").innerText = analyzerCount;
+
 }
+
 </script>
 
 </body>
