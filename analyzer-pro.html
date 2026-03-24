@@ -181,7 +181,21 @@ result = `
 <p><strong>Effect:</strong> This reduces perceived value and creates imbalance.</p>
 <p><strong>Correction:</strong> Regulate attention. Stop chasing. Match energy.</p>
 `;
+function startAnalyzer(){
 
+let email = document.getElementById("emailInput").value;
+
+if(!email.includes("@")){
+  alert("Enter a valid email");
+  return;
+}
+
+userEmail = email;
+
+document.getElementById("emailGate").classList.add("hidden");
+document.getElementById("analyzer").classList.remove("hidden");
+
+}
 finalResult = `
 HUMAN ALIGNMENT REPORT
 
