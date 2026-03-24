@@ -14,6 +14,7 @@ color:white;
 text-align:center;
 padding:40px;
 }
+
 .container{
 max-width:600px;
 margin:auto;
@@ -21,6 +22,7 @@ background:#1c1c1c;
 padding:30px;
 border-radius:12px;
 }
+
 button{
 padding:12px 20px;
 margin:10px;
@@ -30,9 +32,11 @@ color:white;
 cursor:pointer;
 border-radius:8px;
 }
+
 .hidden{
 display:none;
 }
+
 .result{
 margin-top:20px;
 padding:20px;
@@ -49,7 +53,7 @@ text-align:left;
 
 <h1>Human Alignment Analyzer™</h1>
 
-<!-- EMAIL -->
+<!-- EMAIL GATE -->
 <div id="emailGate">
 <p>Enter your email to unlock your psychological analysis</p>
 
@@ -66,31 +70,37 @@ style="padding:10px;width:80%;border-radius:6px;border:none;">
 
 <p>Answer honestly. Your pattern will be revealed.</p>
 
+<!-- QUESTION 1 -->
 <div id="q1">
-<p>When someone pulls away?</p>
-<button onclick="answer('chase')">Chase</button>
-<button onclick="answer('wait')">Wait</button>
-<button onclick="answer('react')">React</button>
+<p>When someone pulls away, what do you do?</p>
+
+<button onclick="answer('chase')">I chase and try harder</button>
+<button onclick="answer('wait')">I wait and observe</button>
+<button onclick="answer('react')">I react emotionally</button>
 </div>
 
+<!-- QUESTION 2 -->
 <div id="q2" class="hidden">
-<p>Slow replies?</p>
-<button onclick="answer('overthink')">Overthink</button>
-<button onclick="answer('match')">Match</button>
-<button onclick="answer('double')">Double text</button>
+<p>How do you handle slow replies?</p>
+
+<button onclick="answer('overthink')">I overthink</button>
+<button onclick="answer('match')">I match energy</button>
+<button onclick="answer('double')">I double text</button>
 </div>
 
+<!-- QUESTION 3 -->
 <div id="q3" class="hidden">
-<p>Fear losing them?</p>
+<p>Do you fear losing them?</p>
+
 <button onclick="answer('yes')">Yes</button>
 <button onclick="answer('no')">No</button>
 </div>
 
+<!-- RESULT -->
 <div id="result" class="result hidden"></div>
 
 </div>
 
-<!-- 🔥 MAIN SCRIPT WITH FIREBASE -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
@@ -103,7 +113,6 @@ const firebaseConfig = {
   projectId: "alignment-tsa-library",
 };
 
-// INIT
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -112,13 +121,13 @@ let userEmail = "";
 let answers = [];
 let finalResult = "";
 
-// START
+// START ANALYZER
 window.startAnalyzer = function(){
 
 let email = document.getElementById("emailInput").value;
 
 if(!email.includes("@")){
-alert("Enter valid email");
+alert("Enter a valid email");
 return;
 }
 
@@ -128,7 +137,7 @@ localStorage.setItem("userEmail", email);
 document.getElementById("emailGate").classList.add("hidden");
 document.getElementById("analyzer").classList.remove("hidden");
 
-};
+}
 
 // ANSWER FLOW
 window.answer = function(value){
@@ -147,7 +156,7 @@ else{
 analyze();
 }
 
-};
+}
 
 // ANALYZE
 async function analyze(){
@@ -156,49 +165,118 @@ let result = "";
 
 if(answers.includes("chase") || answers.includes("double")){
 
-result = `<h2>Over-Investment</h2><p>You give too much attention.</p>`;
+result = `
+<h2>Pattern: Over-Investment</h2>
+<p><strong>Diagnosis:</strong> You give too much attention too early.</p>
+<p><strong>Effect:</strong> This reduces perceived value and creates imbalance.</p>
+<p><strong>Correction:</strong> Regulate attention. Stop chasing. Match energy.</p>
+`;
 
-finalResult = "Over-Investment: High risk. Stop chasing.";
+finalResult = `
+HUMAN ALIGNMENT REPORT
+
+Pattern: Over-Investment
+
+Meaning:
+You give attention too early, reducing your perceived value.
+
+Risk Level:
+High — creates imbalance and weak positioning.
+
+Fix:
+Stop chasing. Match energy. Delay reactions.
+`;
 
 }
 else if(answers.includes("overthink") || answers.includes("yes")){
 
-result = `<h2>Emotional Reactivity</h2><p>You react emotionally.</p>`;
+result = `
+<h2>Pattern: Emotional Reactivity</h2>
+<p><strong>Diagnosis:</strong> You are controlled by emotional spikes.</p>
+<p><strong>Effect:</strong> This creates instability and loss of control.</p>
+<p><strong>Correction:</strong> Build emotional neutrality. Delay reactions.</p>
+`;
 
-finalResult = "Emotional Reactivity: Control your emotions.";
+finalResult = `
+HUMAN ALIGNMENT REPORT
+
+Pattern: Emotional Reactivity
+
+Meaning:
+You react emotionally instead of staying stable.
+
+Risk Level:
+Medium to High — leads to loss of control.
+
+Fix:
+Pause. Delay reactions. Stay neutral.
+`;
 
 }
 else{
 
-result = `<h2>Controlled Presence</h2><p>You are stable.</p>`;
+result = `
+<h2>Pattern: Controlled Presence</h2>
+<p><strong>Diagnosis:</strong> You maintain balance and awareness.</p>
+<p><strong>Effect:</strong> This increases attraction and stability.</p>
+<p><strong>Next Level:</strong> Learn advanced leverage control.</p>
+`;
 
-finalResult = "Controlled Presence: Strong position.";
+finalResult = `
+HUMAN ALIGNMENT REPORT
+
+Pattern: Controlled Presence
+
+Meaning:
+You maintain balance and emotional control.
+
+Advantage:
+High — strong attraction positioning.
+
+Next Step:
+Master deeper leverage systems.
+`;
 
 }
 
-// SHOW
-let box = document.getElementById("result");
+// HIDE QUESTIONS
+document.getElementById("q3").classList.add("hidden");
 
-box.innerHTML = result + `
+// SHOW RESULT + BUTTONS (UNCHANGED)
+let resultBox = document.getElementById("result");
+
+resultBox.innerHTML = result + `
+
 <br><br>
-<button onclick="downloadPDF()">Download Report</button>
+
+<button onclick="downloadPDF()">Download Your Report</button>
+
+<br><br>
+
+<button onclick="window.location.href='checkout.html'">
+Unlock Full Analysis
+</button>
+
 `;
 
-box.classList.remove("hidden");
+resultBox.classList.remove("hidden");
 
-// SAVE
+// SAVE TO FIREBASE (FIXED)
 try{
 
 await addDoc(collection(db, "users"), {
 email: userEmail,
 result: finalResult,
+analyzerUsed: true,
+progress: 1,
+lastPage: "analyzer",
 timestamp: new Date()
 });
 
-console.log("Saved!");
+console.log("Saved to Firebase");
 
-}catch(e){
-console.error("Error:", e);
+}catch(error){
+console.error("Error saving:", error);
 }
 
 }
@@ -210,10 +288,18 @@ const { jsPDF } = window.jspdf;
 
 let doc = new jsPDF();
 
-doc.text(finalResult, 10, 10);
-doc.save("report.pdf");
+doc.setFontSize(16);
+doc.text("Human Alignment Report", 20, 20);
 
-};
+doc.setFontSize(12);
+
+let lines = doc.splitTextToSize(finalResult, 170);
+
+doc.text(lines, 20, 40);
+
+doc.save("Human_Alignment_Report.pdf");
+
+}
 
 </script>
 
