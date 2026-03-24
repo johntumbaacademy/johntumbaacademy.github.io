@@ -3,11 +3,10 @@
 <head>
 <title>Human Alignment Analyzer</title>
 
-<!-- ✅ PDF LIBRARY -->
+<!-- PDF LIBRARY -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-
 body{
 font-family:Arial;
 background:#0f0f0f;
@@ -45,9 +44,7 @@ background:#111;
 border-radius:10px;
 text-align:left;
 }
-
 </style>
-
 </head>
 
 <body>
@@ -58,129 +55,65 @@ text-align:left;
 
 <!-- EMAIL GATE -->
 <div id="emailGate">
-
 <p>Enter your email to unlock your psychological analysis</p>
 
-<input type="email" id="emailInput" placeholder="Enter your email" style="padding:10px;width:80%;border-radius:6px;border:none;">
+<input type="email" id="emailInput" placeholder="Enter your email"
+style="padding:10px;width:80%;border-radius:6px;border:none;">
 
 <br><br>
 
 <button onclick="startAnalyzer()">Start Analysis</button>
-
 </div>
 
-<!-- ANALYZER (HIDDEN FIRST) -->
+<!-- ANALYZER -->
 <div id="analyzer" class="hidden">
 
 <p>Answer honestly. Your pattern will be revealed.</p>
 
-<!-- QUESTION 1 -->
+<!-- Q1 -->
 <div id="q1">
-
 <p>When someone pulls away, what do you do?</p>
 
 <button onclick="answer('chase')">I chase and try harder</button>
 <button onclick="answer('wait')">I wait and observe</button>
 <button onclick="answer('react')">I react emotionally</button>
-
 </div>
 
-<!-- QUESTION 2 -->
+<!-- Q2 -->
 <div id="q2" class="hidden">
-
 <p>How do you handle slow replies?</p>
 
 <button onclick="answer('overthink')">I overthink</button>
 <button onclick="answer('match')">I match energy</button>
 <button onclick="answer('double')">I double text</button>
-
 </div>
 
-<!-- QUESTION 3 -->
+<!-- Q3 -->
 <div id="q3" class="hidden">
-
 <p>Do you fear losing them?</p>
 
 <button onclick="answer('yes')">Yes</button>
 <button onclick="answer('no')">No</button>
-
 </div>
 
 <!-- RESULT -->
 <div id="result" class="result hidden"></div>
 
 </div>
-
-<!-- RESULT -->
-<div id="result" class="result hidden"></div>
-
 </div>
 
 <script>
-  <script>
 
-async function saveToFirebase(resultText){
-
-  try{
-
-    const db = window.db;
-
-    await addDoc(collection(db, "users"), {
-      email: email: userEmail,
-      result: resultText,
-      analyzerUsed: true,
-      progress: 1,
-      lastPage: "analyzer",
-      timestamp: new Date()
-    });
-
-    console.log("Saved to Firebase");
-
-  } catch(error){
-    console.error("Error saving:", error);
-  }
-
-}
-
-</script>
+// ======================
+// GLOBAL VARIABLES
+// ======================
 let userEmail = "";
 let answers = [];
-let finalResult = ""; // ✅ PDF STORAGE
+let finalResult = "";
 
-function answer(value){
-
-answers.push(value);
-
-if(answers.length === 1){
-document.getElementById("q1").classList.add("hidden");
-document.getElementById("q2").classList.remove("hidden");
-}
-
-else if(answers.length === 2){
-document.getElementById("q2").classList.add("hidden");
-document.getElementById("q3").classList.remove("hidden");
-}
-
-else{
-analyze();
-}
-
-}
-let count = localStorage.getItem("analyzerCount") || 0;
-count++;
-localStorage.setItem("analyzerCount", count);
-function analyze(){
-
-let result = "";
-
-if(answers.includes("chase") || answers.includes("double")){
-
-result = `
-<h2>Pattern: Over-Investment</h2>
-<p><strong>Diagnosis:</strong> You give too much attention too early.</p>
-<p><strong>Effect:</strong> This reduces perceived value and creates imbalance.</p>
-<p><strong>Correction:</strong> Regulate attention. Stop chasing. Match energy.</p>
-`;
+// ======================
+// START ANALYZER
+// ======================
 function startAnalyzer(){
 
 let email = document.getElementById("emailInput").value;
@@ -194,8 +127,44 @@ userEmail = email;
 
 document.getElementById("emailGate").classList.add("hidden");
 document.getElementById("analyzer").classList.remove("hidden");
-
 }
+
+// ======================
+// ANSWERS FLOW
+// ======================
+function answer(value){
+
+answers.push(value);
+
+if(answers.length === 1){
+document.getElementById("q1").classList.add("hidden");
+document.getElementById("q2").classList.remove("hidden");
+}
+else if(answers.length === 2){
+document.getElementById("q2").classList.add("hidden");
+document.getElementById("q3").classList.remove("hidden");
+}
+else{
+analyze();
+}
+}
+
+// ======================
+// ANALYZE
+// ======================
+function analyze(){
+
+let result = "";
+
+if(answers.includes("chase") || answers.includes("double")){
+
+result = `
+<h2>Pattern: Over-Investment</h2>
+<p><strong>Diagnosis:</strong> You give too much attention too early.</p>
+<p><strong>Effect:</strong> This reduces perceived value and creates imbalance.</p>
+<p><strong>Correction:</strong> Regulate attention. Stop chasing. Match energy.</p>
+`;
+
 finalResult = `
 HUMAN ALIGNMENT REPORT
 
@@ -212,7 +181,6 @@ Stop chasing. Match energy. Delay reactions.
 `;
 
 }
-
 else if(answers.includes("overthink") || answers.includes("yes")){
 
 result = `
@@ -238,7 +206,6 @@ Pause. Delay reactions. Stay neutral.
 `;
 
 }
-
 else{
 
 result = `
@@ -262,7 +229,6 @@ High — strong attraction positioning.
 Next Step:
 Master deeper leverage systems.
 `;
-
 }
 
 document.getElementById("q3").classList.add("hidden");
@@ -284,9 +250,40 @@ Unlock Full Analysis
 `;
 
 resultBox.classList.remove("hidden");
+
+// SAVE TO FIREBASE
 saveToFirebase(result);
+
 }
 
+// ======================
+// FIREBASE SAVE
+// ======================
+async function saveToFirebase(resultText){
+
+try{
+
+const db = window.db;
+
+await addDoc(collection(db, "users"), {
+  email: userEmail,
+  result: resultText,
+  analyzerUsed: true,
+  progress: 1,
+  lastPage: "analyzer",
+  timestamp: new Date()
+});
+
+console.log("Saved to Firebase");
+
+}catch(error){
+console.error("Error saving:", error);
+}
+}
+
+// ======================
+// PDF DOWNLOAD
+// ======================
 function downloadPDF(){
 
 const { jsPDF } = window.jspdf;
@@ -307,24 +304,25 @@ doc.save("Human_Alignment_Report.pdf");
 }
 
 </script>
+
+<!-- FIREBASE -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔥 YOUR CONFIG
 const firebaseConfig = {
-  apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
+  apiKey: "YOUR_API_KEY",
   authDomain: "alignment-tsa-library.firebaseapp.com",
   projectId: "alignment-tsa-library",
 };
 
-// INIT
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-window.db = db; // 👈 makes it usable later
+window.db = db;
 
 </script>
+
 </body>
 </html>
