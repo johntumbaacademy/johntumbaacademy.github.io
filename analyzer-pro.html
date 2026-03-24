@@ -70,7 +70,7 @@ style="padding:10px;width:80%;border-radius:6px;border:none;">
 
 <p>Answer honestly. Your pattern will be revealed.</p>
 
-<!-- QUESTION 1 -->
+<!-- Q1 -->
 <div id="q1">
 <p>When someone pulls away, what do you do?</p>
 
@@ -79,7 +79,7 @@ style="padding:10px;width:80%;border-radius:6px;border:none;">
 <button onclick="answer('react')">I react emotionally</button>
 </div>
 
-<!-- QUESTION 2 -->
+<!-- Q2 -->
 <div id="q2" class="hidden">
 <p>How do you handle slow replies?</p>
 
@@ -88,7 +88,7 @@ style="padding:10px;width:80%;border-radius:6px;border:none;">
 <button onclick="answer('double')">I double text</button>
 </div>
 
-<!-- QUESTION 3 -->
+<!-- Q3 -->
 <div id="q3" class="hidden">
 <p>Do you fear losing them?</p>
 
@@ -100,29 +100,21 @@ style="padding:10px;width:80%;border-radius:6px;border:none;">
 <div id="result" class="result hidden"></div>
 
 </div>
+</div>
 
-<script type="module">
+<script>
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-// FIREBASE CONFIG
-const firebaseConfig = {
-  apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
-  authDomain: "alignment-tsa-library.firebaseapp.com",
-  projectId: "alignment-tsa-library",
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// GLOBALS
+// ======================
+// GLOBAL VARIABLES
+// ======================
 let userEmail = "";
 let answers = [];
 let finalResult = "";
 
+// ======================
 // START ANALYZER
-window.startAnalyzer = function(){
+// ======================
+function startAnalyzer(){
 
 let email = document.getElementById("emailInput").value;
 
@@ -132,15 +124,15 @@ return;
 }
 
 userEmail = email;
-localStorage.setItem("userEmail", email);
 
 document.getElementById("emailGate").classList.add("hidden");
 document.getElementById("analyzer").classList.remove("hidden");
-
 }
 
-// ANSWER FLOW
-window.answer = function(value){
+// ======================
+// ANSWERS FLOW
+// ======================
+function answer(value){
 
 answers.push(value);
 
@@ -155,11 +147,12 @@ document.getElementById("q3").classList.remove("hidden");
 else{
 analyze();
 }
-
 }
 
+// ======================
 // ANALYZE
-async function analyze(){
+// ======================
+function analyze(){
 
 let result = "";
 
@@ -236,13 +229,10 @@ High — strong attraction positioning.
 Next Step:
 Master deeper leverage systems.
 `;
-
 }
 
-// HIDE QUESTIONS
 document.getElementById("q3").classList.add("hidden");
 
-// SHOW RESULT + BUTTONS (UNCHANGED)
 let resultBox = document.getElementById("result");
 
 resultBox.innerHTML = result + `
@@ -261,28 +251,43 @@ Unlock Full Analysis
 
 resultBox.classList.remove("hidden");
 
-// SAVE TO FIREBASE (FIXED)
+// SAVE TO FIREBASE
+saveToFirebase(result);
+
+}
+
+// ======================
+// FIREBASE SAVE (FIXED)
+// ======================
+async function saveToFirebase(resultText){
+
 try{
 
-await addDoc(collection(db, "users"), {
+if(!window.db){
+console.error("❌ Firebase not ready");
+return;
+}
+
+await window.addDoc(window.collection(window.db, "users"), {
 email: userEmail,
-result: finalResult,
+result: resultText,
 analyzerUsed: true,
 progress: 1,
 lastPage: "analyzer",
 timestamp: new Date()
 });
 
-console.log("Saved to Firebase");
+console.log("✅ Saved to Firebase");
 
 }catch(error){
-console.error("Error saving:", error);
+console.error("❌ Firebase Error:", error);
+}
 }
 
-}
-
-// PDF
-window.downloadPDF = function(){
+// ======================
+// PDF DOWNLOAD
+// ======================
+function downloadPDF(){
 
 const { jsPDF } = window.jspdf;
 
@@ -300,6 +305,30 @@ doc.text(lines, 20, 40);
 doc.save("Human_Alignment_Report.pdf");
 
 }
+
+</script>
+
+<!-- FIREBASE (FIXED PROPERLY) -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
+authDomain: "alignment-tsa-library.firebaseapp.com",
+projectId: "alignment-tsa-library",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// 🔥 CRITICAL FIX
+window.db = db;
+window.collection = collection;
+window.addDoc = addDoc;
+
+console.log("🔥 Firebase Connected");
 
 </script>
 
