@@ -204,7 +204,7 @@ const adminInput = document.getElementById("admin-code");
 const unlockMsg = document.getElementById("unlock-message");
 const paywall = document.getElementById("paywall");
 
-// PayPal automatic unlock
+    // PayPal automatic unlock
 paypal.HostedButtons({
   hostedButtonId: "APGW4MJDHM7K2",
   onApprove: function(data, actions){
@@ -212,6 +212,8 @@ paypal.HostedButtons({
     localStorage.setItem("unlocked",true);
     paywall.style.display="none";
     renderModules();
+  }
+}).render("#paypal-container-APGW4MJDHM7K2");
   }
 });
 
