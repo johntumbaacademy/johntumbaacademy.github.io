@@ -261,19 +261,25 @@ renderModules();
 
 // ---------------------- ADMIN MANUAL UNLOCK ----------------------
 unlockBtn.onclick = function(){
-  const code = adminInput.value.trim();
-  if(validCodes.includes(code)){
+  let code = adminInput.value.trim().toUpperCase(); // ignore lowercase input
+
+  // Check if code exists in validCodes array
+  if(validCodes.find(c => c.toUpperCase() === code)){
+    // Unlock everything
     unlocked = true;
-    localStorage.setItem("unlocked",true);
-    const index = validCodes.indexOf(code);
-    if(index>-1){ validCodes.splice(index,1); } // Remove used code
-    paywall.style.display="none";
-    unlockMsg.innerText="Modules unlocked successfully!";
+    localStorage.setItem("unlocked", true);
+    paywall.style.display = "none";
+    unlockMsg.innerText = "Modules unlocked successfully!";
     renderModules();
-  }else{
-    unlockMsg.innerText="Invalid or already used code!";
+
+    // Remove the code from validCodes so it can't be reused
+    validCodes = validCodes.filter(c => c.toUpperCase() !== code);
+
+  } else {
+    unlockMsg.innerText = "Invalid code! Make sure you type HYBRID-001 format.";
   }
 }
+  
 </script>
 </body>
 </html>
