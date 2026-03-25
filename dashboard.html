@@ -193,7 +193,9 @@ let validCodes = [
 "HYBRID-041","HYBRID-042","HYBRID-043","HYBRID-044","HYBRID-045",
 "HYBRID-046","HYBRID-047","HYBRID-048","HYBRID-049","HYBRID-050"
 ];
-
+// TEMPORARY: clear previous unlock flags to test manual codes
+localStorage.removeItem("unlocked");
+localStorage.removeItem("progress");
 // ---------------------- UNLOCK MANAGEMENT ----------------------
 let unlocked = JSON.parse(localStorage.getItem("unlocked")) || false;
 let progress = JSON.parse(localStorage.getItem("progress")) || 0;
