@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - Human Alignment</title>
+
+<style>
+body {
+  font-family: Arial;
+  background: #0f0f0f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: #1c1c1c;
+  padding: 30px;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 6px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #ff4c4c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toggle {
+  margin-top: 10px;
+  color: #aaa;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2 id="title">Login</h2>
+
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="handleAuth()">Continue</button>
+
+  <p class="toggle" onclick="toggleMode()">Don't have an account? Sign up</p>
+</div>
+
+<!-- FIREBASE -->
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// 🔥 YOUR CONFIG
+const firebaseConfig = {
+  apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
+  authDomain: "alignment-tsa-library.firebaseapp.com",
+  projectId: "alignment-tsa-library",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// MODE
+let isLogin = true;
+
+// TOGGLE LOGIN / SIGNUP
+window.toggleMode = function(){
+  isLogin = !isLogin;
+  document.getElementById("title").innerText = isLogin ? "Login" : "Sign Up";
+  document.querySelector(".toggle").innerText = isLogin 
+    ? "Don't have an account? Sign up"
+    : "Already have an account? Login";
+};
+
+// AUTH FUNCTION
+window.handleAuth = async function(){
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if(!email || !password){
+    alert("Fill all fields");
+    return;
+  }
+
+  try{
+
+    if(isLogin){
+      // LOGIN
+      const userCred = await signInWithEmailAndPassword(auth, email, password);
+      redirectUser(userCred.user.uid);
+
+    }else{
+      // SIGNUP
+      const userCred = await createUserWithEmailAndPassword(auth, email, password);
+
+      // CREATE USER IN FIRESTORE
+      await setDoc(doc(db, "users", userCred.user.uid), {
+        email: email,
+        hasCourseAccess: false,
+        hasLibraryAccess: false,
+        analyzerUsed: false,
+        progress: 0,
+        lastPage: "none",
+        createdAt: new Date()
+      });
+
+      redirectUser(userCred.user.uid);
+    }
+
+  }catch(error){
+    alert(error.message);
+  }
+};
+
+// REDIRECT
+async function redirectUser(uid){
+
+  // OPTIONAL: check user exists
+  const userDoc = await getDoc(doc(db, "users", uid));
+
+  if(!userDoc.exists()){
+    alert("User data missing");
+    return;
+  }
+
+  // GO TO DASHBOARD
+  window.location.href = "student-dashboard.html";
+}
+
+</script>
+
+</body>
+</html>
