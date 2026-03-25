@@ -262,26 +262,33 @@ function renderModules(){
 renderModules();
 
 // ---------------------- ADMIN MANUAL UNLOCK ----------------------
-unlockBtn.onclick = function(){
-  let code = adminInput.value.trim().toUpperCase(); // ignore lowercase input
+  unlockBtn.onclick = function(){
+  // Get the input code and make it uppercase to ignore lowercase
+  let code = adminInput.value.trim().toUpperCase();
 
-  // Check if code exists in validCodes array
+  // Check if the code exists in validCodes array
   if(validCodes.find(c => c.toUpperCase() === code)){
-    // Unlock everything
+    // Unlock all modules in memory and localStorage
     unlocked = true;
     localStorage.setItem("unlocked", true);
+
+    // Hide the payment section
     paywall.style.display = "none";
+
+    // Show success message
     unlockMsg.innerText = "Modules unlocked successfully!";
+
+    // Render modules
     renderModules();
 
-    // Remove the code from validCodes so it can't be reused
+    // Remove the used code so it cannot be reused
     validCodes = validCodes.filter(c => c.toUpperCase() !== code);
 
   } else {
+    // Show error if code is invalid
     unlockMsg.innerText = "Invalid code! Make sure you type HYBRID-001 format.";
   }
-}
-  
+  }
 </script>
 </body>
 </html>
