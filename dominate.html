@@ -86,8 +86,8 @@ h1, h2 {
 }
 </style>
 
-<!-- PayPal SDK -->
-<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03Gy&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+<!-- ✅ ONLY ONE PAYPAL SDK (CORRECT) -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
 
 </head>
 
@@ -95,19 +95,16 @@ h1, h2 {
 
 <div class="container">
 
-<!-- HERO -->
 <div class="hero">
     <h1>40-Hour Exam Domination Protocol</h1>
     <p style="text-align:center;">Only for students who want control under pressure.</p>
 </div>
 
-<!-- TIMER -->
 <div class="section">
     <h2>Execution Window Closing In:</h2>
     <div class="timer" id="countdown">Loading...</div>
 </div>
 
-<!-- PAIN -->
 <div class="section">
     <h2>You Already Feel It</h2>
     <div class="box">
@@ -116,7 +113,6 @@ h1, h2 {
     </div>
 </div>
 
-<!-- MECHANISM -->
 <div class="section">
     <h2>This Changes Everything</h2>
     <div class="box">
@@ -127,7 +123,6 @@ h1, h2 {
     </div>
 </div>
 
-<!-- OUTCOME -->
 <div class="section">
     <h2>After This</h2>
     <div class="box">
@@ -137,24 +132,14 @@ h1, h2 {
     </div>
 </div>
 
-<!-- TESTIMONIALS -->
 <div class="section">
     <h2>Proof</h2>
 
-    <div class="testimonial">
-        “I studied less but scored higher. This removed all confusion.” — Student A
-    </div>
-
-    <div class="testimonial">
-        “I stopped panicking completely. I knew exactly what to do.” — Student B
-    </div>
-
-    <div class="testimonial">
-        “This is not motivation. It’s control.” — Student C
-    </div>
+    <div class="testimonial">“I studied less but scored higher. This removed all confusion.” — Student A</div>
+    <div class="testimonial">“I stopped panicking completely. I knew exactly what to do.” — Student B</div>
+    <div class="testimonial">“This is not motivation. It’s control.” — Student C</div>
 </div>
 
-<!-- OFFER -->
 <div class="section">
     <h2>Access</h2>
     <p class="price">ZMW 950</p>
@@ -162,9 +147,10 @@ h1, h2 {
     <p style="text-align:center; color:#ff3b3b; font-weight:bold;">
         ⚠️ Only <span id="slots">7</span> slots left
     </p>
-<!-- PAYPAL BUTTON -->
-<div id="paypal-container-382MWL8VQVDN6"></div>
-    <!-- WHATSAPP -->
+
+    <!-- ✅ PAYPAL BUTTON (CORRECT POSITION) -->
+    <div id="paypal-container-382MWL8VQVDN6"></div>
+
     <div style="text-align:center;">
         <a href="https://wa.me/260779483121?text=DOMINATE.%20My%20exam%20is%20in:%20___%20hours.%20My%20biggest%20problem%20is:%20___" class="button">
             DM DOMINATE
@@ -172,7 +158,6 @@ h1, h2 {
     </div>
 </div>
 
-<!-- FINAL -->
 <div class="section">
     <div class="box">
         <p>Clarity removed panic.</p>
@@ -186,10 +171,7 @@ h1, h2 {
 
 </div>
 
-<!-- ================= SCRIPTS ================= -->
-
 <script>
-/* ===== TIMER (RESET-PROOF) ===== */
 let storedDeadline = localStorage.getItem("deadline");
 
 if (!storedDeadline) {
@@ -216,13 +198,11 @@ setInterval(function() {
     }
 }, 1000);
 
-
-/* ===== DYNAMIC SLOTS SYSTEM ===== */
 let slots = localStorage.getItem("slots");
 let lastVisit = localStorage.getItem("lastVisit");
 
 if (!slots) {
-    slots = Math.floor(Math.random() * 3) + 5; // 5–7
+    slots = Math.floor(Math.random() * 3) + 5;
     localStorage.setItem("slots", slots);
 }
 
@@ -238,15 +218,14 @@ if (lastVisit) {
 }
 
 localStorage.setItem("lastVisit", now);
-
 document.getElementById("slots").innerText = slots;
 
-
-/* ===== PAYPAL BUTTON ===== */
-    paypal.HostedButtons({
+/* ✅ FINAL PAYPAL RENDER */
+paypal.HostedButtons({
   hostedButtonId: "382MWL8VQVDN6"
 }).render("#paypal-container-382MWL8VQVDN6");
 
 </script>
+
 </body>
 </html>
