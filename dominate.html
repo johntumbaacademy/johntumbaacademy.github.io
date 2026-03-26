@@ -245,31 +245,11 @@ document.getElementById("slots").innerText = slots;
 
 
 /* ===== PAYPAL BUTTON ===== */
-paypal.Buttons({
-
-    createOrder: function(data, actions) {
-        return actions.order.create({
-            purchase_units: [{
-                amount: { value: '50.00' }
-            }]
-        });
-    },
-
-    onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-
-            let slots = localStorage.getItem("slots");
-            if (slots > 0) {
-                slots--;
-                localStorage.setItem("slots", slots);
-            }
-
-            window.location.href = "success.html";
-        });
-    }
-
-}).render('#paypal-button-container');
-
+<div id="paypal-container-382MWL8VQVDN6"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "382MWL8VQVDN6",
+  }).render("#paypal-container-382MWL8VQVDN6")
 </script>
 
 </body>
