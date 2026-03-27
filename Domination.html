@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>40-Hour Exam Domination Protocol</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0b0b0b;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.hero {
+    padding: 60px 20px;
+}
+
+.hero h1 {
+    color: #ff3b3b;
+    font-size: 34px;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 25px;
+    margin-top: 20px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.section {
+    margin-top: 50px;
+}
+
+.box {
+    background: #141414;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 4px solid #ff3b3b;
+}
+
+.highlight {
+    color: #ff3b3b;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 30px;
+    color: #00ffae;
+    text-align: center;
+}
+
+.testimonial {
+    background: #111;
+    padding: 15px;
+    margin-top: 15px;
+    border-left: 3px solid #00ffae;
+}
+
+.timer {
+    text-align: center;
+    font-size: 28px;
+    color: #ff3b3b;
+    margin-top: 20px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #777;
+}
+</style>
+
+<!-- PAYPAL SDK -->
+<script src="https://www.paypal.com/sdk/js?client-id=BAA0h9hLujTPxIkwmsvCfRKsPG6PUn0KDgvaAIXM4GneteemfHWUcU5jcgl-PaVs0bjeziNMwLTll03GyY&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+    <h1>40-Hour Exam Domination Protocol</h1>
+    <p style="text-align:center;">
+        The Elite Emergency System for Students Under Time Collapse
+    </p>
+</div>
+
+<!-- TIMER -->
+<div class="section">
+    <h2>Execution Window Closing In:</h2>
+    <div class="timer" id="countdown">Loading...</div>
+</div>
+
+<!-- READ THIS FIRST -->
+<div class="section">
+    <h2>READ THIS FIRST</h2>
+    <div class="box">
+        <p>If your exam is close. If time is gone. If panic has started.</p>
+        <p>This is not motivation. This is not revision notes. This is not a study group.</p>
+        <p class="highlight">This is a command system for students who must perform now.</p>
+    </div>
+</div>
+
+<!-- WHO THIS IS FOR -->
+<div class="section">
+    <h2>WHO THIS IS FOR</h2>
+    <div class="box">
+        <p>• 24–40 hours before an exam</p>
+        <p>• Overloaded by too much content</p>
+        <p>• Don’t know what actually matters</p>
+        <p>• Cannot afford to fail or guess blindly</p>
+        <p class="highlight">If you want comfort or long explanations — leave now.</p>
+    </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="section">
+    <h2>THE REAL PROBLEM</h2>
+    <div class="box">
+        <p>You are not failing because you are lazy.</p>
+        <p>You are failing because you are studying without command.</p>
+        <p>• Revising everything instead of eliminating</p>
+        <p>• Memorizing instead of predicting</p>
+        <p>• Trusting AI blindly</p>
+        <p>• Panicking because nothing is clear</p>
+        <p class="highlight">Exams are not random. They are patterned.</p>
+    </div>
+</div>
+
+<!-- WHAT THIS SYSTEM DOES -->
+<div class="section">
+    <h2>WHAT THIS SYSTEM DOES</h2>
+    <div class="box">
+        <p>✔ Strip content to exam-relevant only</p>
+        <p>✔ Force AI to reveal likely exam angles</p>
+        <p>✔ Identify high-yield vs distractions</p>
+        <p>✔ Generate exam-style questions</p>
+        <p>✔ Enter with clarity and control</p>
+        <p class="highlight">Not harder work — strategic execution.</p>
+    </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<div class="section">
+    <h2>WHAT YOU GET</h2>
+    <div class="box">
+        <p><strong>1. Core Protocol</strong></p>
+        <p>What to ignore. What to compress. What to master. What to expect.</p>
+
+        <p><strong>2. Elite AI Prompts</strong></p>
+        <p>Extract examiner logic, likely questions, scoring opportunities.</p>
+
+        <p><strong>3. BONUS Module</strong></p>
+        <p>Prompt chaining, verification, memory compression.</p>
+    </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section">
+    <h2>Proof</h2>
+    <div class="testimonial">“I studied less but scored higher.”</div>
+    <div class="testimonial">“I stopped panicking completely.”</div>
+    <div class="testimonial">“This gave me control.”</div>
+</div>
+
+<!-- DELIVERY -->
+<div class="section">
+    <h2>DELIVERY</h2>
+    <div class="box">
+        <p>• Instant PDF access</p>
+        <p>• Immediate after payment</p>
+        <p>• Optional WhatsApp delivery</p>
+    </div>
+</div>
+
+<!-- ACCESS -->
+<div class="section">
+    <h2>ACCESS</h2>
+
+    <p class="price">ZMW 750</p>
+    <p style="text-align:center;">Emergency pricing</p>
+
+    <p style="text-align:center; color:#ff3b3b; font-weight:bold;">
+        ⚠️ Only <span id="slots">7</span> slots left
+    </p>
+
+    <!-- PAYPAL -->
+    <div id="paypal-container-382MWL8VQVDN6"></div>
+
+    <!-- WHATSAPP -->
+    <div style="text-align:center;">
+        <a href="https://wa.me/260779483121?text=DOMINATE.%20My%20exam%20is%20in:%20___%20hours.%20My%20biggest%20problem%20is:%20___"
+           class="button">
+            Chat on WhatsApp (DOMINATE)
+        </a>
+    </div>
+</div>
+
+<!-- FINAL WARNING -->
+<div class="section">
+    <div class="box">
+        <p>This is not study material.</p>
+        <p class="highlight">This is a decision weapon.</p>
+        <p>If you follow it — you walk in ready.</p>
+        <p>If you ignore it — nothing changes.</p>
+    </div>
+</div>
+
+<div class="footer">
+    Only for serious students.
+</div>
+
+</div>
+
+<script>
+let storedDeadline = localStorage.getItem("deadline");
+
+if (!storedDeadline) {
+    let newDeadline = new Date().getTime() + (24 * 60 * 60 * 1000);
+    localStorage.setItem("deadline", newDeadline);
+    storedDeadline = newDeadline;
+}
+
+let deadline = parseInt(storedDeadline);
+
+setInterval(function() {
+    let now = new Date().getTime();
+    let distance = deadline - now;
+
+    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    let seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        hours + "h " + minutes + "m " + seconds + "s";
+
+    if (distance < 0) {
+        document.getElementById("countdown").innerHTML = "CLOSED";
+    }
+}, 1000);
+
+let slots = localStorage.getItem("slots");
+let lastVisit = localStorage.getItem("lastVisit");
+
+if (!slots) {
+    slots = Math.floor(Math.random() * 3) + 5;
+    localStorage.setItem("slots", slots);
+}
+
+let now = new Date().getTime();
+
+if (lastVisit) {
+    let minutesPassed = Math.floor((now - lastVisit) / 60000);
+
+    if (minutesPassed > 0 && slots > 1) {
+        slots = Math.max(1, slots - minutesPassed);
+        localStorage.setItem("slots", slots);
+    }
+}
+
+localStorage.setItem("lastVisit", now);
+document.getElementById("slots").innerText = slots;
+
+paypal.HostedButtons({
+  hostedButtonId: "382MWL8VQVDN6"
+}).render("#paypal-container-382MWL8VQVDN6");
+</script>
+
+</body>
+</html>
