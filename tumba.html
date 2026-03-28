@@ -24,6 +24,14 @@ padding:30px;
 text-align:center;
 }
 
+/* HERO SUBTEXT */
+.subtext{
+color:#aab3e0;
+font-size:18px;
+margin-top:10px;
+margin-bottom:25px;
+}
+
 /* WARNING BLOCK */
 .warning{
 background:#1a233f;
@@ -44,11 +52,16 @@ background:#141c34;
 padding:28px;
 border-radius:16px;
 margin-bottom:20px;
+text-align:left;
+}
+
+.section h2{
+text-align:center;
 }
 
 /* BUTTON */
 .button{
-background:#24d37f;
+background:#25D366;
 padding:18px 35px;
 border-radius:12px;
 text-decoration:none;
@@ -60,9 +73,10 @@ margin-top:20px;
 
 /* PRICE */
 .price{
-font-size:28px;
+font-size:32px;
 color:#24d37f;
 margin-top:10px;
+text-align:center;
 }
 
 /* PAYPAL */
@@ -70,10 +84,12 @@ margin-top:10px;
 margin-top:20px;
 }
 
+/* FOOTER */
 .footer{
 margin-top:30px;
 color:#777;
 font-size:14px;
+text-align:center;
 }
 
 </style>
@@ -89,6 +105,10 @@ font-size:14px;
 
 <h1>Elite Unguessable AI Prompt Pack™</h1>
 
+<p class="subtext">
+Standalone Emergency & Focus System for Students Under Mental Overload
+</p>
+
 <!-- WARNING -->
 <div class="warning">
 <h2>⚠️ READ THIS FIRST</h2>
@@ -99,19 +119,20 @@ font-size:14px;
 
 <p><strong>This is a cognitive rescue system.</strong></p>
 
-<p>If you are mentally overwhelmed, confused, and everything feels heavy… this is where you reset.</p>
+<p>If everything feels heavy, confusing, and disconnected… this is where you reset.</p>
 </div>
 
 <!-- PAIN -->
 <div class="section">
 <h2>You Already Feel It</h2>
 
+<p>Everything feels difficult.</p>
 <p>Nothing is connecting.</p>
-<p>You read… but nothing sticks.</p>
+<p>You read… but nothing stays.</p>
 <p>You are behind and don’t know where to start.</p>
 
 <p><strong>This is not laziness.</strong></p>
-<p>This is cognitive overload.</p>
+<p>This is mental overload.</p>
 </div>
 
 <!-- MECHANISM -->
@@ -121,13 +142,34 @@ font-size:14px;
 <p>This pack does NOT teach more.</p>
 <p>It forces your brain to:</p>
 
-<p>• Filter what matters</p>
+<p>• Filter what actually matters</p>
 <p>• Organize chaos instantly</p>
+<p>• Remove unnecessary noise</p>
 <p>• Focus without panic</p>
 <p>• Think clearly again</p>
 
 <p><strong>No extra studying.</strong></p>
 <p><strong>No overwhelm.</strong></p>
+
+<p style="margin-top:15px; font-weight:bold; color:#24d37f;">
+Not confidence. Clarity.
+</p>
+</div>
+
+<!-- CORE PROMISE -->
+<div class="section">
+<h2>What This Actually Does</h2>
+
+<p>• Tells you what actually matters</p>
+<p>• Shows you what to ignore</p>
+<p>• Restores focus immediately</p>
+<p>• Reduces mental noise</p>
+<p>• Gives you direction within minutes</p>
+
+<p style="margin-top:15px; font-weight:bold;">
+Not more effort. Immediate clarity.
+</p>
+
 </div>
 
 <!-- WHAT YOU GET -->
@@ -136,10 +178,10 @@ font-size:14px;
 
 <p>• 22 Elite, Unguessable AI Prompts</p>
 <p>• Structured execution waves</p>
-<p>• Works for ANY subject</p>
-<p>• Designed for mental overload + confusion</p>
+<p>• Works for ANY subject or discipline</p>
+<p>• Designed for confusion, overload, and time pressure</p>
 
-<p>No videos. No fluff. No wasted time.</p>
+<p>No videos. No explanations. No hand-holding.</p>
 </div>
 
 <!-- IDENTITY FILTER -->
@@ -149,6 +191,7 @@ font-size:14px;
 <p>• You feel mentally scattered</p>
 <p>• You are tired of reading without understanding</p>
 <p>• You want clarity immediately</p>
+<p>• You want to regain control of your thinking</p>
 </div>
 
 <!-- DISQUALIFY -->
@@ -157,7 +200,7 @@ font-size:14px;
 
 <p>• You want motivation</p>
 <p>• You want comfort</p>
-<p>• You are not ready to act</p>
+<p>• You are not ready to think independently</p>
 </div>
 
 <!-- OFFER -->
@@ -166,23 +209,33 @@ font-size:14px;
 
 <p class="price">ZMW 250</p>
 
+<p style="text-align:center; color:#aab3e0; font-size:14px;">
+Cheaper than staying confused for another week.
+</p>
+
 <!-- PAYPAL BUTTON -->
 <div id="paypal-button-container"></div>
 
 <!-- WHATSAPP -->
+<div style="text-align:center;">
 <a class="button"
-href="https://wa.me/260XXXXXXXXX?text=REQUEST%20PROMPT%20PACK.%20Field:%20___.%20Problem:%20___">
-Request the Prompt Pack
+href="https://wa.me/260XXXXXXXXX?text=REQUEST%20CLARITY.%20Field:%20___.%20Problem:%20___">
+Request Clarity Now (WhatsApp)
 </a>
+</div>
 
 </div>
 
 <!-- FINAL -->
 <div class="section">
 <p>You don’t need more information.</p>
+<p>You don’t need more effort.</p>
+
 <p><strong>You need clarity.</strong></p>
 
-<p>This gives it immediately.</p>
+<p style="margin-top:10px;">
+This gives it in minutes.
+</p>
 </div>
 
 <div class="footer">
@@ -201,7 +254,7 @@ paypal.Buttons({
 createOrder: function(data, actions) {
 return actions.order.create({
 purchase_units: [{
-amount: { value: '15.00' } // adjust price
+amount: { value: '15.00' } // match your ZMW equivalent
 }]
 });
 },
