@@ -8,23 +8,38 @@
 body {
   font-family: Arial;
   margin: 0;
+  line-height: 1.6;
 }
 
 .hero {
-  background: black;
+  background: #111;
   color: white;
-  padding: 40px;
+  padding: 50px 20px;
   text-align: center;
 }
 
 section {
-  padding: 30px;
+  padding: 30px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h1, h2 {
+  margin-bottom: 15px;
 }
 
 button {
-  padding: 10px;
-  margin-top: 10px;
+  padding: 12px 20px;
+  margin-top: 15px;
   cursor: pointer;
+  border: none;
+  background: black;
+  color: white;
+}
+
+.whatsapp {
+  background: #25D366;
+  color: white;
 }
 
 #analyzer {
@@ -41,12 +56,58 @@ button {
 
 <body>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Addiction doesn’t end because you want it to.</h1>
-  <p>It ends when you understand what is controlling you.</p>
+  <h1>You are not weak.</h1>
+  <p>
+    You’ve tried to stop. You meant it.  
+    But something keeps pulling you back.
+  </p>
+
+  <p>
+    I understand this because I lived it.  
+    I struggled, relapsed, and rebuilt—and I’ve been free for over 10 years.
+  </p>
+
   <button onclick="scrollToAnalyzer()">Start Assessment</button>
 </section>
 
+<!-- PROBLEM -->
+<section>
+  <h2>This is what addiction feels like</h2>
+
+  <p>
+    You tell yourself “this is the last time”…  
+    but it never is.
+  </p>
+
+  <p>
+    You hate it—but you still go back.  
+    Not because you want to… but because your body demands it.
+  </p>
+
+  <p>
+    And after some time, you start asking:
+    <br><strong>“Can I even stop?”</strong>
+  </p>
+</section>
+
+<!-- PARENTS -->
+<section>
+  <h2>For Parents</h2>
+
+  <p>
+    You are watching someone you love change…  
+    and nothing you say seems to work.
+  </p>
+
+  <p>
+    Forcing them will not fix it.  
+    Understanding what they are going through will.
+  </p>
+</section>
+
+<!-- ANALYZER -->
 <section id="analyzer">
   <h2>Understand Your Situation in 2 Minutes</h2>
 
@@ -55,14 +116,6 @@ button {
     <option value="self">Myself</option>
     <option value="child">My child</option>
     <option value="other">Someone else</option>
-  </select><br><br>
-
-  <label>Type of addiction</label><br>
-  <select id="type">
-    <option value="alcohol">Alcohol</option>
-    <option value="smoking">Smoking</option>
-    <option value="drugs">Drugs</option>
-    <option value="multiple">Multiple</option>
   </select><br><br>
 
   <label>How often?</label><br>
@@ -91,9 +144,21 @@ button {
   <div id="result"></div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
-  <h2>Book Consultation</h2>
-  <p>Contact me directly to begin recovery.</p>
+  <h2>Speak to Me Directly</h2>
+
+  <p>
+    If you are serious about stopping, don’t wait.
+  </p>
+
+  <a href="https://wa.me/260XXXXXXXXX" target="_blank">
+    <button class="whatsapp">Message Me on WhatsApp</button>
+  </a>
+
+  <p>
+    (Replace the number with your real WhatsApp number)
+  </p>
 </section>
 
 <script>
@@ -107,14 +172,14 @@ function analyze() {
   let result = "";
 
   if (score <= 4) {
-    result = "Mild: You can reverse this early.";
+    result = "Mild: You can still stop early—but you need structure.";
   } else if (score <= 7) {
-    result = "Moderate: You need structured help.";
+    result = "Moderate: Your pattern is already strong. You need guidance.";
   } else {
-    result = "Severe: Direct intervention needed.";
+    result = "Severe: Your body is strongly conditioned. You should not do this alone.";
   }
 
-  document.getElementById("result").innerHTML = result;
+  document.getElementById("result").innerHTML = result + "<br><br><b>Next step: Speak to me directly below.</b>";
 }
 
 function scrollToAnalyzer() {
@@ -123,4 +188,4 @@ function scrollToAnalyzer() {
 </script>
 
 </body>
-                            </html>
+</html>
