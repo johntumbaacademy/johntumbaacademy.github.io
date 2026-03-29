@@ -280,30 +280,58 @@ If you are here to try to persuade someone else to stop, this is not the right p
 <!-- SCRIPT -->
 <script>
 function analyze() {
+
+  let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
-  if(email === "") { alert("Please enter your email."); return; }
+
+  if(email === "") {
+    alert("Please enter your email.");
+    return;
+  }
 
   let f = parseInt(document.getElementById("frequency").value);
   let a = parseInt(document.getElementById("attempts").value);
   let w = parseInt(document.getElementById("withdrawal").value);
 
   let score = f + a + w;
+
   let result = "";
+  let insight = "";
 
-  if(score <= 4) result = "Mild dependency: You can still reverse this early with the right structure.";
-  else if(score <= 7) result = "Moderate dependency: Your pattern is established. You need guided intervention.";
-  else result = "Severe dependency: Strong conditioning is present. You should not do this alone.";
+  if(score <= 4) {
+    result = "Early-stage dependency";
 
-  document.getElementById("result").innerHTML = result + "<br><br><b>Next step: Speak to me directly below.</b>";
+    insight = "You are not fully controlled yet, but the pattern is forming. You may already notice moments where you say 'just this once' and justify it. This is where many people lose control later if not corrected early.";
+  } 
+  else if(score <= 7) {
+    result = "Established dependency";
 
-  let message = encodeURIComponent("Hello, I just completed the assessment. My result: " + result);
-  document.getElementById("whatsappLink").href = "https://wa.me/260779483121?text=" + message;
-  document.getElementById("whatsappSticky").href = "https://wa.me/260779483121?text=" + message;
-}
+    insight = "You are already in a cycle where your mind resists, but your body keeps pulling you back. You have likely experienced the moment where you say 'just one last time' after trying to stop. This is not lack of discipline — this is a pattern taking control.";
+  } 
+  else {
+    result = "Strong dependency pattern";
 
-function scrollToAnalyzer() {
-  document.getElementById("analyzer").scrollIntoView({ behavior: "smooth" });
-}
+    insight = "Your system is now conditioned. Even when you want to stop, your body demands it and your mind becomes tired of resisting. This is why relapse happens even when you are serious. You are not failing — your pattern is overpowering your current strategy.";
+  }
+
+  let fullResult = "<b>" + result + "</b><br><br>" + insight + "<br><br><b>Next step: Speak to me directly below.</b>";
+
+  document.getElementById("result").innerHTML = fullResult;
+
+  // WhatsApp message
+  let message = encodeURIComponent(
+    "Hello, I completed the assessment.\n\n" +
+    "Name: " + name + "\n" +
+    "Email: " + email + "\n\n" +
+    "Assessment Result:\n" + result + "\n\n" +
+    insight
+  );
+
+  let whatsappURL = "https://wa.me/260779483121?text=" + message;
+
+  document.getElementById("whatsappLink").href = whatsappURL;
+  document.getElementById("whatsappSticky").href = whatsappURL;
+  }
 </script>
 
 </body>
