@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Addiction Recovery</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  line-height: 1.7;
+  color: #111;
+}
+
+section {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero {
+  background: #0a0a0a;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 14px 22px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.primary {
+  background: #000;
+  color: white;
+}
+
+.whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+#analyzer {
+  background: #f4f4f4;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+  padding: 15px;
+  background: white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Addiction doesn’t end because you want it to.</h1>
+
+  <p>
+    It ends when you understand what is controlling you.
+  </p>
+
+  <p>
+    I’m not speaking from theory.<br>
+    I lived through addiction, relapses, and recovery.<br>
+    I’ve been free for over 10 years.
+  </p>
+
+  <button class="primary" onclick="scrollToAnalyzer()">Start Your Assessment</button>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section>
+  <h2>If this is you, read carefully</h2>
+
+  <p>
+    You’ve tried to stop. You meant it. But something keeps pulling you back.
+  </p>
+
+  <p>
+    Or you are watching someone you love lose control… and nothing you say works.
+  </p>
+
+  <p>
+    This is for:
+  </p>
+
+  <ul>
+    <li>People who relapse after trying to quit</li>
+    <li>Parents trying to help a resistant child</li>
+    <li>Anyone who feels like “nothing is working”</li>
+  </ul>
+</section>
+
+<!-- TRUTH -->
+<section>
+  <h2>What most people don’t understand</h2>
+
+  <p>
+    Addiction is not just a habit.
+  </p>
+
+  <p>
+    It starts as a choice…<br>
+    becomes a pattern…<br>
+    and then your body begins to override your decisions.
+  </p>
+
+  <p>
+    That’s why:
+  </p>
+
+  <ul>
+    <li>You can hate it and still do it</li>
+    <li>You can promise to stop and still relapse</li>
+  </ul>
+
+  <p><strong>This is not weakness. This is conditioning.</strong></p>
+</section>
+
+<!-- RELAPSE -->
+<section>
+  <h2>Why relapse keeps happening</h2>
+
+  <p>
+    After a few weeks, many people fall back.
+  </p>
+
+  <p>
+    Not because they don’t care…
+  </p>
+
+  <ul>
+    <li>The mind gets tired of resisting</li>
+    <li>The body keeps demanding relief</li>
+    <li>The brain negotiates: “just one last time”</li>
+  </ul>
+
+  <p>
+    And that is where the cycle restarts.
+  </p>
+</section>
+
+<!-- WARNING SIGNS -->
+<section>
+  <h2>Early warning signs of relapse</h2>
+
+  <p>If you notice these, you are already at risk:</p>
+
+  <ul>
+    <li>You start imagining yourself doing it again</li>
+    <li>You isolate yourself and feel bored</li>
+    <li>You begin to doubt if you can stop</li>
+  </ul>
+
+  <p>
+    These are not random thoughts.<br>
+    They are the beginning of relapse.
+  </p>
+</section>
+
+<!-- DIFFERENCE -->
+<section>
+  <h2>Why my approach works</h2>
+
+  <p>
+    I don’t just understand addiction.<br>
+    I explain your experience back to you—until you trust the process.
+  </p>
+
+  <ul>
+    <li>I break down what you are feeling step by step</li>
+    <li>I show you the exact pattern you are stuck in</li>
+    <li>I work with you as a human—not a case file</li>
+  </ul>
+
+  <p>
+    I don’t just help you stop.<br>
+    I help you rebuild a life that makes addiction unnecessary.
+  </p>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <h2>How the process works</h2>
+
+  <p><strong>Phase 1:</strong> Understand your pattern</p>
+  <p><strong>Phase 2:</strong> Break the cycle</p>
+  <p><strong>Phase 3:</strong> Rebuild control</p>
+  <p><strong>Phase 4:</strong> Prevent relapse</p>
+</section>
+
+<!-- PARENTS -->
+<section>
+  <h2>For parents</h2>
+
+  <p>
+    You cannot force someone out of addiction.
+  </p>
+
+  <p>
+    But you can understand them… and position them to want to change.
+  </p>
+
+  <p>
+    I help you understand what they are going through so you can respond correctly.
+  </p>
+</section>
+
+<!-- ANALYZER -->
+<section id="analyzer">
+  <h2>Understand your situation in 2 minutes</h2>
+
+  <label>Who is this for?</label><br>
+  <select id="person">
+    <option value="self">Myself</option>
+    <option value="child">My child</option>
+    <option value="other">Someone else</option>
+  </select><br><br>
+
+  <label>How often?</label><br>
+  <select id="frequency">
+    <option value="1">Occasionally</option>
+    <option value="2">Weekly</option>
+    <option value="3">Daily</option>
+  </select><br><br>
+
+  <label>Failed attempts?</label><br>
+  <select id="attempts">
+    <option value="1">None</option>
+    <option value="2">1–3</option>
+    <option value="3">Many</option>
+  </select><br><br>
+
+  <label>Withdrawal symptoms?</label><br>
+  <select id="withdrawal">
+    <option value="1">None</option>
+    <option value="2">Mild</option>
+    <option value="3">Strong</option>
+  </select><br><br>
+
+  <button onclick="analyze()">Get Result</button>
+
+  <div id="result"></div>
+</section>
+
+<!-- CTA -->
+<section>
+  <h2>You don’t need motivation</h2>
+
+  <p>
+    You need the right understanding and structure.
+  </p>
+
+  <a href="https://wa.me/260XXXXXXXXX?text=Hello%2C%20I%20need%20help%20with%20addiction" target="_blank">
+    <button class="whatsapp">Speak to Me on WhatsApp</button>
+  </a>
+
+  <p><small>Replace with your real number</small></p>
+</section>
+
+<script>
+function analyze() {
+  let f = parseInt(document.getElementById("frequency").value);
+  let a = parseInt(document.getElementById("attempts").value);
+  let w = parseInt(document.getElementById("withdrawal").value);
+
+  let score = f + a + w;
+
+  let result = "";
+
+  if (score <= 4) {
+    result = "Mild dependency: You can still reverse this early with the right structure.";
+  } else if (score <= 7) {
+    result = "Moderate dependency: Your pattern is established. You need guided intervention.";
+  } else {
+    result = "Severe dependency: Strong conditioning is present. You should not do this alone.";
+  }
+
+  document.getElementById("result").innerHTML =
+    result + "<br><br><b>Next step: Speak to me directly below.</b>";
+}
+
+function scrollToAnalyzer() {
+  document.getElementById("analyzer").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
