@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Addiction Recovery</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: #eaeaea;
+  line-height: 1.7;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: white;
+}
+
+.hero {
+  text-align: center;
+}
+
+.highlight {
+  color: #25D366;
+}
+
+.card {
+  background: #111;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 14px 24px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+.primary {
+  background: #25D366;
+  color: black;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 20px;
+  background: #000;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Addiction is not just a habit.<br><span class="highlight">It’s a pattern that controls you.</span></h1>
+
+  <p>
+    You’ve tried to stop. You meant it.<br>
+    But something keeps pulling you back.
+  </p>
+
+  <p>
+    I lived it. I relapsed. I rebuilt.<br>
+    I’ve been free for over 10 years.
+  </p>
+
+  <button class="primary" onclick="scrollToAnalyzer()">Start Assessment</button>
+</section>
+
+<!-- AUTHORITY -->
+<section>
+  <h2>Why this works</h2>
+
+  <div class="card">
+    <p>
+      Most programs explain addiction.<br>
+      I explain <strong>your experience</strong> back to you—until you trust the process.
+    </p>
+
+    <p>
+      I don’t treat you like a case.<br>
+      I work with you directly and rebuild your lifestyle—not just your discipline.
+    </p>
+  </div>
+</section>
+
+<!-- RELAPSE TRUTH -->
+<section>
+  <h2>Why you keep going back</h2>
+
+  <div class="card">
+    <ul>
+      <li>Your mind gets tired of resisting</li>
+      <li>Your body keeps demanding relief</li>
+      <li>Your brain says: “just one last time”</li>
+    </ul>
+
+    <p><strong>This is conditioning—not weakness.</strong></p>
+  </div>
+</section>
+
+<!-- ANALYZER -->
+<section id="analyzer">
+  <h2>Private Assessment (2 minutes)</h2>
+
+  <div class="card">
+
+    <label>Your Name (optional)</label>
+    <input type="text" id="name">
+
+    <label>Email (required)</label>
+    <input type="email" id="email" placeholder="Enter your email">
+
+    <label>Who is this for?</label>
+    <select id="person">
+      <option value="self">Myself</option>
+      <option value="child">My child</option>
+      <option value="other">Someone else</option>
+    </select>
+
+    <label>How often?</label>
+    <select id="frequency">
+      <option value="1">Occasionally</option>
+      <option value="2">Weekly</option>
+      <option value="3">Daily</option>
+    </select>
+
+    <label>Failed attempts?</label>
+    <select id="attempts">
+      <option value="1">None</option>
+      <option value="2">1–3</option>
+      <option value="3">Many</option>
+    </select>
+
+    <label>Withdrawal symptoms?</label>
+    <select id="withdrawal">
+      <option value="1">None</option>
+      <option value="2">Mild</option>
+      <option value="3">Strong</option>
+    </select>
+
+    <button class="primary" onclick="analyze()">Get My Result</button>
+
+    <div id="result"></div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <h2>Take the next step</h2>
+
+  <div class="card">
+    <p>
+      You don’t need more motivation.<br>
+      You need the right structure.
+    </p>
+
+    <a id="whatsappLink" href="#" target="_blank">
+      <button class="primary">Speak to Me on WhatsApp</button>
+    </a>
+  </div>
+</section>
+
+<script>
+function analyze() {
+
+  let email = document.getElementById("email").value;
+
+  if (email === "") {
+    alert("Please enter your email first.");
+    return;
+  }
+
+  let f = parseInt(document.getElementById("frequency").value);
+  let a = parseInt(document.getElementById("attempts").value);
+  let w = parseInt(document.getElementById("withdrawal").value);
+
+  let score = f + a + w;
+
+  let result = "";
+
+  if (score <= 4) {
+    result = "Mild dependency: You can still reverse this early with the right structure.";
+  } else if (score <= 7) {
+    result = "Moderate dependency: Your pattern is established. You need guided intervention.";
+  } else {
+    result = "Severe dependency: Strong conditioning is present. You should not do this alone.";
+  }
+
+  document.getElementById("result").innerHTML =
+    result + "<br><br><b>Next step: Speak to me directly below.</b>";
+
+  let message = encodeURIComponent(
+    "Hello, I just completed the assessment. My result: " + result
+  );
+
+  document.getElementById("whatsappLink").href =
+    "https://wa.me/260XXXXXXXXX?text=" + message;
+}
+
+function scrollToAnalyzer() {
+  document.getElementById("analyzer").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
