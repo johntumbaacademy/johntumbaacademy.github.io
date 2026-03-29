@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Addiction Recovery</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+.hero {
+  background: black;
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+section {
+  padding: 30px;
+}
+
+button {
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#analyzer {
+  background: #f4f4f4;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+  <h1>Addiction doesn’t end because you want it to.</h1>
+  <p>It ends when you understand what is controlling you.</p>
+  <button onclick="scrollToAnalyzer()">Start Assessment</button>
+</section>
+
+<section id="analyzer">
+  <h2>Understand Your Situation in 2 Minutes</h2>
+
+  <label>Who is this for?</label><br>
+  <select id="person">
+    <option value="self">Myself</option>
+    <option value="child">My child</option>
+    <option value="other">Someone else</option>
+  </select><br><br>
+
+  <label>Type of addiction</label><br>
+  <select id="type">
+    <option value="alcohol">Alcohol</option>
+    <option value="smoking">Smoking</option>
+    <option value="drugs">Drugs</option>
+    <option value="multiple">Multiple</option>
+  </select><br><br>
+
+  <label>How often?</label><br>
+  <select id="frequency">
+    <option value="1">Occasionally</option>
+    <option value="2">Weekly</option>
+    <option value="3">Daily</option>
+  </select><br><br>
+
+  <label>Failed attempts?</label><br>
+  <select id="attempts">
+    <option value="1">None</option>
+    <option value="2">1–3</option>
+    <option value="3">Many</option>
+  </select><br><br>
+
+  <label>Withdrawal symptoms?</label><br>
+  <select id="withdrawal">
+    <option value="1">None</option>
+    <option value="2">Mild</option>
+    <option value="3">Strong</option>
+  </select><br><br>
+
+  <button onclick="analyze()">Get Result</button>
+
+  <div id="result"></div>
+</section>
+
+<section id="contact">
+  <h2>Book Consultation</h2>
+  <p>Contact me directly to begin recovery.</p>
+</section>
+
+<script>
+function analyze() {
+  let frequency = parseInt(document.getElementById("frequency").value);
+  let attempts = parseInt(document.getElementById("attempts").value);
+  let withdrawal = parseInt(document.getElementById("withdrawal").value);
+
+  let score = frequency + attempts + withdrawal;
+
+  let result = "";
+
+  if (score <= 4) {
+    result = "Mild: You can reverse this early.";
+  } else if (score <= 7) {
+    result = "Moderate: You need structured help.";
+  } else {
+    result = "Severe: Direct intervention needed.";
+  }
+
+  document.getElementById("result").innerHTML = result;
+}
+
+function scrollToAnalyzer() {
+  document.getElementById("analyzer").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+</body>
+                            </html>
