@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Addiction Recovery</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0b0b0b;
+  color: #eaeaea;
+  line-height: 1.7;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: white;
+}
+
+.hero {
+  text-align: center;
+}
+
+.highlight {
+  color: #25D366;
+}
+
+.card {
+  background: #111;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+button {
+  padding: 14px 24px;
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  font-size: 15px;
+  border-radius: 6px;
+}
+
+.primary {
+  background: #25D366;
+  color: black;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 20px;
+  background: #000;
+  border-radius: 10px;
+}
+
+.sticky-cta {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Addiction is not just a habit.<br><span class="highlight">It’s a pattern that controls you.</span></h1>
+
+  <p>
+    You’ve tried to stop. You meant it.<br>
+    But something keeps pulling you back.
+  </p>
+
+  <p>
+    I lived it. I relapsed. I rebuilt.<br>
+    I’ve been free for over 10 years.
+  </p>
+
+  <button class="primary" onclick="scrollToAnalyzer()">Start Assessment</button>
+</section>
+
+<!-- AUTHORITY -->
+<section>
+  <h2>Why this works</h2>
+  <div class="card">
+    <p>
+      Most programs explain addiction.<br>
+      I explain <strong>your experience</strong> back to you—until you trust the process.
+    </p>
+    <p>
+      I don’t treat you like a case.<br>
+      I work with you directly and rebuild your lifestyle—not just your discipline.
+    </p>
+  </div>
+</section>
+
+<!-- RELAPSE TRUTH -->
+<section>
+  <h2>Why you keep going back</h2>
+  <div class="card">
+    <ul>
+      <li>Your mind gets tired of resisting</li>
+      <li>Your body keeps demanding relief</li>
+      <li>Your brain says: “just one last time”</li>
+    </ul>
+    <p><strong>This is conditioning—not weakness.</strong></p>
+  </div>
+</section>
+
+<!-- ANALYZER -->
+<section id="analyzer">
+  <h2>Private Assessment (2 minutes)</h2>
+  <div class="card">
+    <div id="conversationContainer"></div>
+    <div id="result"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <h2>Take the next step</h2>
+  <div class="card">
+    <p>You don’t need motivation—you need the right understanding and structure.</p>
+    <a id="whatsappLink" href="#" target="_blank">
+      <button class="primary">Speak to Me Directly on WhatsApp</button>
+    </a>
+  </div>
+</section>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta">
+  <a href="#" id="whatsappSticky" target="_blank"><button class="primary">Talk Now</button></a>
+</div>
+
+<script>
+let conversationIndex = 0;
+let answers = {};
+
+const questions = [
+  {
+    id: "person",
+    text: "Who is this assessment for?",
+    type: "select",
+    options: [
+      { value: "self", label: "Myself" },
+      { value: "child", label: "My child" },
+      { value: "other", label: "Someone else" }
+    ]
+  },
+  {
+    id: "frequency",
+    text: "How often do you engage in the addictive behavior?\n(Occasionally: <1/week, Weekly: 1–6/week, Daily: once or more/day)",
+    type: "select",
+    options: [
+      { value: 1, label: "Occasionally" },
+      { value: 2, label: "Weekly" },
+      { value: 3, label: "Daily" }
+    ]
+  },
+  {
+    id: "attempts",
+    text: "How many times have you tried to stop before?",
+    type: "select",
+    options: [
+      { value: 1, label: "None" },
+      { value: 2, label: "1–3 times" },
+      { value: 3, label: "Many times" }
+    ]
+  },
+  {
+    id: "withdrawal",
+    text: "Do you experience withdrawal symptoms when you stop? (e.g., irritability, sweating, cravings, insomnia)",
+    type: "select",
+    options: [
+      { value: 1, label: "None" },
+      { value: 2, label: "Mild" },
+      { value: 3, label: "Strong" }
+    ]
+  },
+  {
+    id: "urges",
+    text: "Do you experience strong urges after stopping?",
+    type: "select",
+    options: [
+      { value: 1, label: "No" },
+      { value: 2, label: "Sometimes" },
+      { value: 3, label: "Yes, very intense" }
+    ]
+  },
+  {
+    id: "name",
+    text: "What is your name? (optional)",
+    type: "text"
+  },
+  {
+    id: "email",
+    text: "What is your email? (required)",
+    type: "email"
+  }
+];
+
+function showQuestion() {
+  if (conversationIndex >= questions.length) {
+    analyzeConversation();
+    return;
+  }
+
+  const q = questions[conversationIndex];
+  const container = document.getElementById("conversationContainer");
+  container.innerHTML = `<h3>${q.text}</h3>`;
+
+  if (q.type === "select") {
+    q.options.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.textContent = opt.label;
+      btn.className = "primary";
+      btn.style.margin = "10px 0";
+      btn.onclick = () => {
+        answers[q.id] = parseInt(opt.value) || opt.value;
+        conversationIndex++;
+        showQuestion();
+      };
+      container.appendChild(btn);
+
+      // Microcopy for persuasiveness
+      const micro = document.createElement("p");
+      micro.style.fontSize = "13px";
+      micro.style.color = "#a0ffa0";
+      micro.style.marginTop = "3px";
+      micro.innerHTML = "Be honest—this reveals your true pattern, not your wishful thinking.";
+      container.appendChild(micro);
+    });
+  } else if (q.type === "text" || q.type === "email") {
+    const input = document.createElement("input");
+    input.type = q.type;
+    input.placeholder = q.text;
+    input.style.marginTop = "15px";
+    container.appendChild(input);
+
+    const nextBtn = document.createElement("button");
+    nextBtn.textContent = "Next";
+    nextBtn.className = "primary";
+    nextBtn.style.display = "block";
+    nextBtn.onclick = () => {
+      if(q.type === "email" && input.value === "") {
+        alert("Email is required.");
+        return;
+      }
+      answers[q.id] = input.value;
+      conversationIndex++;
+      showQuestion();
+    };
+    container.appendChild(nextBtn);
+
+    // Microcopy for text/email inputs
+    const micro = document.createElement("p");
+    micro.style.fontSize = "13px";
+    micro.style.color = "#a0ffa0";
+    micro.style.marginTop = "3px";
+    micro.innerHTML = q.type === "email" ? "We’ll use this to send your insights directly to WhatsApp." : "Your honesty matters—it shapes your result.";
+    container.appendChild(micro);
+  }
+}
+
+function analyzeConversation() {
+  let score = Number(answers.frequency) + Number(answers.attempts) + Number(answers.withdrawal) + Number(answers.urges);
+  let result = "";
+  let insight = "";
+
+  if(score <= 5) {
+    result = "Early-stage dependency";
+    insight = "You are noticing moments where you say 'just this once'. The pattern is forming but can be reversed with proper structure.";
+  } else if(score <= 9) {
+    result = "Established dependency";
+    insight = "You are in a cycle where your mind resists but your body pulls you back. This is not lack of willpower — this is pattern control.";
+  } else {
+    result = "Strong dependency pattern";
+    insight = "Your system is conditioned. Even when you want to stop, urges and fatigue dominate. This is why relapse happens despite commitment.";
+  }
+
+  const fullResult = `<b>${result}</b><br><br>${insight}<br><br><b>Next step: Speak to me directly below.</b>`;
+  document.getElementById("conversationContainer").innerHTML = fullResult;
+
+  const message = encodeURIComponent(
+    "Hello, I completed the assessment.\n\n" +
+    "Name: " + (answers.name || "N/A") + "\n" +
+    "Email: " + answers.email + "\n\n" +
+    "Assessment Result:\n" + result + "\n\n" +
+    insight
+  );
+
+  const whatsappURL = "https://wa.me/260779483121?text=" + message;
+
+  document.getElementById("whatsappLink").href = whatsappURL;
+  document.getElementById("whatsappSticky").href = whatsappURL;
+}
+
+// Scroll function
+function scrollToAnalyzer() {
+  document.getElementById("analyzer").scrollIntoView({ behavior: "smooth" });
+}
+
+document.addEventListener("DOMContentLoaded", showQuestion);
+</script>
+
+</body>
+</html>
