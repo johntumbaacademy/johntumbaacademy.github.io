@@ -47,6 +47,12 @@ button {
   color: #aaa;
   cursor: pointer;
 }
+
+.rules {
+  font-size: 12px;
+  text-align: left;
+  margin-top: 10px;
+}
 </style>
 </head>
 
@@ -56,21 +62,35 @@ button {
   <h2 id="title">Login</h2>
 
   <input type="email" id="email" placeholder="Email">
+  
   <input type="password" id="password" placeholder="Password">
+  
+  <label style="font-size: 12px;">
+    <input type="checkbox" onclick="togglePassword()"> Show Password
+  </label>
+
+  <div class="rules" id="passwordRules" style="display:none;">
+    <p id="length">❌ At least 8 characters</p>
+    <p id="uppercase">❌ Uppercase letter</p>
+    <p id="lowercase">❌ Lowercase letter</p>
+    <p id="number">❌ Number</p>
+    <p id="special">❌ Special character</p>
+  </div>
 
   <button onclick="handleAuth()">Continue</button>
 
   <p class="toggle" onclick="toggleMode()">Don't have an account? Sign up</p>
 </div>
 
-<!-- FIREBASE -->
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged }
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } 
+from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-// 🔥 YOUR CONFIG
+// FIREBASE CONFIG
 const firebaseConfig = {
   apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
   authDomain: "alignment-tsa-library.firebaseapp.com",
@@ -85,19 +105,56 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// AUTO LOGIN
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    redirectUser(user.uid);
+  }
+});
+
 // MODE
 let isLogin = true;
 
 // TOGGLE LOGIN / SIGNUP
 window.toggleMode = function(){
   isLogin = !isLogin;
+
   document.getElementById("title").innerText = isLogin ? "Login" : "Sign Up";
   document.querySelector(".toggle").innerText = isLogin 
     ? "Don't have an account? Sign up"
     : "Already have an account? Login";
+
+  document.getElementById("passwordRules").style.display = isLogin ? "none" : "block";
 };
 
-// AUTH FUNCTION
+// SHOW PASSWORD
+window.togglePassword = function(){
+  const field = document.getElementById("password");
+  field.type = field.type === "password" ? "text" : "password";
+};
+
+// PASSWORD VALIDATION UI
+document.getElementById("password").addEventListener("input", function(){
+
+  const value = this.value;
+
+  document.getElementById("length").innerText =
+    value.length >= 8 ? "✅ At least 8 characters" : "❌ At least 8 characters";
+
+  document.getElementById("uppercase").innerText =
+    /[A-Z]/.test(value) ? "✅ Uppercase letter" : "❌ Uppercase letter";
+
+  document.getElementById("lowercase").innerText =
+    /[a-z]/.test(value) ? "✅ Lowercase letter" : "❌ Lowercase letter";
+
+  document.getElementById("number").innerText =
+    /[0-9]/.test(value) ? "✅ Number" : "❌ Number";
+
+  document.getElementById("special").innerText =
+    /[!@#$%^&*]/.test(value) ? "✅ Special character" : "❌ Special character";
+});
+
+// AUTH
 window.handleAuth = async function(){
 
   const email = document.getElementById("email").value;
@@ -116,10 +173,20 @@ window.handleAuth = async function(){
       redirectUser(userCred.user.uid);
 
     }else{
+
+      // PASSWORD RULE CHECK (ONLY SIGNUP)
+      if(password.length < 8 ||
+         !/[A-Z]/.test(password) ||
+         !/[a-z]/.test(password) ||
+         !/[0-9]/.test(password) ||
+         !/[!@#$%^&*]/.test(password)){
+        alert("Password does not meet requirements");
+        return;
+      }
+
       // SIGNUP
       const userCred = await createUserWithEmailAndPassword(auth, email, password);
 
-      // CREATE USER IN FIRESTORE
       await setDoc(doc(db, "users", userCred.user.uid), {
         email: email,
         hasCourseAccess: false,
@@ -141,7 +208,6 @@ window.handleAuth = async function(){
 // REDIRECT
 async function redirectUser(uid){
 
-  // OPTIONAL: check user exists
   const userDoc = await getDoc(doc(db, "users", uid));
 
   if(!userDoc.exists()){
@@ -149,7 +215,6 @@ async function redirectUser(uid){
     return;
   }
 
-  // GO TO DASHBOARD
   window.location.href = "student-dashboard.html";
 }
 
