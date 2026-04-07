@@ -98,11 +98,13 @@ function unlockNext(nextModuleId){
   if(next){next.classList.remove('locked');}
 }
 </script>
-  <!-- FIREBASE AUTH START -->
+  
+<!-- FIRESTORE LOGIN & PAYMENT CHECK START -->
 <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
 <script>
-  // Firebase config
+  // 1️⃣ Initialize Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBTbmzwfFafPpb6VJfOiAQILxxswqqHnSs",
     authDomain: "alignment-tsa-library.firebaseapp.com",
@@ -112,26 +114,59 @@ function unlockNext(nextModuleId){
     appId: "1:242093533709:web:aba2715a343e168f844344"
   };
   firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
+  const db = firebase.firestore();
 
+  // 2️⃣ Grab login form elements
   const loginBtn = document.getElementById("login-btn");
   const loginMsg = document.getElementById("login-msg");
+  const emailInput = document.getElementById("email");
 
+  // 3️⃣ Handle login click
   loginBtn.addEventListener("click", () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+    const email = emailInput.value.trim();
+    if(!email){
+      loginMsg.innerText = "Please enter your email.";
+      return;
+    }
 
-    auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        loginMsg.innerText = "Login successful! Redirecting...";
-        setTimeout(() => {
-          window.location.href = "dashboard.html"; // Go to dashboard
-        }, 1000);
+    loginMsg.innerText = "Checking payment...";
+
+    // 4️⃣ Check Firestore paidUsers collection
+    db.collection("paidUsers").where("email", "==", email)
+      .get()
+      .then(querySnapshot => {
+        if(querySnapshot.empty){
+          loginMsg.innerText = "Email not found or not paid. Please pay first.";
+          document.querySelectorAll(".module").forEach(m => m.classList.add("locked"));
+        } else {
+          let paid = false;
+          querySnapshot.forEach(doc => {
+            if(doc.data().paid === true){
+              paid = true;
+            }
+          });
+
+          if(paid){
+            loginMsg.innerText = "Welcome! Modules unlocked.";
+            document.querySelectorAll(".module").forEach(m => m.classList.remove("locked"));
+          } else {
+            loginMsg.innerText = "Payment not confirmed. Access denied.";
+            document.querySelectorAll(".module").forEach(m => m.classList.add("locked"));
+          }
+        }
       })
-      .catch((error) => {
-        loginMsg.innerText = error.message;
+      .catch(err => {
+        console.error("Error checking payment:", err);
+        loginMsg.innerText = "An error occurred. Try again later.";
       });
   });
+
+  // 5️⃣ Keep existing unlockNext function
+  function unlockNext(nextModuleId){
+    const next = document.getElementById(nextModuleId);
+    if(next){next.classList.remove('locked');}
+  }
 </script>
+<!-- FIRESTORE LOGIN & PAYMENT CHECK END -->
 </body>
 </html>
