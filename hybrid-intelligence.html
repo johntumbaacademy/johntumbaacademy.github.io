@@ -155,12 +155,6 @@ const emailInput = document.getElementById("modal-email");
         loginMsg.innerText = "An error occurred. Try again later.";
       });
   });
-
-  // 5️⃣ Keep existing unlockNext function
-  function unlockNext(nextModuleId){
-    const next = document.getElementById(nextModuleId);
-    if(next){next.classList.remove('locked');}
-  }
 </script>
 <!-- FIRESTORE LOGIN & PAYMENT CHECK END -->
   <script>
