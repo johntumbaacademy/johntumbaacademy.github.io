@@ -111,14 +111,19 @@ function unlockNext(nextModuleId){
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 
-  // 2️⃣ Grab login form elements
-  const loginBtn = document.getElementById("modal-login-btn");
-const loginMsg = document.getElementById("modal-login-msg");
-const emailInput = document.getElementById("modal-email");
+  // WAIT UNTIL PAGE LOADS
+window.addEventListener("DOMContentLoaded", () => {
 
-  // 3️⃣ Handle login click
+  const loginBtn = document.getElementById("modal-login-btn");
+  const loginMsg = document.getElementById("modal-login-msg");
+  const emailInput = document.getElementById("modal-email");
+
   loginBtn.addEventListener("click", () => {
+
+    alert("Button clicked"); // TEMP TEST
+
     const email = emailInput.value.trim();
+
     if(!email){
       loginMsg.innerText = "Please enter your email.";
       return;
@@ -126,15 +131,17 @@ const emailInput = document.getElementById("modal-email");
 
     loginMsg.innerText = "Checking payment...";
 
-    // 4️⃣ Check Firestore paidUsers collection
     db.collection("paidUsers").where("email", "==", email)
       .get()
       .then(querySnapshot => {
+
         if(querySnapshot.empty){
-          loginMsg.innerText = "Email not found or not paid. Please pay first.";
+          loginMsg.innerText = "Email not found or not paid.";
           document.querySelectorAll(".module").forEach(m => m.classList.add("locked"));
         } else {
+
           let paid = false;
+
           querySnapshot.forEach(doc => {
             if(doc.data().paid === true){
               paid = true;
@@ -142,19 +149,24 @@ const emailInput = document.getElementById("modal-email");
           });
 
           if(paid){
-            loginMsg.innerText = "Welcome! Modules unlocked.";
+            loginMsg.innerText = "Access granted.";
             document.querySelectorAll(".module").forEach(m => m.classList.remove("locked"));
+
+            document.getElementById("login-modal").style.display = "none";
           } else {
-            loginMsg.innerText = "Payment not confirmed. Access denied.";
-            document.querySelectorAll(".module").forEach(m => m.classList.add("locked"));
+            loginMsg.innerText = "Payment not confirmed.";
           }
         }
+
       })
       .catch(err => {
-        console.error("Error checking payment:", err);
-        loginMsg.innerText = "An error occurred. Try again later.";
+        alert(err.message);
+        console.error(err);
       });
+
   });
+
+});
 </script>
 <!-- FIRESTORE LOGIN & PAYMENT CHECK END -->
   <script>
