@@ -112,9 +112,9 @@ function unlockNext(nextModuleId){
   const db = firebase.firestore();
 
   // 2️⃣ Grab login form elements
-  const loginBtn = document.getElementById("login-btn");
-  const loginMsg = document.getElementById("login-msg");
-  const emailInput = document.getElementById("email");
+  const loginBtn = document.getElementById("modal-login-btn");
+const loginMsg = document.getElementById("modal-login-msg");
+const emailInput = document.getElementById("modal-email");
 
   // 3️⃣ Handle login click
   loginBtn.addEventListener("click", () => {
