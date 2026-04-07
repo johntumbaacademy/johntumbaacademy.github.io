@@ -95,5 +95,42 @@ function unlockNext(nextModuleId){
   const next = document.getElementById(nextModuleId);
   if(next){next.classList.remove('locked');}
 }
-</script></body>
+</script>
+  <!-- FIREBASE AUTH START -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+
+<script>
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_MESSAGING_ID",
+    appId: "YOUR_APP_ID"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  const loginBtn = document.getElementById("login-btn");
+  const loginMsg = document.getElementById("login-msg");
+
+  loginBtn.addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        loginMsg.innerText = "Login successful! Redirecting...";
+        setTimeout(() => {
+          window.location.href = "dashboard.html"; // Go to dashboard
+        }, 1000);
+      })
+      .catch((error) => {
+        loginMsg.innerText = error.message;
+      });
+  });
+</script>
+</body>
 </html>
