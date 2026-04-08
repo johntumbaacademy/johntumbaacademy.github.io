@@ -186,12 +186,25 @@ function renderModules(){
   });
 }
 
-// ---------------- AUTH CHECK ----------------
+// ---------------- AUTH CHECK ---------------
+  let authChecked = false;
+
 auth.onAuthStateChanged(async user=>{
   if(!user){
-    window.location.href="index.html";
+    // WAIT a bit before redirect (prevents false redirect)
+    if(!authChecked){
+      authChecked = true;
+      setTimeout(()=>{
+        if(!auth.currentUser){
+          window.location.href="index.html";
+        }
+      },1500);
+    }
     return;
   }
+
+  // User is confirmed logged in
+  authChecked = true;
 
   const ref = db.collection("users").doc(user.uid);
   const snap = await ref.get();
