@@ -135,30 +135,33 @@ window.addEventListener("DOMContentLoaded", () => {
       .get()
       .then(querySnapshot => {
 
-        if(querySnapshot.empty){
-          loginMsg.innerText = "Email not found or not paid.";
-          document.querySelectorAll(".module").forEach(m => m.classList.add("locked"));
-        } else {
+  console.log("Documents found:", querySnapshot.size);
 
-          let paid = false;
+  if(querySnapshot.empty){
+    alert("No matching email in database");
+    loginMsg.innerText = "Email not found or not paid.";
+  } else {
 
-          querySnapshot.forEach(doc => {
-            if(doc.data().paid === true){
-              paid = true;
-            }
-          });
+    let paid = false;
 
-          if(paid){
-            loginMsg.innerText = "Access granted.";
-            document.querySelectorAll(".module").forEach(m => m.classList.remove("locked"));
+    querySnapshot.forEach(doc => {
+      console.log("Document data:", doc.data());
 
-            document.getElementById("login-modal").style.display = "none";
-          } else {
-            loginMsg.innerText = "Payment not confirmed.";
-          }
-        }
+      if(doc.data().paid === true){
+        paid = true;
+      }
+    });
 
-      })
+    if(paid){
+      loginMsg.innerText = "Access granted.";
+      document.querySelectorAll(".module").forEach(m => m.classList.remove("locked"));
+      document.getElementById("login-modal").style.display = "none";
+    } else {
+      alert("Email found BUT paid is not true");
+      loginMsg.innerText = "Payment not confirmed.";
+    }
+  }
+})
       .catch(err => {
         alert(err.message);
         console.error(err);
