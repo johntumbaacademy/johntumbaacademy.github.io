@@ -118,46 +118,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("modal-login-btn");
   const loginMsg = document.getElementById("modal-login-msg");
   const emailInput = document.getElementById("modal-email");
-
-  loginBtn.addEventListener("click", () => {
-
-    alert("Button clicked"); // TEMP TEST
-
-    const email = emailInput.value.trim();
-
-    if(!email){
-      loginMsg.innerText = "Please enter your email.";
-      return;
-    }
-
-    loginMsg.innerText = "Checking payment...";
-
-    db.collection("paidUsers").get()
-      .then(querySnapshot => {
-
-  if(querySnapshot.empty){
-    alert("DATABASE IS EMPTY");
-  } else {
-
-    let allData = "";
-
-    querySnapshot.forEach(doc => {
-      allData += JSON.stringify(doc.data()) + "\n";
-    });
-
-    alert("FOUND DATA:\n" + allData);
-  }
-
-})
-
-      .catch(err => {
-        alert(err.message);
-        console.error(err);
-      });
-
-  });
-
-});
 </script>
 <!-- FIRESTORE LOGIN & PAYMENT CHECK END -->
   <script>
