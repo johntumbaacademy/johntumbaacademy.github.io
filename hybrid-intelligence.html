@@ -111,6 +111,61 @@ function unlockNext(nextModuleId){
   };
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+  const auth = firebase.auth();
+
+window.addEventListener("DOMContentLoaded", () => {
+
+  const loginBtn = document.getElementById("modal-login-btn");
+  const signupBtn = document.getElementById("modal-signup-btn");
+  const loginMsg = document.getElementById("modal-login-msg");
+
+  const emailInput = document.getElementById("modal-email");
+  const passwordInput = document.getElementById("modal-password");
+
+  // LOGIN
+  loginBtn.addEventListener("click", () => {
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if(!email || !password){
+      loginMsg.innerText = "Enter email and password";
+      return;
+    }
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        loginMsg.innerText = "Login successful";
+        window.location.href = "dashboard.html";
+      })
+      .catch(error => {
+        loginMsg.innerText = error.message;
+      });
+
+  });
+
+  // SIGNUP
+  signupBtn.addEventListener("click", () => {
+
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+
+    if(!email || !password){
+      loginMsg.innerText = "Enter email and password";
+      return;
+    }
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        loginMsg.innerText = "Account created. Now login.";
+      })
+      .catch(error => {
+        loginMsg.innerText = error.message;
+      });
+
+  });
+
+});
 
   // WAIT UNTIL PAGE LOADS
 window.addEventListener("DOMContentLoaded", () => {
