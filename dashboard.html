@@ -135,22 +135,7 @@ const modules = [
   {title:"Bonus: Personalized Coaching System", lessons:['<a href="YOUTUBE_LINK_11" target="_blank">Video Lesson 11</a>','<a href="exercise11.html" target="_blank">Exercise 11</a>','<a href="reflection11.html" target="_blank">Reflection 11</a>','<a href="PDF_LINK_11" target="_blank">Bonus PDF</a>']}
 ];
 
-// ---------------------- Unique Admin Codes ----------------------
-let validCodes = ["HYBRID-001","HYBRID-002","HYBRID-003","HYBRID-004","HYBRID-005",
-"HYBRID-006","HYBRID-007","HYBRID-008","HYBRID-009","HYBRID-010",
-"HYBRID-011","HYBRID-012","HYBRID-013","HYBRID-014","HYBRID-015",
-"HYBRID-016","HYBRID-017","HYBRID-018","HYBRID-019","HYBRID-020",
-"HYBRID-021","HYBRID-022","HYBRID-023","HYBRID-024","HYBRID-025",
-"HYBRID-026","HYBRID-027","HYBRID-028","HYBRID-029","HYBRID-030",
-"HYBRID-031","HYBRID-032","HYBRID-033","HYBRID-034","HYBRID-035",
-"HYBRID-036","HYBRID-037","HYBRID-038","HYBRID-039","HYBRID-040",
-"HYBRID-041","HYBRID-042","HYBRID-043","HYBRID-044","HYBRID-045",
-"HYBRID-046","HYBRID-047","HYBRID-048","HYBRID-049","HYBRID-050"];
-
 let container = document.getElementById("modules");
-let unlockBtn = document.getElementById("unlock-btn");
-let adminInput = document.getElementById("admin-code");
-let unlockMsg = document.getElementById("unlock-message");
 let paywall = document.getElementById("paywall");
 
 let unlocked = false;
@@ -238,26 +223,6 @@ paypal.HostedButtons({
     }
   }
 }).render("#paypal-container-APGW4MJDHM7K2");
-
-// ---------------------- Admin Manual Unlock ----------------------
-unlockBtn.onclick = async function(){
-  let code = adminInput.value.trim().toUpperCase();
-  if(validCodes.includes(code)){
-    unlocked = true;
-    paywall.style.display="none";
-    unlockMsg.innerText="Modules unlocked successfully!";
-
-    const user = auth.currentUser;
-    if(user){
-      await db.collection("users").doc(user.uid).set({paid:true},{merge:true});
-    }
-
-    validCodes = validCodes.filter(c => c!==code);
-    renderModules();
-  } else {
-    unlockMsg.innerText="Invalid code! Make sure you type HYBRID-001 format.";
-  }
-};
 </script>
 </body>
 </html>
