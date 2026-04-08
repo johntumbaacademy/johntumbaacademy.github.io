@@ -131,8 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     loginMsg.innerText = "Checking payment...";
 
-    db.collection("paidUsers").where("email", "==", email)
-      .get()
+    db.collection("paidUsers").get()
       .then(querySnapshot => {
 
   console.log("Documents found:", querySnapshot.size);
