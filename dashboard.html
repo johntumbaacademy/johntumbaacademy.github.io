@@ -187,22 +187,16 @@ function renderModules(){
 }
 
 // ---------------- AUTH CHECK ---------------
-  let authChecked = false;
-
-auth.onAuthStateChanged(async user=>{
-  if(!user){
-    // WAIT a bit before redirect (prevents false redirect)
-    if(!authChecked){
-      authChecked = true;
-      setTimeout(()=>{
-        if(!auth.currentUser){
-          window.location.href="index.html";
-        }
-      },1500);
-    }
+  auth.onAuthStateChanged(async user=>{
+  if(user === null){
+    // HARD WAIT until Firebase fully decides
+    setTimeout(()=>{
+      if(auth.currentUser === null){
+        window.location.href = "index.html";
+      }
+    },2000);
     return;
   }
-
   // User is confirmed logged in
   authChecked = true;
 
