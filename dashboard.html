@@ -215,11 +215,26 @@ paypal.HostedButtons({
   hostedButtonId: "APGW4MJDHM7K2",
   onApprove: async function(data, actions){
     const user = auth.currentUser;
-    if(user){
+    if(!user) return alert("Please login");
+
+    // Step 1: Send payment info to server
+    const res = await fetch("https://YOUR_CLOUD_FUNCTION_URL/verifyPayment", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ orderID: data.orderID, uid: user.uid })
+    });
+
+    // Step 2: Wait for server to check payment
+    const result = await res.json();
+
+    // Step 3: Unlock modules only if server confirms payment
+    if(result.success){
       unlocked = true;
       paywall.style.display="none";
-      await db.collection("users").doc(user.uid).set({paid:true},{merge:true});
       renderModules();
+      alert("Payment verified, modules unlocked!");
+    } else {
+      alert("Payment verification failed: " + result.message);
     }
   }
 }).render("#paypal-container-APGW4MJDHM7K2");
