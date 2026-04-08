@@ -25,7 +25,7 @@ h1{text-align:center;margin-bottom:30px;}
   margin-bottom:15px;
 }
 .locked{
-  display:none; /* FULLY HIDDEN */
+  display:none;
 }
 .lesson{
   margin-top:10px;
@@ -72,7 +72,6 @@ button:disabled{background:#555;}
 
 <div id="modules"></div>
 
-<!-- PAYWALL -->
 <div class="paywall" id="paywall">
   <h2>Unlock Full System</h2>
   <p>Access all modules.</p>
@@ -82,7 +81,6 @@ button:disabled{background:#555;}
   </a>
 </div>
 
-<!-- ADMIN BACKDOOR (YOU ONLY) -->
 <div class="unlock-section">
   <input type="password" id="admin-code" placeholder="Admin Code">
   <button id="unlock-btn">Unlock</button>
@@ -106,23 +104,30 @@ const firebaseConfig = {
   messagingSenderId: "242093533709",
   appId: "1:242093533709:web:aba2715a343e168f844344"
 };
+
 firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// ---------------- MODULES ----------------
+// ---------------- MODULES (RESTORED FULL 11) ----------------
 const modules = [
-  {title:"Foundation", lessons:["YOUTUBE_LINK_1","exercise1.html"]},
-  {title:"Focus", lessons:["YOUTUBE_LINK_2","exercise2.html"]},
-  {title:"Thinking", lessons:["YOUTUBE_LINK_3"]},
-  {title:"AI", lessons:["YOUTUBE_LINK_4"]},
-  {title:"Execution", lessons:["YOUTUBE_LINK_5"]}
+  {title:"Foundation of True Learning", lessons:["YOUTUBE_LINK_1","exercise1.html","reflection1.html","PDF_LINK_1"]},
+  {title:"Cognitive Control & Focus", lessons:["YOUTUBE_LINK_2","exercise2.html","reflection2.html","PDF_LINK_2"]},
+  {title:"Structured Thinking System", lessons:["YOUTUBE_LINK_3","exercise3.html","reflection3.html","PDF_LINK_3"]},
+  {title:"AI Integration Fundamentals", lessons:["YOUTUBE_LINK_4","exercise4.html","reflection4.html","PDF_LINK_4"]},
+  {title:"Deep Work & Execution System", lessons:["YOUTUBE_LINK_5","exercise5.html","reflection5.html","PDF_LINK_5"]},
+  {title:"Success Map System", lessons:["YOUTUBE_LINK_6","exercise6.html","reflection6.html","PDF_LINK_6"]},
+  {title:"Performance Optimization", lessons:["YOUTUBE_LINK_7","exercise7.html","reflection7.html","PDF_LINK_7"]},
+  {title:"Anti-Regression System", lessons:["YOUTUBE_LINK_8","exercise8.html","reflection8.html","PDF_LINK_8"]},
+  {title:"Advanced Hybrid Intelligence", lessons:["YOUTUBE_LINK_9","exercise9.html","reflection9.html","PDF_LINK_9"]},
+  {title:"Hidden Mastery Secrets", lessons:["YOUTUBE_LINK_10","exercise10.html","reflection10.html","PDF_LINK_10"]},
+  {title:"Bonus: Personalized Coaching System", lessons:["YOUTUBE_LINK_11","exercise11.html","reflection11.html","PDF_LINK_11"]}
 ];
 
 let unlocked = false;
 let progress = 0;
-let authReady = false;
+
 const container = document.getElementById("modules");
 const paywall = document.getElementById("paywall");
 
@@ -145,7 +150,6 @@ function renderModules(){
     title.innerText = "Module "+(index+1)+" — "+mod.title;
     div.appendChild(title);
 
-    // Lessons
     mod.lessons.forEach(link=>{
       const lesson = document.createElement("div");
       lesson.className="lesson";
@@ -159,7 +163,6 @@ function renderModules(){
       div.appendChild(lesson);
     });
 
-    // Progress Button
     const btn = document.createElement("button");
 
     if(index === progress){
@@ -176,10 +179,12 @@ function renderModules(){
 
         renderModules();
       };
-    } else if(index < progress){
+    } 
+    else if(index < progress){
       btn.innerText="Completed";
       btn.disabled=true;
-    } else{
+    } 
+    else{
       btn.innerText="Locked";
       btn.disabled=true;
     }
@@ -189,18 +194,17 @@ function renderModules(){
   });
 }
 
-// ---------------- AUTH CHECK ---------------
+// ---------------- AUTH (FINAL FIXED) ----------------
 auth.onAuthStateChanged(async user=>{
-  // Prevent running twice
-  if(authReady) return;
-  authReady = true;
-
-  if(!user){
-    window.location.href = "index.html";
+  if(user === null){
+    setTimeout(()=>{
+      if(auth.currentUser === null){
+        window.location.href = "index.html";
+      }
+    },2000);
     return;
   }
 
-  // User is confirmed logged in
   const ref = db.collection("users").doc(user.uid);
   const snap = await ref.get();
 
@@ -222,8 +226,9 @@ auth.onAuthStateChanged(async user=>{
 
   renderModules();
 });
+
 // ---------------- ADMIN UNLOCK ----------------
-const validCodes = ["MASTER-KEY-001"]; // ONLY YOU KNOW THIS
+const validCodes = ["MASTER-KEY-001"];
 
 document.getElementById("unlock-btn").onclick = async ()=>{
   const code = document.getElementById("admin-code").value;
@@ -240,10 +245,9 @@ document.getElementById("unlock-btn").onclick = async ()=>{
     paid:true
   },{merge:true});
 
-  document.getElementById("unlock-message").innerText="Unlocked";
-
   unlocked = true;
   paywall.style.display="none";
+  document.getElementById("unlock-message").innerText="Unlocked";
 
   renderModules();
 };
