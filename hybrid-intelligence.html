@@ -134,33 +134,21 @@ window.addEventListener("DOMContentLoaded", () => {
     db.collection("paidUsers").get()
       .then(querySnapshot => {
 
-  console.log("Documents found:", querySnapshot.size);
-
   if(querySnapshot.empty){
-    alert("No matching email in database");
-    loginMsg.innerText = "Email not found or not paid.";
+    alert("DATABASE IS EMPTY");
   } else {
 
-    let paid = false;
+    let allData = "";
 
     querySnapshot.forEach(doc => {
-      console.log("Document data:", doc.data());
-
-      if(doc.data().paid === true){
-        paid = true;
-      }
+      allData += JSON.stringify(doc.data()) + "\n";
     });
 
-    if(paid){
-      loginMsg.innerText = "Access granted.";
-      document.querySelectorAll(".module").forEach(m => m.classList.remove("locked"));
-      document.getElementById("login-modal").style.display = "none";
-    } else {
-      alert("Email found BUT paid is not true");
-      loginMsg.innerText = "Payment not confirmed.";
-    }
+    alert("FOUND DATA:\n" + allData);
   }
+
 })
+
       .catch(err => {
         alert(err.message);
         console.error(err);
