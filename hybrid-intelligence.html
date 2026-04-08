@@ -234,7 +234,10 @@ window.addEventListener("DOMContentLoaded", () => {
     <h2>Student Login</h2>
     <input type="email" id="modal-email" placeholder="Enter your email" style="width:90%;padding:12px;margin:10px 0;border-radius:10px;border:none;">
 
-<input type="password" id="modal-password" placeholder="Enter your password" style="width:90%;padding:12px;margin:10px 0;border-radius:10px;border:none;">
+<div style="position:relative;width:90%;margin:auto;">
+  <input type="password" id="modal-password" placeholder="Enter your password" style="width:100%;padding:12px;margin:10px 0;border-radius:10px;border:none;">
+  <span id="toggle-password" style="position:absolute;right:15px;top:12px;cursor:pointer;color:#ffce00;">👁️</span>
+</div>
 
 <button id="modal-login-btn" style="padding:12px 30px;margin-top:10px;border:none;border-radius:10px;background:#ffce00;color:black;font-weight:bold;cursor:pointer;">Login</button>
 
