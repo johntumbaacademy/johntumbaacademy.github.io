@@ -113,7 +113,64 @@ firebase.initializeApp(firebaseConfig);
   
 const db = firebase.firestore();  // Firestore for paid users
 const auth = firebase.auth();     // Auth for email/password login
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("modal-login-btn");
+  const signupBtn = document.getElementById("modal-signup-btn");
+  const loginMsg = document.getElementById("modal-login-msg");
+  const emailInput = document.getElementById("modal-email");
+  const passwordInput = document.getElementById("modal-password");
+  const togglePassword = document.getElementById("toggle-password");
 
+  // 🔹 Show / Hide Password
+  togglePassword.addEventListener("click", () => {
+    if(passwordInput.type === "password"){
+      passwordInput.type = "text";
+      togglePassword.textContent = "🙈";
+    } else {
+      passwordInput.type = "password";
+      togglePassword.textContent = "👁️";
+    }
+  });
+
+  // 🔹 LOGIN
+  loginBtn.addEventListener("click", () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    if(!email || !password){
+      loginMsg.innerText = "Enter email and password";
+      return;
+    }
+    auth.signInWithEmailAndPassword(email, password)
+      .then(() => {
+        loginMsg.innerText = "Login successful";
+        window.location.href = "dashboard.html";
+      })
+      .catch(error => {
+        alert(error.message);  
+        loginMsg.innerText = error.message;
+      });
+  });
+
+  // 🔹 SIGNUP
+  signupBtn.addEventListener("click", () => {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
+    if(!email || !password){
+      loginMsg.innerText = "Enter email and password";
+      return;
+    }
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        loginMsg.innerText = "Account created. Now login.";
+      })
+      .catch(error => {
+        alert(error.message); 
+        loginMsg.innerText = error.message;
+      });
+  });
+});
+</script>
 window.addEventListener("DOMContentLoaded", () => {
 
   const loginBtn = document.getElementById("modal-login-btn");
