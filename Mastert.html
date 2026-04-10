@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Alignment System</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sections */
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+/* Typography */
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: #aaa;
+}
+
+/* Fade + Scale Animation */
+.fade {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Button */
+.button {
+  margin-top: 25px;
+  padding: 14px 28px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.button:hover {
+  background: #fff;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Subtext */
+.small {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Progress Bar */
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #fff;
+  width: 0%;
+  z-index: 999;
+}
+</style>
+</head>
+
+<body>
+
+<div id="progressBar"></div>
+
+<!-- HERO -->
+<div class="section fade">
+  <h1>You are not confused</h1>
+  <h2>You are just not seeing clearly</h2>
+</div>
+
+<div class="section fade">
+  <h1>You reacted</h1>
+  <h2>Instead of understanding</h2>
+</div>
+
+<div class="section fade">
+  <h1>You tried to fix it</h1>
+  <h2>Without knowing what broke</h2>
+</div>
+
+<div class="section fade">
+  <h1>This is where most people stay stuck</h1>
+  <h2>Overthinking. Guessing. Chasing clarity.</h2>
+</div>
+
+<div class="section fade">
+  <h1>I don’t give advice</h1>
+  <h2>I break down behavior</h2>
+</div>
+
+<div class="section fade">
+  <h1>CLARITY SESSION</h1>
+  <h2>Direct breakdown. No guessing.</h2>
+</div>
+
+<div class="section fade">
+  <h1>BEHAVIORAL ALIGNMENT</h1>
+  <h2>Rebuild your patterns properly</h2>
+</div>
+
+<div class="section fade">
+  <h1>PRIVATE MASTERY</h1>
+  <h2>Deep correction. High precision.</h2>
+</div>
+
+<div class="section fade">
+  <h1>This is not for everyone</h1>
+</div>
+
+<!-- CTA -->
+<div class="section fade">
+  <h1>If you are serious</h1>
+  <a href="https://calendly.com/YOUR-LINK" class="button" id="ctaButton">Book Now</a>
+  <p class="small">Premium only</p>
+</div>
+
+<script>
+
+/* Reveal Animations */
+const fades = document.querySelectorAll('.fade');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.2 });
+
+fades.forEach(el => observer.observe(el));
+
+/* Scroll Progress Bar */
+window.onscroll = () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (scrollTop / height) * 100;
+  document.getElementById("progressBar").style.width = scrolled + "%";
+
+  trackScroll(scrolled);
+};
+
+/* Conversion Tracking */
+const cta = document.getElementById("ctaButton");
+
+cta.addEventListener("click", () => {
+  console.log("CTA Clicked");
+});
+
+/* Scroll Tracking */
+function trackScroll(percent){
+  if(percent > 25) console.log("25% viewed");
+  if(percent > 50) console.log("50% viewed");
+  if(percent > 75) console.log("75% viewed");
+}
+
+</script>
+
+</body>
+</html>
