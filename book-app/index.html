@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sex Is Never Casual</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+
+<style>
+
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: 'Merriweather', serif;
+}
+
+.container {
+  max-width: 680px;
+  margin: auto;
+  padding: 28px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+p {
+  font-size: 20px;
+  line-height: 1.9;
+  margin-bottom: 26px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+button {
+  padding: 18px;
+  width: 100%;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+input {
+  padding: 12px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.locked {
+  filter: blur(8px);
+}
+
+.overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.96);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:20px;
+  text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>You said it meant nothing.<br>So why does it still affect you?</h1>
+
+<p>This is not a book.</p>
+<p>This is a mirror.</p>
+
+<button onclick="startReading()">Start Reading</button>
+
+<!-- EMAIL LOCK -->
+<div id="emailSection" style="display:none;">
+<p>This part might feel uncomfortably familiar.</p>
+
+<input type="email" id="email" placeholder="Enter your email">
+<button onclick="saveEmail()">Continue</button>
+</div>
+
+<!-- CONTENT -->
+<div id="content" style="display:none;">
+
+<p>It didn’t feel serious.</p>
+<p>That’s how it always starts.</p>
+<p>Just conversation.</p>
+<p>Just attention.</p>
+<p>Just… something small.</p>
+
+<p>And you told yourself:</p>
+<p><strong>“It’s nothing.”</strong></p>
+
+<p>So explain this.</p>
+
+<p>Why do you still remember them?</p>
+<p>Not everything.</p>
+<p>Just certain moments.</p>
+
+<p>The version of yourself that showed up.</p>
+<p>That version is gone now.</p>
+
+<p>But you remember it.</p>
+
+<p>And that’s the problem.</p>
+
+<p>If it was truly nothing…</p>
+<p>There would be nothing left.</p>
+
+<p><strong>But something stayed.</strong></p>
+
+<p>Even after they left.</p>
+
+<p>This is where it shifts.</p>
+
+<p>Because now you can’t ignore it.</p>
+
+<p>You’ve felt it.</p>
+
+<p>That moment where something changed.</p>
+
+<p>And you couldn’t explain why.</p>
+
+<!-- MID LOCK -->
+<div class="locked">
+
+<p>What exactly happened to you?</p>
+
+<p>Not to them.</p>
+
+<p>To you.</p>
+
+<p>Because something changed.</p>
+
+<p>And if you understand this…</p>
+
+<p>You will never see your past the same way again.</p>
+
+<p>And you will start recognizing a pattern.</p>
+
+<p>That you’ve been repeating.</p>
+
+<p>Without realizing it.</p>
+
+</div>
+
+<button onclick="showPaywall()">Continue Reading</button>
+
+<p style="color:#A1A1A1;">Most people stop here. Don’t.</p>
+
+</div>
+
+</div>
+
+<!-- PAYWALL -->
+<div class="overlay" id="paywall">
+
+<h2>You’ve reached the point where most people stop.</h2>
+
+<p>Not because there’s nothing left…</p>
+<p>But because what comes next explains them.</p>
+
+<p>And once you see it—</p>
+<p>you can’t unsee it.</p>
+
+<p>
+• Why you still think about certain people<br>
+• Why “casual” never stays casual<br>
+• What intimacy does to your mind<br>
+• Why your patterns repeat
+</p>
+
+<button onclick="payNow()">Unlock Full Access</button>
+
+<p>One decision can remove months of confusion.</p>
+
+</div>
+
+<script>
+
+// Start
+function startReading(){
+  document.getElementById("emailSection").style.display = "block";
+}
+
+// Save email
+function saveEmail(){
+  let email = document.getElementById("email").value;
+  if(email === ""){
+    alert("Enter email");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+
+  document.getElementById("emailSection").style.display = "none";
+  document.getElementById("content").style.display = "block";
+}
+
+// Paywall
+function showPaywall(){
+  document.getElementById("paywall").style.display = "flex";
+}
+
+// Payment placeholder
+function payNow(){
+  alert("Connect Paystack / MTN MoMo here");
+}
+
+// Scroll animation
+const elements = document.querySelectorAll("p");
+
+window.addEventListener("scroll", () => {
+  elements.forEach(el => {
+    const pos = el.getBoundingClientRect().top;
+    if(pos < window.innerHeight - 80){
+      el.style.opacity = 1;
+      el.style.transform = "translateY(0)";
+    }
+  });
+});
+
+// Progress tracking
+window.addEventListener("scroll", () => {
+  let scrollTop = document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - window.innerHeight;
+  let progress = (scrollTop / height) * 100;
+  localStorage.setItem("progress_ch1", progress);
+});
+
+// Notification
+if ("Notification" in window) {
+  Notification.requestPermission();
+}
+
+// Service Worker
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+
+</script>
+
+</body>
+</html>
