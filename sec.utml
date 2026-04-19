@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sex Is Never Casual</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.section {
+  padding: 60px 20px;
+  max-width: 700px;
+  margin: auto;
+}
+
+h1 { font-size: 28px; }
+p { font-size: 18px; line-height: 1.6; }
+
+button {
+  padding: 15px 25px;
+  font-size: 16px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+input {
+  padding: 12px;
+  width: 80%;
+  margin-top: 15px;
+}
+
+.locked {
+  filter: blur(7px);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.96);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HOOK -->
+<div class="section">
+  <h1>You said it meant nothing.<br>So why does it still affect you?</h1>
+  <p>This is not a book. This is a mirror.</p>
+  <button onclick="startReading()">Start Reading</button>
+</div>
+
+<!-- EMAIL CAPTURE -->
+<div class="section" id="emailSection" style="display:none;">
+  <h2>Before you continue</h2>
+  <p>Enter your email to access the reading experience</p>
+  <input type="email" id="email" placeholder="Enter your email">
+  <br>
+  <button onclick="saveEmail()">Continue</button>
+</div>
+
+<!-- CONTENT -->
+<div class="section" id="content" style="display:none;">
+
+  <h2>CHAPTER 1: THE ILLUSION</h2>
+
+  <p>There is a story most people live inside without realizing it.</p>
+
+  <p>“It’s just physical.”<br>
+  “It doesn’t mean anything.”<br>
+  “We’re just having fun.”</p>
+
+  <p>And for a moment, it feels true.</p>
+
+  <p>But if that were actually true…</p>
+
+  <p>You wouldn’t still remember certain people.</p>
+
+  <p>You wouldn’t feel something when their name appears.</p>
+
+  <p>You wouldn’t compare new connections to old ones.</p>
+
+  <p><strong>Something stayed.</strong></p>
+
+  <p>Even when the person left.</p>
+
+  <p>And this is where it gets uncomfortable…</p>
+
+  <div id="lockedPart" class="locked">
+
+  <p><strong>Because the real question is:</strong></p>
+
+  <p>What exactly happened to you?</p>
+
+  <p>Why do certain people stay in your mind?</p>
+
+  <p>Why does “casual” feel anything but casual?</p>
+
+  <p>The answer is not what you think…</p>
+
+  </div>
+
+  <button onclick="showPaywall()">Continue Reading</button>
+
+</div>
+
+<!-- PAYWALL -->
+<div class="overlay" id="paywall">
+
+  <h2>🔒 Unlock Full Chapter</h2>
+
+  <p>You’ve reached the point most people avoid.</p>
+
+  <p>Inside the full book you’ll discover:</p>
+
+  <p>
+  • Why you can’t detach<br>
+  • What intimacy does to your mind<br>
+  • Why your patterns repeat<br>
+  • How to regain control
+  </p>
+
+  <button onclick="payNow()">Unlock Now</button>
+
+</div>
+
+<script>
+
+function startReading() {
+  document.getElementById("emailSection").style.display = "block";
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+function saveEmail() {
+  let email = document.getElementById("email").value;
+  if(email === "") {
+    alert("Enter email");
+    return;
+  }
+
+  localStorage.setItem("userEmail", email);
+
+  document.getElementById("emailSection").style.display = "none";
+  document.getElementById("content").style.display = "block";
+
+  window.scrollTo(0, document.body.scrollHeight);
+}
+
+function showPaywall() {
+  document.getElementById("paywall").style.display = "flex";
+}
+
+function payNow() {
+  alert("Connect Paystack or Stripe here");
+}
+
+</script>
+
+</body>
+</html>
