@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Who Is Bishop Paul Bupe?</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Framer Motion -->
+  <script src="https://unpkg.com/framer-motion@11.0.24/dist/framer-motion.js"></script>
+
+  <style>
+    :root{
+      --gold:#c8a96b;
+      --gold-soft:#e7d3a8;
+      --bronze:#7a5d38;
+      --dark:#050505;
+      --charcoal:#0d0d0d;
+      --soft:#161616;
+      --ivory:#ece7df;
+    }
+
+    *{
+      scroll-behavior:smooth;
+      box-sizing:border-box;
+    }
+
+    body{
+      margin:0;
+      background:#050505;
+      color:white;
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+    }
+
+    h1,h2,h3,h4,h5{
+      font-family:'Cormorant Garamond',serif;
+      letter-spacing:.5px;
+    }
+
+    .gold-text{
+      color:var(--gold);
+    }
+
+    .hero-gradient{
+      background:
+      radial-gradient(circle at top right, rgba(200,169,107,.18), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(122,93,56,.18), transparent 25%),
+      linear-gradient(to bottom, rgba(0,0,0,.85), rgba(0,0,0,.95));
+    }
+
+    .glass{
+      background:rgba(255,255,255,.03);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .gold-border{
+      border:1px solid rgba(200,169,107,.3);
+    }
+
+    .gold-line{
+      width:120px;
+      height:1px;
+      background:linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .section-padding{
+      padding:110px 7%;
+    }
+
+    .fade-mask{
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(to bottom,
+      rgba(0,0,0,.4),
+      rgba(0,0,0,.88));
+      z-index:1;
+    }
+
+    .hero-image{
+      background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center top;
+    }
+
+    .africa-bg{
+      background-image:
+      linear-gradient(rgba(0,0,0,.92), rgba(0,0,0,.95)),
+      url('https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      background-attachment:fixed;
+    }
+
+    .particles{
+      position:absolute;
+      inset:0;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .particle{
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:rgba(231,211,168,.5);
+      border-radius:999px;
+      animation:float 10s linear infinite;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(100vh) scale(0);
+        opacity:0;
+      }
+      10%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-10vh) scale(1);
+        opacity:0;
+      }
+    }
+
+    .timeline-line{
+      position:absolute;
+      left:50%;
+      top:0;
+      bottom:0;
+      width:1px;
+      background:rgba(200,169,107,.3);
+      transform:translateX(-50%);
+    }
+
+    .timeline-dot{
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      background:var(--gold);
+      box-shadow:0 0 20px rgba(200,169,107,.8);
+    }
+
+    .hover-lift{
+      transition:all .5s ease;
+    }
+
+    .hover-lift:hover{
+      transform:translateY(-8px);
+      border-color:rgba(200,169,107,.5);
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .quote-card{
+      background:linear-gradient(
+      to bottom right,
+      rgba(255,255,255,.04),
+      rgba(255,255,255,.01)
+      );
+    }
+
+    .btn-gold{
+      background:linear-gradient(to right,var(--gold),#e2c891);
+      color:black;
+      font-weight:700;
+    }
+
+    .btn-dark{
+      border:1px solid rgba(255,255,255,.15);
+    }
+
+    .book-card{
+      background:
+      linear-gradient(
+      to bottom,
+      rgba(200,169,107,.12),
+      rgba(255,255,255,.02)
+      );
+    }
+
+    .gallery-item{
+      overflow:hidden;
+    }
+
+    .gallery-item img{
+      transition:transform .8s ease;
+    }
+
+    .gallery-item:hover img{
+      transform:scale(1.08);
+    }
+
+    .counter{
+      font-size:4rem;
+      font-family:'Cormorant Garamond',serif;
+      color:var(--gold);
+    }
+
+    .scroll-indicator{
+      width:22px;
+      height:38px;
+      border:1px solid rgba(255,255,255,.4);
+      border-radius:999px;
+      position:relative;
+    }
+
+    .scroll-indicator::after{
+      content:'';
+      width:4px;
+      height:8px;
+      background:var(--gold);
+      position:absolute;
+      left:50%;
+      top:8px;
+      transform:translateX(-50%);
+      border-radius:999px;
+      animation:scrollAnim 2s infinite;
+    }
+
+    @keyframes scrollAnim{
+      0%{
+        opacity:0;
+        transform:translate(-50%,0);
+      }
+      50%{
+        opacity:1;
+      }
+      100%{
+        opacity:0;
+        transform:translate(-50%,12px);
+      }
+    }
+
+    @media(max-width:900px){
+
+      .timeline-line{
+        left:18px;
+      }
+
+      .counter{
+        font-size:3rem;
+      }
+
+      .section-padding{
+        padding:90px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PARTICLES -->
+  <div class="particles">
+    <script>
+      for(let i=0;i<70;i++){
+        const particle=document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left=Math.random()*100+'vw';
+        particle.style.animationDuration=(6+Math.random()*8)+'s';
+        particle.style.animationDelay=Math.random()*5+'s';
+        particle.style.opacity=Math.random();
+        document.querySelector('.particles').appendChild(particle);
+      }
+    </script>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-black/30 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+      <div>
+        <h2 class="text-2xl md:text-3xl text-white font-semibold">
+          Bishop <span class="gold-text">Paul Bupe</span>
+        </h2>
+      </div>
+
+      <div class="hidden md:flex gap-8 text-sm tracking-[2px] uppercase text-white/70">
+        <a href="#journey" class="hover:text-white">Journey</a>
+        <a href="#vision" class="hover:text-white">Vision</a>
+        <a href="#leadership" class="hover:text-white">Leadership</a>
+        <a href="#books" class="hover:text-white">Books</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+
+    <div class="absolute inset-0 hero-image opacity-30"></div>
+    <div class="fade-mask"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center pt-32">
+
+      <div>
+
+        <div class="gold-line mb-8"></div>
+
+        <p class="uppercase tracking-[5px] text-sm text-white/60 mb-5">
+          Statesman • Bishop • African Thinker
+        </p>
+
+        <h1 class="text-6xl md:text-8xl leading-none text-white font-semibold mb-8">
+          WHO IS
+          <span class="gold-text block">
+            BISHOP PAUL BUPE?
+          </span>
+        </h1>
+
+        <p class="text-white/70 text-lg leading-9 max-w-2xl mb-10">
+          A voice of wisdom, moral clarity, family restoration, and cultural leadership for a changing generation — shaping conversations around spirituality, leadership, identity, and the future of African society.
+        </p>
+
+        <div class="flex flex-wrap gap-5">
+
+          <button class="btn-gold px-8 py-4 rounded-full text-sm tracking-[2px] uppercase hover:scale-105 transition">
+            Watch The Vision
+          </button>
+
+          <button class="btn-dark px-8 py-4 rounded-full text-sm tracking-[2px] uppercase hover:bg-white/5 transition">
+            Explore The Journey
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="relative flex justify-center">
+
+        <div class="absolute w-[420px] h-[420px] bg-yellow-700/10 rounded-full blur-3xl"></div>
+
+        <div class="relative w-[350px] md:w-[500px] h-[650px] rounded-[40px] overflow-hidden gold-border shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1600&auto=format&fit=crop"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-4">
+      <div class="scroll-indicator"></div>
+      <p class="text-white/40 text-xs tracking-[3px] uppercase">
+        Scroll
+      </p>
+    </div>
+
+  </section>
+
+  <!-- INTRO -->
+  <section class="section-padding bg-[#070707]">
+
+    <div class="max-w-5xl mx-auto text-center">
+
+      <p class="text-4xl md:text-6xl leading-tight text-white font-medium mb-10">
+        “Nations do not collapse first economically.
+        <span class="gold-text">
+          They collapse morally, culturally, and spiritually.”
+        </span>
+      </p>
+
+      <div class="gold-line mx-auto mb-12"></div>
+
+      <p class="text-white/65 leading-10 text-lg">
+        In an era of confusion, cultural fragmentation, and the weakening of family structures, Bishop Paul Bupe emerges as a voice calling society back to wisdom, responsibility, spiritual clarity, and human dignity.
+        <br><br>
+        Through leadership, counseling, teaching, humanitarian engagement, and philosophical reflection, his mission continues to impact families, communities, and minds across generations.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- TIMELINE -->
+  <section id="journey" class="section-padding relative bg-black overflow-hidden">
+
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center mb-24">
+        <p class="uppercase tracking-[4px] text-white/40 mb-4">
+          Legacy Timeline
+        </p>
+
+        <h2 class="text-5xl md:text-7xl text-white">
+          THE JOURNEY
+        </h2>
+      </div>
+
+      <div class="relative">
+
+        <div class="timeline-line hidden md:block"></div>
+
+        <div class="space-y-20">
+
+          <!-- ITEM -->
+          <div class="grid md:grid-cols-2 gap-10 items-center relative">
+
+            <div class="md:text-right">
+              <div class="glass p-10 rounded-[30px] hover-lift">
+                <h3 class="text-4xl gold-text mb-4">
+                  Early Foundations
+                </h3>
+
+                <p class="text-white/65 leading-8">
+                  Humble beginnings shaped by spiritual curiosity, discipline, and a growing burden for people, society, and moral leadership.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative md:pl-16">
+              <div class="timeline-dot hidden md:block absolute left-[-7px] top-10"></div>
+            </div>
+
+          </div>
+
+          <!-- ITEM -->
+          <div class="grid md:grid-cols-2 gap-10 items-center relative">
+
+            <div class="md:order-2">
+              <div class="glass p-10 rounded-[30px] hover-lift">
+                <h3 class="text-4xl gold-text mb-4">
+                  The Calling
+                </h3>
+
+                <p class="text-white/65 leading-8">
+                  The emergence of spiritual leadership through ministry, mentorship, counseling, and public teaching.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative md:pr-16 md:text-right">
+              <div class="timeline-dot hidden md:block absolute right-[-7px] top-10"></div>
+            </div>
+
+          </div>
+
+          <!-- ITEM -->
+          <div class="grid md:grid-cols-2 gap-10 items-center relative">
+
+            <div class="md:text-right">
+              <div class="glass p-10 rounded-[30px] hover-lift">
+                <h3 class="text-4xl gold-text mb-4">
+                  Building Impact
+                </h3>
+
+                <p class="text-white/65 leading-8">
+                  Expanding influence through counseling, leadership guidance, conferences, and transformational teachings.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative md:pl-16">
+              <div class="timeline-dot hidden md:block absolute left-[-7px] top-10"></div>
+            </div>
+
+          </div>
+
+          <!-- ITEM -->
+          <div class="grid md:grid-cols-2 gap-10 items-center relative">
+
+            <div class="md:order-2">
+              <div class="glass p-10 rounded-[30px] hover-lift">
+                <h3 class="text-4xl gold-text mb-4">
+                  Legacy & Vision
+                </h3>
+
+                <p class="text-white/65 leading-8">
+                  A growing continental voice focused on moral restoration, generational leadership, and the future of African identity.
+                </p>
+              </div>
+            </div>
+
+            <div class="relative md:pr-16 md:text-right">
+              <div class="timeline-dot hidden md:block absolute right-[-7px] top-10"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MISSION -->
+  <section class="section-padding bg-[#080808]">
+
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+
+      <div class="relative">
+
+        <div class="absolute inset-0 bg-yellow-700/10 blur-3xl rounded-full"></div>
+
+        <img
+          src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1600&auto=format&fit=crop"
+          class="relative rounded-[40px] gold-border shadow-2xl"
+        />
+
+      </div>
+
+      <div>
+
+        <p class="uppercase tracking-[4px] text-white/40 mb-5">
+          Mission
+        </p>
+
+        <h2 class="text-5xl md:text-7xl leading-none mb-8">
+          RESTORING THE
+          <span class="gold-text">
+            MORAL FOUNDATION
+          </span>
+          OF SOCIETY
+        </h2>
+
+        <p class="text-white/65 leading-9 mb-10">
+          Bishop Paul Bupe’s work centers on restoring human dignity through spiritual wisdom, family restoration, mentorship, leadership guidance, and cultural responsibility.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+
+          <div class="glass rounded-3xl p-6">
+            <h4 class="gold-text text-2xl mb-3">Family Restoration</h4>
+            <p class="text-white/60 text-sm leading-7">
+              Rebuilding homes through wisdom and counseling.
+            </p>
+          </div>
+
+          <div class="glass rounded-3xl p-6">
+            <h4 class="gold-text text-2xl mb-3">Youth Mentorship</h4>
+            <p class="text-white/60 text-sm leading-7">
+              Guiding young generations toward purpose and identity.
+            </p>
+          </div>
+
+          <div class="glass rounded-3xl p-6">
+            <h4 class="gold-text text-2xl mb-3">Leadership Wisdom</h4>
+            <p class="text-white/60 text-sm leading-7">
+              Speaking into moral and societal leadership.
+            </p>
+          </div>
+
+          <div class="glass rounded-3xl p-6">
+            <h4 class="gold-text text-2xl mb-3">Community Impact</h4>
+            <p class="text-white/60 text-sm leading-7">
+              Humanitarian and transformational engagement.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- AFRICA VISION -->
+  <section id="vision" class="section-padding africa-bg relative overflow-hidden">
+
+    <div class="max-w-6xl mx-auto text-center relative z-10">
+
+      <p class="uppercase tracking-[5px] text-white/40 mb-5">
+        Continental Vision
+      </p>
+
+      <h2 class="text-5xl md:text-8xl leading-none mb-20">
+        THE AFRICA
+        <span class="gold-text">
+          WE MUST BUILD
+        </span>
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+
+        <div class="quote-card rounded-[30px] p-10 hover-lift border border-white/5">
+          <p class="text-2xl leading-10 text-white/90">
+            “Africa cannot rise while the family collapses.”
+          </p>
+        </div>
+
+        <div class="quote-card rounded-[30px] p-10 hover-lift border border-white/5">
+          <p class="text-2xl leading-10 text-white/90">
+            “Leadership without morality destroys nations.”
+          </p>
+        </div>
+
+        <div class="quote-card rounded-[30px] p-10 hover-lift border border-white/5">
+          <p class="text-2xl leading-10 text-white/90">
+            “A generation without identity becomes easy to manipulate.”
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-20 max-w-4xl mx-auto">
+        <p class="text-white/70 text-lg leading-10">
+          Bishop Paul Bupe speaks into the moral, spiritual, and cultural future of Africa — calling for responsible leadership, restored identity, stronger families, principled societies, and generational wisdom.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FAMILY -->
+  <section class="section-padding bg-[#080808]">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="text-center mb-20">
+
+        <p class="uppercase tracking-[5px] text-white/40 mb-5">
+          Family & Relationships
+        </p>
+
+        <h2 class="text-5xl md:text-7xl">
+          HEALING THE
+          <span class="gold-text">
+            FOUNDATION
+          </span>
+          OF HUMAN SOCIETY
+        </h2>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="glass rounded-[30px] p-10 hover-lift">
+          <h3 class="text-3xl gold-text mb-5">Marriage</h3>
+          <p class="text-white/60 leading-8">
+            Restoring trust, understanding, and covenant-centered relationships.
+          </p>
+        </div>
+
+        <div class="glass rounded-[30px] p-10 hover-lift">
+          <h3 class="text-3xl gold-text mb-5">Masculinity</h3>
+          <p class="text-white/60 leading-8">
+            Calling men back to responsibility, leadership, and purpose.
+          </p>
+        </div>
+
+        <div class="glass rounded-[30px] p-10 hover-lift">
+          <h3 class="text-3xl gold-text mb-5">Parenting</h3>
+          <p class="text-white/60 leading-8">
+            Equipping families to build disciplined and wise generations.
+          </p>
+        </div>
+
+        <div class="glass rounded-[30px] p-10 hover-lift">
+          <h3 class="text-3xl gold-text mb-5">Healing</h3>
+          <p class="text-white/60 leading-8">
+            Addressing emotional wounds, trauma, and relational restoration.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- THOUGHT LEADERSHIP -->
+  <section id="leadership" class="section-padding bg-black">
+
+    <div class="max-w-7xl mx-auto">
+
+      <div class="mb-20">
+
+        <p class="uppercase tracking-[5px] text-white/40 mb-5">
+          Thought Leadership
+        </p>
+
+        <h2 class="text-5xl md:text-7xl">
+          SPEECHES • TEACHINGS • IDEAS
+        </h2>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div class="glass rounded-[30px] overflow-hidden hover-lift">
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1600&auto=format&fit=crop" class="h-64 w-full object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl gold-text mb-4">Leadership & Morality</h3>
+            <p class="text-white/60 leading-8">
+              Addressing governance, values, and societal direction.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass rounded-[30px] overflow-hidden hover-lift">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop" class="h-64 w-full object-cover">
+          <div class="p-8">
+            <h3 class="text-3xl gold-text mb-4">Famil
