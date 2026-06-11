@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Male Performance Reset&#8482; | Master John Tumba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+
+/* ==============================
+   RESET & BASE
+============================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #050505;
+  color: #F5F2EC;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+
+/* ==============================
+   TOKENS
+============================== */
+:root {
+  --black:    #050505;
+  --dark:     #0D0D0D;
+  --card:     #111111;
+  --border:   rgba(255,255,255,0.07);
+  --gold:     #D4AF37;
+  --gold-dim: rgba(212,175,55,0.15);
+  --green:    #1FA463;
+  --white:    #F5F2EC;
+  --muted:    #888480;
+  --crimson:  #7A0000;
+}
+
+/* ==============================
+   SCROLL REVEAL
+============================== */
+.r {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.r.in { opacity: 1; transform: translateY(0); }
+.d1 { transition-delay: 0.1s; }
+.d2 { transition-delay: 0.22s; }
+.d3 { transition-delay: 0.34s; }
+.d4 { transition-delay: 0.46s; }
+@media (prefers-reduced-motion: reduce) { .r { opacity:1; transform:none; transition:none; } }
+
+/* ==============================
+   TYPOGRAPHY HELPERS
+============================== */
+.serif { font-family: 'Playfair Display', serif; }
+.gold  { color: var(--gold); }
+.muted { color: var(--muted); }
+.label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.rule {
+  width: 44px;
+  height: 2px;
+  background: var(--gold);
+  margin: 24px 0;
+}
+.rule.center { margin-left: auto; margin-right: auto; }
+
+/* ==============================
+   LAYOUT
+============================== */
+.wrap {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.wrap-wide {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+section { padding: 96px 0; }
+
+/* ==============================
+   NAV BAR
+============================== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5,5,5,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.3;
+}
+.nav-brand span { color: var(--gold); display: block; font-size: 0.72rem; font-weight: 400; font-style: italic; letter-spacing: 0.05em; }
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 2px;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.88; }
+.nav-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ==============================
+   HERO
+============================== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 130px 24px 80px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.hero-kicker {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: 8px 18px;
+  margin-bottom: 36px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+.hero-body {
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: #ADA9A3;
+  max-width: 580px;
+  line-height: 1.8;
+  margin-bottom: 44px;
+  font-weight: 300;
+}
+.hero-body strong { color: var(--white); font-weight: 600; }
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--green);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 18px 36px;
+  border-radius: 2px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(31,164,99,0.35); }
+.btn-primary svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn-note { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+.btn-note strong { color: var(--gold); }
+
+/* ==============================
+   SECTION: MOMENT (emotional mirror)
+============================== */
+.moment {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.moment-inner { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+.moment-para {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.75;
+  border-left: 2px solid var(--gold);
+  padding-left: 28px;
+  margin-bottom: 32px;
+}
+.moment-para em { font-style: italic; color: var(--gold); }
+.moment-close {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-style: italic;
+  color: var(--gold);
+  text-align: center;
+  margin-top: 56px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* ==============================
+   SECTION: THE CYCLE
+============================== */
+.cycle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  margin-top: 52px;
+}
+.cycle-row {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.cycle-row:first-child { border-top: 1px solid var(--border); }
+.cycle-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--gold);
+  opacity: 0.3;
+  line-height: 1;
+  padding-top: 4px;
+}
+.cycle-row h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.cycle-row p { font-size: 0.93rem; color: var(--muted); line-height: 1.75; }
+
+/* ==============================
+   SECTION: MEDICAL CONFUSION
+============================== */
+.confusion {
+  background: var(--dark);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.confusion-callout {
+  background: var(--gold-dim);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin-top: 40px;
+  border-radius: 0 2px 2px 0;
+}
+.confusion-callout p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+  color: var(--white);
+  line-height: 1.7;
+}
+
+/* ==============================
+   SECTION: MISTAKES
+============================== */
+.mistakes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px;
+  margin-top: 52px;
+}
+.mistake-card {
+  background: var(--card);
+  padding: 32px 28px;
+  position: relative;
+  border-top: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+.mistake-card:hover { border-color: var(--crimson); }
+.mistake-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: var(--crimson);
+  opacity: 0.35;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.mistake-card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.mistake-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+/* ==============================
+   SECTION: PHYSIOLOGY
+============================== */
+.physio {
+  background: linear-gradient(160deg, #090005 0%, var(--black) 60%);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.physio-stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px;
+  margin-top: 52px;
+}
+.physio-stat {
+  background: var(--card);
+  padding: 32px 24px;
+  text-align: center;
+}
+.physio-stat-icon { font-size: 1.8rem; margin-bottom: 14px; }
+.physio-stat h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.physio-stat p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+/* ==============================
+   SECTION: ABOUT JOHN
+============================== */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.about-badge {
+  display: inline-block;
+  background: var(--gold-dim);
+  border: 1px solid rgba(212,175,55,0.25);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  margin-bottom: 24px;
+}
+.about-philosophy {
+  background: var(--card);
+  border-left: 2px solid var(--gold);
+  padding: 32px;
+  margin-top: 36px;
+}
+.about-philosophy p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: var(--white);
+  line-height: 1.8;
+}
+.about-philosophy p + p { margin-top: 16px; }
+
+/* ==============================
+   SECTION: THE SYSTEM
+============================== */
+.system { background: var(--dark); border-top: 1px solid var(--border); }
+.system-list {
+  list-style: none;
+  margin-top: 48px;
+}
+.system-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.system-item:first-child { border-top: 1px solid var(--border); }
+.system-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.system-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.system-item p { font-size: 0.92rem; color: var(--muted); line-height: 1.75; }
+
+/* ==============================
+   SECTION: TRANSFORMATION
+============================== */
+.transform-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 52px;
+}
+.transform-col {
+  padding: 40px 32px;
+}
+.transform-col.before { background: #0D0000; }
+.transform-col.after  { background: #001A0A; }
+.transform-col-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+.before .transform-col-label { color: var(--crimson); }
+.after  .transform-col-label { color: var(--green);   }
+.transform-list { list-style: none; }
+.transform-list li {
+  font-size: 0.93rem;
+  color: #ADA9A3;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.transform-list li::before {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 0.8rem;
+}
+.before .transform-list li::before { content: '&#x2012;'; color: var(--crimson); }
+.after  .transform-list li::before { content: '&#x2713;'; color: var(--green); }
+
+/* ==============================
+   SECTION: PACKAGES
+============================== */
+.packages {
+  background: radial-gradient(ellipse 70% 50% at 50% 40%, #100800 0%, var(--black) 70%);
+  border-top: 1px solid var(--border);
+}
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 56px;
+}
+.package-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 44px 36px;
+  position: relative;
+  border-radius: 2px;
+}
+.package-card.featured {
+  border-color: rgba(212,175,55,0.4);
+  background: linear-gradient(180deg, #131008 0%, var(--card) 60%);
+}
+.package-ribbon {
+  position: absolute;
+  top: -1px; right: 28px;
+  background: var(--gold);
+  color: #000;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+}
+.package-name {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.package-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.package-price span { font-size: 1.2rem; color: var(--muted); }
+.package-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 32px; line-height: 1.65; }
+.package-includes { list-style: none; margin-bottom: 36px; }
+.package-includes li {
+  font-size: 0.9rem;
+  color: #C8C4BE;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+.package-includes li::before { content: '&#x2713;'; color: var(--gold); flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+.package-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--green);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 16px 24px;
+  border-radius: 2px;
+  width: 100%;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.package-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+.package-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
+.package-note { font-size: 0.78rem; color: var(--muted); text-align: center; margin-top: 14px; line-height: 1.6; }
+
+/* ==============================
+   SECTION: TESTIMONIALS
+============================== */
+.testimonials { background: var(--dark); border-top: 1px solid var(--border); }
+.testimonial-placeholder {
+  margin-top: 52px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 48px;
+  text-align: center;
+  border-radius: 2px;
+}
+.testimonial-placeholder p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 1.7;
+  font-style: italic;
+}
+.testimonial-placeholder strong { color: var(--white); font-style: normal; }
+
+/* ==============================
+   SECTION: FINAL CTA
+============================== */
+.final-cta {
+  text-align: center;
+  padding: 120px 24px;
+  border-top: 1px solid var(--border);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, #0A0900 0%, var(--black) 75%);
+}
+.final-cta-inner { max-width: 600px; margin: 0 auto; }
+.final-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 900;
+  line-height: 1.12;
+  margin-bottom: 24px;
+}
+.final-cta h2 em { font-style: italic; color: var(--gold); }
+.final-cta p { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 40px; }
+.final-cta p strong { color: var(--white); }
+.cta-pulse-wrap { display: inline-block; position: relative; }
+.cta-pulse {
+  position: absolute;
+  inset: -5px;
+  border-radius: 4px;
+  border: 1px solid rgba(31,164,99,0.5);
+  animation: pulseOut 2.2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes pulseOut {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.07); }
+}
+.cta-private { margin-top: 20px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+.cta-private strong { color: var(--gold); }
+
+/* ==============================
+   FLOATING WHATSAPP
+============================== */
+.wa-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+  background: var(--green);
+  color: #fff;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(31,164,99,0.45);
+  transition: transform 0.2s;
+}
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 28px; height: 28px; }
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  padding: 48px 24px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  background: var(--black);
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.footer-brand span { color: var(--gold); }
+.footer-sub { font-size: 0.82rem; color: var(--muted); line-height: 1.8; }
+.footer-disclaimer { font-size: 0.78rem; color: #555; margin-top: 16px; line-height: 1.7; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+/* ==============================
+   RESPONSIVE
+============================== */
+@media (max-width: 640px) {
+  section { padding: 72px 0; }
+  .hero { padding: 110px 20px 64px; }
+  .transform-cols { grid-template-columns: 1fr; }
+  .transform-col { padding: 32px 24px; }
+  .package-card { padding: 36px 24px; }
+  .testimonial-placeholder { padding: 36px 24px; }
+  .final-cta { padding: 88px 20px; }
+  .nav { padding: 14px 20px; }
+  .nav-brand { font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================== NAV ============================== -->
+<nav class="nav">
+  <div class="nav-brand">
+    Master John Tumba
+    <span>Health &amp; Performance Systems</span>
+  </div>
+  <a class="nav-cta" href="https://wa.me/260779483121?text=I%20want%20to%20start%20The%20Male%20Performance%20Reset.%20Please%20send%20me%20details." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Start Now
+  </a>
+</nav>
+
+
+<!-- ============================== HERO ============================== -->
+<div class="hero">
+  <div class="hero-kicker r">The Male Performance Reset&#8482;</div>
+
+  <h1 class="r d1">
+    The worst part<br/>
+    is not what happened.<br/>
+    <em>It is wondering<br/>if it will happen again.</em>
+  </h1>
+
+  <p class="hero-body r d2">
+    If you have felt the panic set in before anything has even started &#8212; the racing thoughts, the pressure, the collapse, the silence after &#8212; then you already know this is not just a physical problem.<br/><br/>
+    <strong>It is a system failure. And systems can be restored.</strong>
+  </p>
+
+  <div class="hero-actions r d3">
+    <a class="btn-primary" href="https://wa.me/260779483121?text=I%20want%20to%20start%20The%20Male%20Performance%20Reset.%20Please%20send%20me%20details." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Master John &#8212; Start Today
+    </a>
+    <p class="btn-note"><strong>Private.</strong> Confidential. No judgement.</p>
+  </div>
+</div>
+
+
+<!-- ============================== MOMENT ============================== -->
+<section class="moment">
+  <div class="moment-inner">
+    <span class="label r">What You Are Actually Experiencing</span>
+
+    <div class="moment-para r d1">
+      You like her. She likes you. Everything is going well. Then the moment comes. And your body does not respond. <em>Instantly your mind takes over.</em>
+    </div>
+
+    <div class="moment-para r d2">
+      You start forcing it. You start thinking. You start trying to imagine the right things. You try to rush the process. You try to will your body into responding. And the harder you try &#8212; the worse it gets. The more tense you become. The more it refuses.
+    </div>
+
+    <div class="moment-para r d3">
+      And then the silence. Not just in the room. Inside yourself. You are not angry at her. You are not even angry at your body. You are angry at yourself. You feel like you have failed at something fundamental. Something that should not need effort.
+    </div>
+
+    <div class="moment-para r d4">
+      What makes it worse &#8212; <em>the next encounter is already damaged.</em> Because now there is a record. A memory. Your mind will carry it into the next moment. And the moment after that. Until this is addressed.
+    </div>
+
+    <p class="moment-close r">"A man who cannot trust his own body begins to disappear &#8212;<br/>from intimacy, from confidence, and eventually from himself."</p>
+  </div>
+</section>
+
+
+<!-- ============================== THE CYCLE ============================== -->
+<section>
+  <div class="wrap">
+    <span class="label r">The Hidden Cycle No One Explains</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      Why It Keeps Happening.<br/>Even When You Try Hard.
+    </h2>
+    <div class="rule r d2"></div>
+    <p class="r d2" style="color:#ADA9A3; font-size:1rem; line-height:1.8; margin-bottom:0;">
+      Most men focus on the moment of failure. The real problem is the cycle that failure creates. Here is exactly what is happening in your body and your mind &#8212; and why trying harder makes it worse.
+    </p>
+
+    <div class="cycle-grid">
+      <div class="cycle-row r">
+        <div class="cycle-num">1</div>
+        <div>
+          <h3>One failure creates fear of the next</h3>
+          <p>The mind records the failure and begins anticipating it before the next encounter even starts. You walk in already tense. Already monitoring. Already preparing for the worst.</p>
+        </div>
+      </div>
+      <div class="cycle-row r d1">
+        <div class="cycle-num">2</div>
+        <div>
+          <h3>Fear activates the wrong nervous system</h3>
+          <p>Anxiety puts the body into fight-or-flight mode &#8212; the sympathetic nervous system. But an erection requires the opposite state: rest, safety, and arousal. You cannot be in both simultaneously. The panic always wins.</p>
+        </div>
+      </div>
+      <div class="cycle-row r d2">
+        <div class="cycle-num">3</div>
+        <div>
+          <h3>Trying harder makes it worse</h3>
+          <p>Forcing the process, rushing things, trying to stimulate yourself faster &#8212; all of this increases cortisol and adrenaline, which are the exact hormones that suppress erection. Every effort to force it collapses it further.</p>
+        </div>
+      </div>
+      <div class="cycle-row r d3">
+        <div class="cycle-num">4</div>
+        <div>
+          <h3>Avoidance begins</h3>
+          <p>To avoid the shame, many men begin pulling back from intimacy. From their partner. From moments of closeness. The problem moves from the bedroom into the relationship and then into how you see yourself as a man.</p>
+        </div>
+      </div>
+      <div class="cycle-row r d4">
+        <div class="cycle-num">5</div>
+        <div>
+          <h3>The cycle deepens with every repetition</h3>
+          <p>Each failed encounter reinforces the belief that it will happen again. The anxiety becomes the default state. And the body follows the mind &#8212; confirming what the mind already fears.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== MEDICAL CONFUSION ============================== -->
+<section class="confusion">
+  <div class="wrap">
+    <span class="label r">Why The Doctor Could Not Explain It</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      Tests Come Back Normal.<br/>Yet The Problem Remains.
+    </h2>
+    <div class="rule r d2"></div>
+    <p class="r d2" style="color:#ADA9A3; font-size:1rem; line-height:1.8;">
+      Many men living with erectile dysfunction have had blood tests done. Hormones checked. Everything comes back within normal range. The doctor has no explanation. And the man walks out with more shame than answers.
+    </p>
+    <p class="r d3" style="color:#ADA9A3; font-size:1rem; line-height:1.8; margin-top:18px;">
+      What standard medical testing does not measure are the compounding lifestyle, cardiovascular, metabolic, and psychological factors that can silently disrupt erection function &#8212; even in men who are otherwise healthy by conventional standards.
+    </p>
+
+    <div class="confusion-callout r d3">
+      <p>
+        An erection is not produced by one thing. It is produced by a <strong style="color:var(--gold)">system</strong> &#8212; a combination of blood flow, vascular responsiveness, hormonal balance, nervous system state, cardiovascular health, and mental clarity. When any part of that system is under pressure, performance suffers. The goal is not to treat one symptom. The goal is to <strong style="color:var(--white)">restore the system.</strong>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== 10 MISTAKES ============================== -->
+<section>
+  <div class="wrap-wide">
+    <div class="wrap" style="padding:0;">
+      <span class="label r">Common Patterns That Make It Worse</span>
+      <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+        10 Mistakes Men Make<br/>That Keep Them Stuck
+      </h2>
+      <div class="rule r d2"></div>
+    </div>
+
+    <div class="mistakes-grid" style="margin-top:48px;">
+      <div class="mistake-card r">
+        <div class="mistake-num">01</div>
+        <h3>They panic at the first failure</h3>
+        <p>One failed encounter becomes the evidence the mind uses to predict the future. The panic response sets the cycle in motion before the next attempt even begins.</p>
+      </div>
+      <div class="mistake-card r d1">
+        <div class="mistake-num">02</div>
+        <h3>They ignore cardiovascular fitness</h3>
+        <p>Erection is fundamentally a circulation event. Men who are cardiovascularly unfit are restricting the one system that erection depends on most.</p>
+      </div>
+      <div class="mistake-card r d2">
+        <div class="mistake-num">03</div>
+        <h3>They rely only on pills</h3>
+        <p>Medication forces a temporary response without addressing the underlying cause. When the pill stops working &#8212; or when the man wants to perform without it &#8212; nothing has changed.</p>
+      </div>
+      <div class="mistake-card r d3">
+        <div class="mistake-num">04</div>
+        <h3>They underestimate what they eat</h3>
+        <p>A diet high in processed food, alcohol, and sugar creates systemic inflammation and suppresses nitric oxide &#8212; the molecule that triggers the vascular response behind every erection.</p>
+      </div>
+      <div class="mistake-card r">
+        <div class="mistake-num">05</div>
+        <h3>They try to rush the erection</h3>
+        <p>Forcing the process signals urgency and danger to the nervous system. The body cannot produce an erection under conditions it reads as threat. Speed destroys the response.</p>
+      </div>
+      <div class="mistake-card r d1">
+        <div class="mistake-num">06</div>
+        <h3>They neglect recovery and sleep</h3>
+        <p>Testosterone is primarily produced during deep sleep. Men who sleep poorly, recover poorly, and live in chronic stress deplete the hormonal foundation that supports healthy performance.</p>
+      </div>
+      <div class="mistake-card r d2">
+        <div class="mistake-num">07</div>
+        <h3>They try to hide it from their partner</h3>
+        <p>Secrecy adds a layer of shame and performance pressure that compounds the anxiety. Honesty &#8212; even partial &#8212; reduces the psychological weight the man is carrying alone.</p>
+      </div>
+      <div class="mistake-card r d3">
+        <div class="mistake-num">08</div>
+        <h3>They give themselves no permission to fail</h3>
+        <p>The demand for perfection is one of the most powerful suppressors of natural response. Releasing the pressure &#8212; giving yourself permission &#8212; is one of the first steps to recovery.</p>
+      </div>
+      <div class="mistake-card r">
+        <div class="mistake-num">09</div>
+        <h3>They treat it as permanent</h3>
+        <p>Many men quietly accept this as their new reality. They stop expecting recovery. That acceptance becomes a self-fulfilling prophecy that locks the cycle in place.</p>
+      </div>
+      <div class="mistake-card r d1">
+        <div class="mistake-num">10</div>
+        <h3>They apply generic information to a specific problem</h3>
+        <p>A 24-year-old athlete and a 50-year-old sedentary man do not have the same system. Generic internet advice treats them identically. Individualized assessment is the difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PHYSIOLOGY ============================== -->
+<section class="physio">
+  <div class="wrap">
+    <span class="label r">The Physiology You Were Never Taught</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      What Actually Has to Happen<br/>For an Erection to Occur
+    </h2>
+    <div class="rule r d2"></div>
+    <p class="r d2" style="color:#ADA9A3; font-size:1rem; line-height:1.8;">
+      Understanding this changes how you see the problem &#8212; and why the solution is never one thing.
+    </p>
+    <p class="r d3" style="color:#ADA9A3; font-size:1rem; line-height:1.8; margin-top:18px;">
+      For an erection to occur, blood must rush into the penis while the veins that drain blood out constrict simultaneously. This is a vascular event, triggered by a molecule called <strong style="color:var(--gold)">nitric oxide</strong>. Nitric oxide signals the blood vessels to open. When nitric oxide production is suppressed &#8212; by poor diet, inactivity, chronic stress, excess body fat, or poor sleep &#8212; the response weakens or fails entirely.
+    </p>
+  </div>
+
+  <div class="wrap-wide" style="margin-top:0; padding-top:0;">
+    <div class="physio-stat-row" style="margin-top:48px;">
+      <div class="physio-stat r">
+        <div class="physio-stat-icon">&#9654;&#xFE0F;</div>
+        <h4>Blood Flow &amp; Circulation</h4>
+        <p>Cardiovascular fitness determines how efficiently blood moves through the body. Poor circulation is one of the most common and most overlooked contributors.</p>
+      </div>
+      <div class="physio-stat r d1">
+        <div class="physio-stat-icon">&#9889;</div>
+        <h4>Nitric Oxide Production</h4>
+        <p>Suppressed by alcohol, inflammatory food, inactivity and stress. Restored by structured exercise, targeted nutrition, and recovery.</p>
+      </div>
+      <div class="physio-stat r d2">
+        <div class="physio-stat-icon">&#129504;</div>
+        <h4>Nervous System State</h4>
+        <p>The parasympathetic state is required for arousal and erection. Anxiety activates the sympathetic system. The two cannot coexist. Calm is not optional &#8212; it is physiological.</p>
+      </div>
+      <div class="physio-stat r d3">
+        <div class="physio-stat-icon">&#128293;</div>
+        <h4>Hormonal Environment</h4>
+        <p>Testosterone, cortisol balance, insulin sensitivity and body composition all interact to create the hormonal conditions that support or undermine performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== ABOUT JOHN ============================== -->
+<section>
+  <div class="about-inner">
+    <div>
+      <span class="label r">The Man Behind The System</span>
+      <div class="about-badge r d1">Master John Tumba &#8212; Health &amp; Performance Systems</div>
+      <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+        This Is Not Theory.<br/>This Has Been Lived.
+      </h2>
+      <div class="rule r d2"></div>
+      <p class="r d2" style="color:#ADA9A3; font-size:1rem; line-height:1.8;">
+        Everything in The Male Performance Reset&#8482; is built from practical application &#8212; personal implementation, direct client work, and years of studying performance, recovery, circulation, fasting, nutrition, and the psychology of male confidence.
+      </p>
+      <p class="r d3" style="color:#ADA9A3; font-size:1rem; line-height:1.8; margin-top:18px;">
+        Most information on this subject comes from people who read about it. This system comes from someone who has applied it, refined it on himself, and seen it work across clients with different ages, different fitness levels, and different underlying causes.
+      </p>
+      <p class="r d3" style="color:#ADA9A3; font-size:1rem; line-height:1.8; margin-top:18px;">
+        No two men are treated the same. Every assessment considers your fitness level, age, health history, lifestyle, and psychology. What works for a 28-year-old athlete is not what a 52-year-old sedentary man needs. The system adapts to the individual &#8212; not the other way around.
+      </p>
+
+      <div class="about-philosophy r d4">
+        <p>
+          "For an erection to occur, a system has to be in place. Not one thing &#8212; a system. A combination of circulation, cardiovascular health, hormonal balance, psychological freedom, and lifestyle structure. When that system is restored, performance follows naturally."
+        </p>
+        <p style="margin-top:16px; font-size:0.9rem; font-style:normal; color:var(--gold);">&#8212; Master John Tumba</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== THE SYSTEM ============================== -->
+<section class="system">
+  <div class="wrap">
+    <span class="label r">The Structure</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      The Male Performance Reset&#8482;<br/>&#8212; How It Works
+    </h2>
+    <div class="rule r d2"></div>
+    <p class="r d2" style="color:#ADA9A3; font-size:1rem; line-height:1.8;">
+      A structured, individualized approach designed to address the physical, psychological, and lifestyle factors that contribute to erectile dysfunction and performance anxiety. Not a pill. Not a quick fix. A system.
+    </p>
+
+    <ul class="system-list">
+      <li class="system-item r">
+        <div style="display:flex;align-items:flex-start;padding-top:6px;"><div class="system-dot"></div></div>
+        <div>
+          <h3>Performance Anxiety Reset</h3>
+          <p>The psychological component is addressed first. You learn exactly what is happening in your nervous system during the anxiety cycle and how to interrupt it. One of the most powerful tools: giving yourself full permission to fail. That single shift removes the pressure that is actively suppressing your response.</p>
+        </div>
+      </li>
+      <li class="system-item r d1">
+        <div style="display:flex;align-items:flex-start;padding-top:6px;"><div class="system-dot"></div></div>
+        <div>
+          <h3>Strategic Fasting Protocol</h3>
+          <p>The body cannot rebuild in the same environment that caused the damage. Structured fasting clears the metabolic and inflammatory load, resets hormonal sensitivity, and prepares the system for targeted restoration. This is the foundation everything else is built on.</p>
+        </div>
+      </li>
+      <li class="system-item r d2">
+        <div style="display:flex;align-items:flex-start;padding-top:6px;"><div class="system-dot"></div></div>
+        <div>
+          <h3>Precision Nutrition Protocol</h3>
+          <p>A structured dietary framework designed to rebuild nitric oxide production, reduce systemic inflammation, and support testosterone and hormonal balance. Every food choice has a physiological reason. You will understand not just what to eat &#8212; but why each element is there.</p>
+        </div>
+      </li>
+      <li class="system-item r d3">
+        <div style="display:flex;align-items:flex-start;padding-top:6px;"><div class="system-dot"></div></div>
+        <div>
+          <h3>90-Day Strength, Longevity &amp; Metabolic Reset Training</h3>
+          <p>Targeted exercise protocols chosen specifically for their effect on cardiovascular health, testosterone output, pelvic floor function, and circulation. Not a generic gym programme &#8212; a system selected for what your body needs to perform.</p>
+        </div>
+      </li>
+      <li class="system-item r d4">
+        <div style="display:flex;align-items:flex-start;padding-top:6px;"><div class="system-dot"></div></div>
+        <div>
+          <h3>Natural Supplementation Stack</h3>
+          <p>A curated selection of natural compounds with documented mechanisms for improving vascular function, nitric oxide synthesis, energy, and hormonal balance. No prescription. No dependency. Each supplement is explained so you understand what it does and why.</p>
+        </div>
+      </li>
+      <li class="system-item r">
+        <div style="display:flex;align-items:flex-start;padding-top:6px;"><div class="system-dot"></div></div>
+        <div>
+          <h3>Individual Assessment &amp; Ongoing Support</h3>
+          <p>Your fitness level, age, health conditions, and current lifestyle are assessed before any protocol is assigned. Your system is different from the next man's. Direct WhatsApp access to Master John Tumba throughout the programme ensures the approach adapts to you.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- ============================== TRANSFORMATION ============================== -->
+<section>
+  <div class="wrap">
+    <span class="label r">The Shift</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      Before The Reset.<br/>After The Reset.
+    </h2>
+    <div class="rule r d2"></div>
+  </div>
+
+  <div class="wrap-wide">
+    <div class="transform-cols r d2">
+      <div class="transform-col before">
+        <span class="transform-col-label">Before</span>
+        <ul class="transform-list">
+          <li>Constant anxiety before intimacy</li>
+          <li>Unable to sustain or achieve an erection</li>
+          <li>Panic mode the moment things do not respond</li>
+          <li>Avoiding intimacy to avoid the shame</li>
+          <li>Believing something is permanently wrong</li>
+          <li>Low energy and low confidence outside the bedroom</li>
+          <li>Relationship under quiet but constant pressure</li>
+        </ul>
+      </div>
+      <div class="transform-col after">
+        <span class="transform-col-label">After The Reset</span>
+        <ul class="transform-list">
+          <li>Calm, confident approach to intimacy</li>
+          <li>Strong, reliable erections without dependence on pills</li>
+          <li>Understanding of your own body and how it responds</li>
+          <li>No longer operating from fear of failure</li>
+          <li>Improved energy, fitness, and overall vitality</li>
+          <li>Partner reports change &#8212; in performance and in presence</li>
+          <li>Relationship restored from a position of masculine confidence</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== PACKAGES ============================== -->
+<section class="packages">
+  <div class="wrap">
+    <span class="label r">Your Investment</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      Two Paths Forward.<br/>Both Lead to Restoration.
+    </h2>
+    <div class="rule r d2"></div>
+    <p class="r d2" style="color:#ADA9A3; font-size:1rem; line-height:1.8;">
+      Choose the level of support that fits where you are right now. Both packages are private, confidential, and built around your individual situation.
+    </p>
+  </div>
+
+  <div class="wrap-wide">
+    <div class="packages-grid">
+
+      <!-- STARTER -->
+      <div class="package-card r d1">
+        <p class="package-name">Starter Package</p>
+        <p class="package-price">K1,000 <span>ZMW</span></p>
+        <p class="package-desc">The entry point. Everything you need to understand the problem clearly, begin the reset, and start seeing results with full documentation and support.</p>
+        <ul class="package-includes">
+          <li>Initial consultation with Master John Tumba</li>
+          <li>Full performance and lifestyle assessment</li>
+          <li>Erectile Dysfunction Recovery PDF</li>
+          <li>Precision Nutrition Guide PDF</li>
+          <li>Performance Anxiety Reset Framework</li>
+          <li>Natural supplementation guidance</li>
+          <li>WhatsApp support throughout</li>
+        </ul>
+        <a class="package-cta" href="https://wa.me/260779483121?text=I%20want%20to%20start%20with%20the%20Starter%20Package%20(K1000).%20Please%20send%20me%20details." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get the Starter Package
+        </a>
+        <p class="package-note">Pay K1,000 to begin. Your consultation and materials are delivered immediately.</p>
+      </div>
+
+      <!-- FULL TRANSFORMATION -->
+      <div class="package-card featured r d2">
+        <div class="package-ribbon">Most Complete</div>
+        <p class="package-name">Full Transformation Package</p>
+        <p class="package-price">K2,000 <span>ZMW</span></p>
+        <p class="package-desc">The complete 90-day reset. Every protocol, every document, personal guidance throughout, and ongoing support until the work is done.</p>
+        <ul class="package-includes">
+          <li>Everything in the Starter Package</li>
+          <li>90-Day Male Performance Reset full programme</li>
+          <li>Strength, Longevity &amp; Metabolic Reset training protocol</li>
+          <li>Complete fasting protocol with structure and timing</li>
+          <li>Full natural supplementation stack and guide</li>
+          <li>Personalized exercise programme by fitness level</li>
+          <li>Recovery and longevity principles PDF</li>
+          <li>Multiple follow-up consultations</li>
+          <li>Direct WhatsApp access throughout 90 days</li>
+        </ul>
+        <a class="package-cta" href="https://wa.me/260779483121?text=I%20want%20the%20Full%20Transformation%20Package%20(K2000).%20Please%20send%20me%20details." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Start the Full Reset
+        </a>
+        <p class="package-note">K1,000 paid to begin. Remaining K1,000 paid as you progress through the programme with Master John Tumba.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== TESTIMONIALS ============================== -->
+<section class="testimonials">
+  <div class="wrap">
+    <span class="label r">Client Results</span>
+    <h2 class="serif r d1" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.15; margin-bottom:16px;">
+      Men Who Chose<br/>to Restore, Not Endure
+    </h2>
+    <div class="rule r d2"></div>
+
+    <div class="testimonial-placeholder r d2">
+      <p><strong>Client testimonials are being collected with full permission.</strong></p>
+      <p style="margin-top:16px;">Privacy and confidentiality are the foundation of this work. Real success stories will be shared here only with explicit client consent.</p>
+      <p style="margin-top:16px;">If you have worked with Master John Tumba and wish to share your experience, contact via WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================== FINAL CTA ============================== -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <span class="label r" style="justify-content:center; display:block;">Your Next Step</span>
+
+    <h2 class="r d1">
+      You Can Keep<br/>Hoping It Improves.<br/>
+      <em>Or You Can Begin<br/>Restoring the System.</em>
+    </h2>
+
+    <p class="r d2">
+      The men who stay stuck are the men who wait. They hope the next time will be different. And when it is not, the cycle deepens. The men who recover are the men who <strong>decide to address it directly</strong> &#8212; with a system, with guidance, and with someone who has been through it and brought others through it.
+    </p>
+
+    <div class="cta-pulse-wrap r d3">
+      <div class="cta-pulse"></div>
+      <a class="btn-primary" href="https://wa.me/260779483121?text=I%20want%20to%20start%20The%20Male%20Performance%20Reset.%20Please%20send%20me%20details." target="_blank" rel="noopener" style="font-size:1.05rem; padding:20px 44px;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Message Master John on WhatsApp
+      </a>
+    </div>
+
+    <p class="cta-private r d4"><strong>Private.</strong> Confidential. No judgement. One conversation changes everything.</p>
+  </div>
+</section>
+
+
+<!-- ============================== FOOTER ============================== -->
+<footer>
+  <p class="footer-brand">Master John Tumba <span>Health &amp; Performance Systems</span></p>
+  <p class="footer-sub">The Male Performance Reset&#8482; &nbsp;|&nbsp; Zambia &nbsp;|&nbsp; WhatsApp: +260 779 483 121</p>
+  <p class="footer-disclaimer">This programme is a structured lifestyle, fitness, and coaching system. It is not a substitute for professional medical diagnosis or treatment. Men with persistent symptoms are encouraged to also consult a qualified healthcare provider. Results vary by individual.</p>
+</footer>
+
+
+<!-- ============================== FLOATING WA BUTTON ============================== -->
+<a class="wa-float" href="https://wa.me/260779483121?text=I%20want%20to%20start%20The%20Male%20Performance%20Reset.%20Please%20send%20me%20details." target="_blank" rel="noopener" aria-label="WhatsApp Master John Tumba">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+
+<!-- ============================== SCROLL REVEAL ============================== -->
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
