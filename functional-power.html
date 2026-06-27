@@ -103,6 +103,20 @@ body {
   background: #25D366;
   color: #000;
 }
+  .book-cover{
+    width:280px;
+    max-width:85%;
+    display:block;
+    margin:35px auto;
+    border-radius:18px;
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+    transition:transform .4s ease, box-shadow .4s ease;
+}
+
+.book-cover:hover{
+    transform:translateY(-6px) scale(1.02);
+    box-shadow:0 35px 70px rgba(0,0,0,.55);
+}
 
 /* ANIMATION */
 @keyframes fadeUp {
@@ -120,10 +134,16 @@ body {
 <div class="hero">
   <div>
     <h1>Functional Power</h1>
-    <p>
-      Why muscles were never the measure of strength —
-      and what real fitness actually is.
-    </p>
+
+<img
+src="functional-power-cover.jpg"
+alt="Functional Power Book Cover"
+class="book-cover">
+
+<p>
+Why muscles were never the measure of strength —
+and what real fitness actually is.
+</p>
   </div>
 </div>
 
